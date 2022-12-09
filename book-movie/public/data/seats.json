@@ -1,0 +1,123 @@
+[
+    {
+        "id": 1,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 2,
+        "price": 30000,
+        "status": "default"
+    },
+    {
+        "id": 3,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 4,
+        "price": 30000,
+        "status": "default"
+    },
+    {
+        "id": 5,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 6,
+        "price": 30000,
+        "status": "default"
+    },
+    {
+        "id": 7,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 8,
+        "price": 30000,
+        "status": "default"
+    },
+    {
+        "id": 9,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 10,
+        "price": 30000,
+        "status": "default"
+    },
+    {
+        "id": 11,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 12,
+        "price": 30000,
+        "status": "default"
+    },
+    {
+        "id": 13,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 14,
+        "price": 30000,
+        "status": "default"
+    },
+    {
+        "id": 15,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 16,
+        "price": 30000,
+        "status": "default"
+    },
+    {
+        "id": 17,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 18,
+        "price": 30000,
+        "status": "default"
+    },
+    {
+        "id": 19,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 20,
+        "price": 30000,
+        "status": "default"
+    },
+    {
+        "id": 21,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 22,
+        "price": 30000,
+        "status": "default"
+    },
+    {
+        "id": 23,
+        "price": 30000,
+        "status": "booked"
+    },
+    {
+        "id": 24,
+        "price": 30000,
+        "status": "default"
+    }
+    
+]

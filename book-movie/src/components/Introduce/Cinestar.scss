@@ -1,0 +1,88 @@
+.Cinetars{
+    background-color: var(--color-violet);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p{
+        margin-top: 20px;
+        font-family: 'Kanit', sans-serif;
+        font-size: 28px;
+        background-color: #ffcc04;
+        color: black;
+        padding: 10px;
+        padding-left: 30px;
+        padding-right: 30px;
+        border-radius: 20px 20px 0 20px;
+        font-weight: bold;
+    }
+    .Cinetar{
+        width: 1000px;
+        height: 450px;
+        display: flex;
+        flex-direction: row;
+
+        img{
+            height: 400px;
+            width: 400px;
+            border-radius: 50%;
+            border: 4px solid wheat;
+            z-index: 1;
+        }
+
+        .imgRight{
+            height: 400px;
+            width: 400px;
+            
+            img{
+            margin-left: -150px;
+            border-radius: 50%;
+            border: 4px solid wheat;
+            z-index: 1;
+            }
+        }
+        .detail{
+
+            .left{
+                h1{
+                font-family: 'Kanit', sans-serif;
+                font-size: 28px;
+                margin-top:50px;
+                margin-left: -120px;
+                text-align: center;
+                color: white;
+                width: 550px;
+                padding: 20px;
+                border-radius: 0 75px 0 0;
+                background-color: #e80c7c;
+              }
+            }
+
+            .right{
+                h1{
+                font-family: 'Kanit', sans-serif;
+                font-size: 28px;
+                margin-top:50px;
+                margin-left: 80px;
+                text-align: center;
+                color: white;
+                width: 550px;
+                padding: 20px;
+                border-radius: 75px 0  0 0;
+                background-color: #e80c7c;
+              }
+            }
+            
+
+            .textLeft{
+                
+                padding-left: 5%;
+                text-align: left;
+            }
+            .textRight{
+                padding-right: 180px;
+                text-align: right;
+            }
+        }
+    }
+}

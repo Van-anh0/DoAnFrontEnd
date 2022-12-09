@@ -1,0 +1,25 @@
+
+
+.bg{
+    
+    background-color: black;
+    padding: 10px;
+    line-height: 1.5;
+    color: white;
+    .icon{
+       text-align: center;
+       cursor: pointer;
+       .iconFB{
+        height: 48px;
+       }
+        img{
+            padding-left: 10px;
+            height: 50px;
+            width: 60px;
+        }
+    }
+
+    .content{
+        text-align: center;
+    }
+}

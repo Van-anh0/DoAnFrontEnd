@@ -1,0 +1,77 @@
+
+
+.cinemas{
+    background-color: var(--color-violet);
+    color: white;
+}
+.titlee{
+    user-select: none;
+    text-align: center;
+   
+    line-height: 2;
+    h1{
+        font-size: 30px;
+        font-weight: bold;
+        color: white;
+    }
+    .line{
+        margin-left: 35%;
+        width: 440px;
+        height: 2px;
+        
+        background-color: white;
+    }
+}
+
+
+.girdCinema{
+    padding-top: 5%;
+    padding-bottom: 5%;
+    display: grid;
+    padding-left: 15%;
+    grid-template-columns: repeat(2,500px);
+   
+    gap:20px;
+    user-select: none;
+   
+   
+    .cinema{
+        align-items: center;
+        cursor: pointer;
+        // border: 1px solid rebeccapurple;
+        display: grid;
+        width: 500px;
+        grid-template-columns: repeat(2,200px);
+    
+       
+        img{
+            height: 200px;
+            width: 200px;
+        }
+            
+        
+        .detail{
+           
+            padding-left: 30px;
+            width: 300px;
+            line-height: 1.5;
+            h1{
+                font-family: 'Kanit', sans-serif;
+                font-size: 30px;
+                color: white;
+            }
+
+            .star{
+                color: rgb(241, 241, 4);
+            }
+            .location{
+               
+                .inLine{
+                    display: inline;
+                }
+            }
+        }
+
+
+    }
+}

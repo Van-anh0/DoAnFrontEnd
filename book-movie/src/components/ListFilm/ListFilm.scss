@@ -1,0 +1,105 @@
+
+
+.listFilm{
+    
+   background-color: rgb(80,4,68);
+   padding: 1%;
+   padding-bottom: 2%;
+
+    .film{
+        padding-top: 1%;
+        padding-left: 7%;
+        display: flex;
+        flex-direction: row;
+
+        .filmDT{
+            cursor: pointer;
+            width: 500px;
+            height: 350px;
+            align-items: center;
+            padding: 1%;
+            display: flex;
+            flex-direction: row;
+            border-radius: 10%;
+            background-color: rgb(248,132,36);
+
+            .pic{
+            border: 3px solid wheat;
+            height: 300px;
+            width: 200px;
+
+            img{
+                height: 100%;
+                width: 100%;
+            }
+        }
+
+        .detail{
+            color: white;
+            padding: 2%;
+           
+            h1{
+                font-size: 25px;
+                font-weight: bold;
+            }
+            width: 300px;
+        }
+        }
+        
+
+        
+
+        .dateTime{
+            margin-left: 10px;
+            position: relative;
+            margin-top: 7%;
+            height: 100px;
+          
+            width: 800px;
+            .cinemas{
+                padding-bottom: 2%;
+                select{
+                    font-size: 20px;
+                    background-color: rgb(248,132,36);
+                    color: white;
+                    width: 200px;
+                    height: 50px;
+                    border-radius: 10px;
+                    text-align: center;
+                    
+                }
+            }
+            .date{
+            
+                border-radius: 0 25% 0 25%;
+                font-family: 'Kanit', sans-serif;
+                font-size: 25px;
+                font-weight: bold;
+                position:absolute;
+                height: 100%;
+                width: 150px;
+                background-color: rgb(248,196,76);
+                padding-top: 4%;
+                text-align: center;
+            }
+
+            .time{
+                background-color: rgb(84,28,80);
+                position: absolute;
+                flex-wrap: wrap;
+                margin-top: 5px;
+                margin-left: 155px;
+                padding: 5px;
+                button{
+                    background-color: rgb(128,36,100);
+                    width: 100px;
+                    height: 40px;
+                    margin: 2px;
+                    color: white;
+                    cursor: pointer;
+                  
+                }
+            }
+        }
+    }
+}
