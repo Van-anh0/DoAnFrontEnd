@@ -4,18 +4,14 @@ import Footer from "../components/Footer/Footer";
 import Slider from "../components/Slider/Slider";
 
 import Cinemas from "../components/Cinemas/Cinemas";
-import ModalLog from "../components/modal/modalLogin";
-import TabCT from "./pages_data/TabCT";
+// import ModalLogin from "../components/modal/ModalLogin";
+import TabDetail from "./pages_data/TabDetail";
 function Home(){
     return(
         <div>
-            
-            
             <Slider/>
-            <TabCT/>
+            <TabDetail/>
             <Cinemas/>
-       
-            
         </div>
     )
 }

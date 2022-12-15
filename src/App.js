@@ -8,11 +8,11 @@ import DetailP from './pages/DetailP';
 import Showtimes from './pages/Showtimes';
 import Cinema from './pages/Cinema';
 import Login from './pages/Login';
-import ModalLog from './components/modal/modalLogin';
+import ModalLog from './components/Modal/ModalLogin';
 import Footer from './components/Footer/Footer';
 import Introduce from './pages/Introduce';
 import SeatPage from './pages/SeatPage';
-import PayPage from './pages/PayPage';
+import Payment from './pages/Payment';
 function App() {
   return (
     <div className="App">
@@ -31,7 +31,7 @@ function App() {
 		<Route path="/introduce" element={<Introduce/>} />
 		<Route path="/detail/:filmId" element={<DetailP/>} /> 
 		<Route path="/lichchieu" element={<SeatPage/>} /> 
-		<Route path="/thanhtoan" element={<PayPage/>} /> 
+		<Route path="/thanhtoan" element={<Payment/>} /> 
 	</Routes>
 
 	<Footer/>

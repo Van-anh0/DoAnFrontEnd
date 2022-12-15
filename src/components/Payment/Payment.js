@@ -1,6 +1,7 @@
 import React from "react";
-import "../Pay/Pay.scss"
-function Pay(props){
+import "./Payment.scss"
+
+function Payment(props){
     return(
         <div className="item">
             <div className="dv">
@@ -49,4 +50,4 @@ function Pay(props){
     )
 }
 
-export default Pay;
+export default Payment;
