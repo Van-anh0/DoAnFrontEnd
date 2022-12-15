@@ -1,9 +1,10 @@
+import React  from 'react'
 import { Tabs } from "antd";
 import "antd/dist/antd.css"
 import ContentShowing from "./ContentShowing";
 import ContentToShow from "./ContentToShow";
-import "./TabCT.scss"
-function TabCT(){
+import "./TabDetail.scss"
+function TabDetail(){
     return(
         <div>
             <Tabs className="tab">
@@ -18,4 +19,4 @@ function TabCT(){
     )
 }
 
-export default TabCT;
+export default TabDetail;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {AiFillStar} from 'react-icons/ai';
 import {VscLocation} from 'react-icons/vsc';
 import ci1 from '../../assets/images/ci1.png';
@@ -9,7 +9,30 @@ import ci5 from '../../assets/images/ci5.png';
 import ci6 from '../../assets/images/ci6.png';
 import ci7 from '../../assets/images/ci7.png';
 import '../Cinemas/cinemas.scss'
+import axios from 'axios'
+import { API_ROOT_GOLANG } from '../../utils/constants'
+
+import {checkHealth} from "../../actions/ApiCall"
+
 function Cinemas(){
+
+    useEffect(() => {
+        // call API checkHealth
+        axios.get(`${API_ROOT_GOLANG}/status`)
+        .then(function (response) {
+            // handle success
+            console.log("vao roi leu leu",response);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log("loi roi leu leu",error);
+        })
+        .finally(function () {
+            // always executed
+            console.log("cuoi cung thi leu leu");
+        });
+
+    },[])
     return(
         <div className="cinemas">
 

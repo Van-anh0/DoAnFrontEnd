@@ -1,12 +1,14 @@
+import React  from 'react'
 import Netflixlogo from '../../assets/images/logoHeader.png'
 import {MdSearch} from 'react-icons/md'
 import {AiOutlineUser} from 'react-icons/ai'
 
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import "../Header/Header.scss"
-import {Link} from 'react-router-dom'
-import ModalSign from '../modal/modalSignup'
-import ModalLog from '../modal/modalLogin'
+// import {Link} from 'react-router-dom'
+import ModalSign from '../Modal/ModalSignup'
+import ModalLog from '../Modal/ModalLogin'
+
 function Header (props) {
    
     return(

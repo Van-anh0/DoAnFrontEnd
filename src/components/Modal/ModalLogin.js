@@ -4,9 +4,9 @@ import React, { useState } from 'react';
 //Adding antd modules and style
 import { Modal, Form, Input, Radio } from 'antd';
 import "antd/dist/antd.css";
-import "../modal/modal.scss"
+import "./Modal.scss"
 
-class ModalSign extends React.Component {
+class ModalLog extends React.Component {
   render(){
    //popup and form code
     const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
@@ -82,7 +82,7 @@ class ModalSign extends React.Component {
                 setVisible(true);
               }}
             >
-              Đăng ký
+              Đăng nhập
             </button>
             <CollectionCreateForm
               visible={visible}
@@ -112,4 +112,4 @@ class ModalSign extends React.Component {
 }
 
 }
-export default ModalSign;
+export default ModalLog;
