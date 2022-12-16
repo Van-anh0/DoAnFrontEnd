@@ -1,5 +1,6 @@
 import React, {useEffect, useState}  from "react";
 import Contents from "../../components/Content/Contents";
+
 function ContentShowing(props){
     const [films, setFilms] = useState([]);
     useEffect(() => {

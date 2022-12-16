@@ -4,7 +4,8 @@ import "../DetailFilm/DetailFilm.scss"
 import icon from "../../assets/images/ytb2.png"
 import { Link } from "react-router-dom";
 
-function DetailFilm(props){
+function DetailFilm({film, types}){
+    console.log("hieuhoccode",types)
 
     const movie ="https://i.etsystatic.com/27089413/r/il/ddfeb8/2795688212/il_570xN.2795688212_glob.jpg";
     return(
@@ -13,25 +14,25 @@ function DetailFilm(props){
         <div className="col-detailFilm">
                     <div className="Film">
                                 <div className="pic">
-                                    <img src={props.film.Poster} alt={props.film.Title}></img>
+                                    <img src={film.poster} alt={film.name}></img>
                                 </div>
 
                                 <div className="text">
                                 <div className="detail">
                                             <h1 className="name">
-                                            {props.film.Title}
+                                            {film.name}
                                         </h1>
                                         
-                                        <span className="tt">Khởi chiếu: </span> <span>{props.film.Released}</span><br/>
-                                        <span className="tt">Thể loại: </span> <span>{props.film.Genre}</span><br/>
-                                        <span className="tt">Đạo diễn: </span> <span>{props.film.Director}</span><br/>
-                                        <span className="tt">Diễn viên: </span> <span>{props.film.Actors}</span><br/>
-                                        <span className="tt">Quốc gia: </span> <span>{props.film.Country}</span><br/>
+                                        <span className="tt">Khởi chiếu: </span> <span>{film.release_date}</span><br/>
+                                        <span className="tt">Thể loại: </span> <span>{film.type}</span><br/>
+                                        <span className="tt">Đạo diễn: </span> <span>{film.director}</span><br/>
+                                        <span className="tt">Diễn viên: </span> <span>{film.cast}</span><br/>
+                                        <span className="tt">Quốc gia: </span> <span>{film.country}</span><br/>
                                     
                                 </div>
                                 <div className="content">
                                     <h1>Nội dung phim</h1>
-                                <span>{props.film.Plot}</span>
+                                <span>{film.description}</span>
                                     </div>
                                 
 
@@ -44,10 +45,19 @@ function DetailFilm(props){
                     <div className="dateTime">
                                                 <div className="cinemas">
                                                     <select>
-                                                        <option>Cinetar Đà Lạt</option>
-                                                        <option>Cinetar Huế</option>
-                                                        <option>Cinetar Mĩ Tho</option>
-                                                        <option>Cinetar Kiên Giang</option>
+                                            {
+                                                   types?.map((type, index) => (
+                                                        
+                                                            <option>
+                                                                <div key={index}> 
+                                                                    <div>{type?.name}</div>
+                                                                </div>
+                                                            </option>
+                                                            
+                                                        
+                                                        
+                                                    ))
+                                                }
                                                     </select>
 
                                                     <select>

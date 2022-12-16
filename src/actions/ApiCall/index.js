@@ -16,3 +16,14 @@ export const getListMovie = async () => {
   return request.data
 }
 
+export const getOneMovie = async (id) => {
+  const request = await authorizedAxiosInstance.get(`${API_ROOT_GOLANG}/api/v1/movie/get-one/${id}`)
+  return request.data
+}
+
+
+export const getListMovieTheater = async () => {
+  const request = await authorizedAxiosInstance.get(`${API_ROOT_GOLANG}/api/v1/movie-theater/get-list`)
+  return request.data
+}
+

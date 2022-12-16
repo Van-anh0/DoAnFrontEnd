@@ -36,10 +36,10 @@ function Contents(props) {
 
                 {
                     props.films.map((movie, index) => (
-                        <Link to={"/detail/"+index} onClick={() => {}}>
+                        <Link to={"/detail/"+ movie.id} onClick={() => {}}>
                         <div key={index} className="movieItem" style={{transform: `translateX(${x}%)`}}> 
-                            <img src={movie.Poster} alt={movie.Title} />
-                            <div className="movieName">{movie.Title}</div>
+                            <img src={movie.poster} alt={movie.name} />
+                            <div className="movieName">{movie.name}</div>
                         </div>
                         </Link>
                     ))
