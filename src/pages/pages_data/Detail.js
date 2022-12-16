@@ -11,6 +11,17 @@ function Detail(props){
             setFilm(y[props.filmId])
         });
     }, [])
+
+    
+    // useEffect(() => {
+    //     // call API checkHealth
+    //     axios.get(`${API_ROOT_GOLANG}/api/v1/movie/get-list`)
+    //     .then((response) => {
+    //         setFilm(response.data);
+    //       });
+
+    // },[])
+    
     
     return(
         <div>

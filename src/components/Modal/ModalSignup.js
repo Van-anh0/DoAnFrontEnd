@@ -14,9 +14,9 @@ class ModalSign extends React.Component {
         return (
           <Modal
             visible={visible}
-            title="Đăng nhập"
-            okText="Login"
-            cancelText="Cancel"
+            title="Đăng Ký"
+            okText="Đăng Ký"
+            cancelText="Thôi"
             onCancel={onCancel}
             onOk={() => {
               form
@@ -40,27 +40,37 @@ class ModalSign extends React.Component {
             >
               <Form.Item
                 name="username"
-                label="User Name"
+                label="Tên"
                 rules={[
                   {
                     required: true,
-                    message: 'Please enter username!',
+                    message: 'Nhập tên!',
                   },
                 ]}
               >
                 <Input />
               </Form.Item>
-              <Form.Item name="password" label="Password"
+              <Form.Item name="password" label="Mật khẩu"
               rules={[
                 {
                   required: true,
-                  message: 'Please enter password!',
+                  message: 'Nhập mật khẩu!',
                 },
               ]}
               >
                 <Input type="password" />
               </Form.Item>
               
+              <Form.Item name="passwordcorrect" label="Xác nhận mật khẩu"
+              rules={[
+                {
+                  required: true,
+                  message: 'Hãy xác nhận lại mật khẩu!',
+                },
+              ]}
+              >
+                <Input type="password" />
+              </Form.Item>
             </Form>
           </Modal>
         );

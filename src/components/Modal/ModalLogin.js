@@ -15,8 +15,8 @@ class ModalLog extends React.Component {
           <Modal
             visible={visible}
             title="Đăng nhập"
-            okText="Login"
-            cancelText="Cancel"
+            okText="Đăng nhập"
+            cancelText="Thôi"
             onCancel={onCancel}
             onOk={() => {
               form
@@ -40,21 +40,21 @@ class ModalLog extends React.Component {
             >
               <Form.Item
                 name="username"
-                label="User Name"
+                label="Tên"
                 rules={[
                   {
                     required: true,
-                    message: 'Please enter username!',
+                    message: 'Hãy nhập tên!',
                   },
                 ]}
               >
                 <Input />
               </Form.Item>
-              <Form.Item name="password" label="Password"
+              <Form.Item name="password" label="Mật khẩu"
               rules={[
                 {
                   required: true,
-                  message: 'Please enter password!',
+                  message: 'Hãy nhập mật khẩu!',
                 },
               ]}
               >
