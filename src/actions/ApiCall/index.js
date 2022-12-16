@@ -7,6 +7,12 @@ import { API_ROOT_GOLANG } from '../../utils/constants'
 // }
 
 export const checkHealth = async () => {
-  const request = await authorizedAxiosInstance.put(`${API_ROOT_GOLANG}/status`)
+  const request = await authorizedAxiosInstance.get(`${API_ROOT_GOLANG}/status`)
   return request.data
 }
+
+export const getListMovie = async () => {
+  const request = await authorizedAxiosInstance.get(`${API_ROOT_GOLANG}/api/v1/movie/get-list`)
+  return request.data
+}
+

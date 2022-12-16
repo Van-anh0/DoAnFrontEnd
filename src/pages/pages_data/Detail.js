@@ -1,15 +1,17 @@
 import React, {useEffect, useState}  from "react";
 import DetailFilm from "../../components/DetailFilm/DetailFilm";
 import Header from "../../components/Header/Header";
+import {getListMovie} from "../../actions/ApiCall/index"
+
 function Detail(props){
+    
     const [film, setFilm] = useState([]);
+    // reference
     useEffect(() => {
-        fetch('https://van-anh0.github.io/chiTietFilm.json')
-        .then(x => x.json())
-        .then(y => {
-            console.log(y[0]);
-            setFilm(y[props.filmId])
-        });
+        let response = getListMovie()
+        response.then((result) => {
+                console.log("data ne: ", result)
+        })
     }, [])
 
     
