@@ -4,7 +4,7 @@ import './Seat.scss'
 const Seat = (props) => {
     const [seatStatus, setSeatStatus] = useState(props.seat.status)
 
-    const seatNumber = props.seat.id
+    const seatNumber = props.seat.name
     const seatPrice = props.seat.price
     const seatClickHandler = () => {
         if (seatStatus === "default") {

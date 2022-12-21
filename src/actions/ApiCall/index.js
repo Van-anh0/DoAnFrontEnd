@@ -32,3 +32,11 @@ export const getListShowTime = async () => {
   return request.data
 }
 
+
+export const getListSeat = async () => {
+const request = await authorizedAxiosInstance.get(`${API_ROOT_GOLANG}/api/v1/seat/get-list`, {params: {
+  sort:'name'
+}})
+  return request.data
+}
+
