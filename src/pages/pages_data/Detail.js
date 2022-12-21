@@ -13,9 +13,9 @@ function Detail() {
   const [types, setTypes] = useState([]);
   const [showtimes, setShowtimes] = useState([]);
   const pathname = useLocation().pathname;
-  let id = pathname.replace("/detail/", "");
+  let movieId = pathname.replace("/detail/", "");
   useEffect(() => {
-    let response = getOneMovie(id);
+    let response = getOneMovie(movieId);
     response.then((result) => {
       setFilm(result.data);
     });
@@ -25,12 +25,12 @@ function Detail() {
       setTypes(result.data);
     });
 
-    let responseShowtime = getListShowTime();
+    let responseShowtime = getListShowTime(movieId);
     responseShowtime.then((result) => {
       let listResponse = renameKeys(result.data);
       setShowtimes(listResponse);
     });
-  }, []);
+  }, [movieId]);
 
   return (
     <div>

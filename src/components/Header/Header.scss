@@ -1,3 +1,4 @@
+@import '../../setting';
 
     .navContainer {
         width: 100%;
@@ -26,7 +27,7 @@
 
         .navSearch {
             
-            color: var(--color-white);
+            color: $color-white;
             padding-left: 10%;
             display: flex;
             justify-content: flex-end;
@@ -46,7 +47,7 @@
             input {
                 font-size: 14px;
                 border: 1px solid #251B37;
-                color: var(--color-background);
+                color: $color-background;
                 outline: none;
                 width: 300px;
                 height: 40px;
