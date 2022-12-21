@@ -113,8 +113,8 @@ function DetailFilm({film, types, showtimes}){
 
                         <div className="foo">
                                     <div className="a">
-                                            <img src={icon}></img>
-                                        <div>TRAILER</div>
+                                        <img src={icon}></img>
+                                        <a href={film.trailer}>TRAILER</a>
                                     </div>
                                 
                                     <Link to={"/lichchieu"} onClick={() => {}}>

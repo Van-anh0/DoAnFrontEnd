@@ -35,6 +35,7 @@ function Detail(){
         let responseShowtime = getListShowTime()
         responseShowtime.then((result) => {
                 setShowtimes(result.data)
+                console.log("showtimeday",result.data[0])
                // console.log(Object.keys(result.data))
         })
 
