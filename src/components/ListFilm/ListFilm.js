@@ -4,9 +4,28 @@ import { Link } from "react-router-dom";
 const movie = "https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/y/_/y_u_qu_i_to_n_th_-_payoff_poster_-_kt_facebook_-_kc_04112022_1_.jpg";
 function ListFilm(){
     return(
-        <div>
-            <div className="listFilm">
-            
+        <div  className="showtimes">
+             <div className="category">
+                
+                <div>Chọn rạp chiếu: </div>
+                <select className="a">
+                    <option>cinetar sài gòn</option>
+                    <option>cinetar đà lạt</option>
+                </select>
+
+                <div className="space"></div>
+                
+                <div>Chọn ngày chiếu</div>
+                <select className="a">
+                    <option>19/10/2021</option>
+                    <option>20/10/2021t</option>
+                </select>
+             </div>
+                      
+           
+             <div className="listFilm">
+
+             
                      <div className="film">
                      <Link to={"/detail/5"} onClick={() => {}}>
 
@@ -23,41 +42,13 @@ function ListFilm(){
                             </div>
                         </div>
                      </Link>
-                       
-                    
+                     </div>
 
-                        <div className="dateTime">
-                            <div className="cinemas">
-                                <select>
-                                    <option>Cinetar Đà Lạt</option>
-                                    <option>Cinetar Huế</option>
-                                    <option>Cinetar Mĩ Tho</option>
-                                    <option>Cinetar Kiên Giang</option>
-                                </select>
-                            </div>
 
-                            <div className="date">
-                                    05/11/2022
-                            </div>
-                            <div className="time">
-                                    <Link to={"/lichchieu"} onClick={() => {}}>
-                                    <button>09:00</button>
-                                    </Link>
-                                
-                                <button>10:00</button>
-                                <button>13:00</button>
-                                <button>15:00</button>
-                                <button>17:00</button>
-                                <button>19:00</button>
-                                <button>21:00</button>
-                                <button>23:00</button>
-                              
-                            </div>
-                        </div>
-                    </div>
+                     <div className="film">
+                     <Link to={"/detail/5"} onClick={() => {}}>
 
-                    <div className="film">
-                        <div className="filmDT">
+                         <div className="filmDT">
                             <div className="pic">
                                 <img src={movie} alt="yêu quái toàn thư"></img>
                             </div>
@@ -69,38 +60,14 @@ function ListFilm(){
                                 </p>
                             </div>
                         </div>
-                    
-
-                        <div className="dateTime">
-                            <div className="cinemas">
-                                <select>
-                                    <option>Cinetar Đà Lạt</option>
-                                    <option>Cinetar Huế</option>
-                                    <option>Cinetar Mĩ Tho</option>
-                                    <option>Cinetar Kiên Giang</option>
-                                </select>
-                            </div>
-
-                            <div className="date">
-                                    05/11/2022
-                            </div>
-                            <div className="time">
-                                <button>09:00</button>
-                                <button>10:00</button>
-                                <button>13:00</button>
-                                <button>15:00</button>
-                                <button>17:00</button>
-                                <button>19:00</button>
-                                <button>21:00</button>
-                                <button>23:00</button>
-                              
-                            </div>
-                        </div>
-                    </div>
+                     </Link>
+                     </div>
 
 
-                    <div className="film">
-                        <div className="filmDT">
+                     <div className="film">
+                     <Link to={"/detail/5"} onClick={() => {}}>
+
+                         <div className="filmDT">
                             <div className="pic">
                                 <img src={movie} alt="yêu quái toàn thư"></img>
                             </div>
@@ -112,43 +79,9 @@ function ListFilm(){
                                 </p>
                             </div>
                         </div>
-                    
-
-                        <div className="dateTime">
-                            <div className="cinemas">
-                                <select>
-                                    <option>Cinetar Đà Lạt</option>
-                                    <option>Cinetar Huế</option>
-                                    <option>Cinetar Mĩ Tho</option>
-                                    <option>Cinetar Kiên Giang</option>
-                                </select>
-                            </div>
-
-                            <div className="date">
-                                    05/11/2022
-                            </div>
-                            <div className="time">
-                                <button>09:00</button>
-                                <button>10:00</button>
-                                <button>13:00</button>
-                                <button>15:00</button>
-                                <button>17:00</button>
-                                <button>19:00</button>
-                                <button>21:00</button>
-                                <button>23:00</button>
-                              
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    
-
-               
-             
-                
-            </div>
-               
+                     </Link>
+                     </div>
+             </div>
         </div>
     )
 }
