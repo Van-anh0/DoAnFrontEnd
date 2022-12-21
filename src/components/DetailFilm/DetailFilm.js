@@ -4,9 +4,12 @@ import "../DetailFilm/DetailFilm.scss"
 import icon from "../../assets/images/ytb2.png"
 import { Link } from "react-router-dom";
 
-function DetailFilm({film, types}){
+function DetailFilm({film, types, showtimes}){
     console.log("hieuhoccode",types)
-
+  
+    const keyShowtime = Object.keys(showtimes)
+   // console.log("showtimes ne",keyShowtime)
+    const test = ["helo","i'm fine"]
     const movie ="https://i.etsystatic.com/27089413/r/il/ddfeb8/2795688212/il_570xN.2795688212_glob.jpg";
     return(
 
@@ -57,17 +60,45 @@ function DetailFilm({film, types}){
                                                         
                                                         
                                                     ))
-                                                }
+                                            }
                                                     </select>
 
                                                     <select>
-                                                        <option>05/11/2022</option>
-                                                        <option>07/11/2022</option>
+
+                                                   {/* {showtimes?.map((showtime,index)=>(
+
+                                                        <option>{showtime?.day}</option>
+                                                   ))
+                                                   } */}
+
+
+                                                   {
+                                                        keyShowtime.map((t)=>(
+                                                            <option>{t}</option>
+                                                        ))
+                                                   }
+                                                         {/* <option>05/11/2022</option>
+                                                        <option>07/11/2022</option> */}
                                                     </select>
                                                 </div>
 
                                                
                                                 <div className="time">
+                                                {/* {
+                                                   showtimes?.map((showtime, index) => (
+                                                        
+                                                            <button>
+                                                                <div key={index}> 
+                                                                    <div>{showtime?.start_time}</div>
+                                                                </div>
+                                                            </button>
+                                                            
+                                                        
+                                                        
+                                                    ))
+                                                } */}
+
+
                                                     <button>09:00</button>
                                                     <button>10:00</button>
                                                     <button>13:00</button>

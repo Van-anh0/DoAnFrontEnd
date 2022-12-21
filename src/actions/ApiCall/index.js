@@ -27,3 +27,8 @@ export const getListMovieTheater = async () => {
   return request.data
 }
 
+export const getListShowTime = async () => {
+  const request = await authorizedAxiosInstance.get(`${API_ROOT_GOLANG}/api/v1/showtime/get-list-group`)
+  return request.data
+}
+

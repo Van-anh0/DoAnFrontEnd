@@ -1,11 +1,12 @@
 import React, {useEffect, useState}  from "react";
-import { getListMovieTheater, getOneMovie } from "../../actions/ApiCall";
+import { getListMovieTheater, getListShowTime, getOneMovie } from "../../actions/ApiCall";
 import DetailFilm from "../../components/DetailFilm/DetailFilm";
 import Header from "../../components/Header/Header";
 import {useLocation} from "react-router-dom"
 function Detail(){
     const [film, setFilm] = useState({});
     const [types, setTypes] = useState([]);
+    const [showtimes, setShowtimes] = useState([]);
     const pathname = useLocation().pathname
     let id = pathname.replace('/detail/', '')
         // const filmId = new URLSearchParams(pathname);
@@ -31,6 +32,12 @@ function Detail(){
               
         })
 
+        let responseShowtime = getListShowTime()
+        responseShowtime.then((result) => {
+                setShowtimes(result.data)
+               // console.log(Object.keys(result.data))
+        })
+
     }, [])
 
 
@@ -38,7 +45,7 @@ function Detail(){
     
     return(
         <div>
-            <DetailFilm film={film} types={types}/>
+            <DetailFilm film={film} types={types} showtimes = {showtimes}/>
         </div>
     )
 }
