@@ -2,9 +2,15 @@ import React, { useState, useEffect } from "react";
 import "../DetailFilm/DetailFilm.scss";
 import icon from "../../assets/images/ytb2.png";
 import { Link } from "react-router-dom";
-import { trimDate, trimTime } from "../../utils/common";
+import { trimTime } from "../../utils/common";
+
+import { useSelector, useDispatch } from "react-redux";
+import { createOrderAPI } from "../../redux/order/orderSlice";
 
 function DetailFilm({ film, types, showtimes }) {
+  const dispatch = useDispatch();
+  const order = useSelector(createOrderAPI);
+
   const [listDay, setListDay] = useState([]);
   const [day, setDay] = useState();
 
@@ -12,6 +18,8 @@ function DetailFilm({ film, types, showtimes }) {
     setListDay(Object.keys(showtimes));
     setDay(Object.keys(showtimes)[0]);
   }, [showtimes]);
+
+  console.log("order: ", order);
 
   const handleChangeDay = (event) => {
     setDay(event.target.value);

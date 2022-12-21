@@ -9,10 +9,10 @@ function TabDetail(){
         <div>
             <Tabs className="tab">
                 <Tabs.TabPane className="tab-pane" tab="Phim đang chiếu" key = "tab1">
-                   <ContentShowing/>
+                   <ContentShowing status={'showing'}/>
                 </Tabs.TabPane>
                 <Tabs.TabPane tab="Phim sắp chiếu" key = "tab2">
-                   <ContentToShow/>
+                   <ContentToShow status={'toshow'}/>
                 </Tabs.TabPane>
             </Tabs>
         </div>
