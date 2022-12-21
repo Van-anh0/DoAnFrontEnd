@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react"
 import Seat from './Seat'
 import './Seat.scss'
 import { Link } from "react-router-dom";
+import { getListSeat } from "../../actions/ApiCall";
 const GenerateSeats = (seats) => {
 	return (
 		<div className="row">
@@ -17,10 +18,15 @@ const GenerateSeats = (seats) => {
 const SeatMatrix = () => {
     const [seats, setSeats] = useState([]);
     useEffect(() => {
-      fetch("/data/seats.json")
-      .then(res => res.json())
-      .then(data => setSeats(data))
+    //   fetch("/data/seats.json")
+    //   .then(res => res.json())
+    //   .then(data => setSeats(data))
 
+	let responseSeat = getListSeat();
+    responseSeat.then((result) => {
+     
+      setSeats(result.data);
+    });
     }, [])
     
 	return (
@@ -30,11 +36,11 @@ const SeatMatrix = () => {
 				<div className="ct">
 					<p>Rạp chiếu: Cinestar Đà Lạt</p>
 					<p>Suất chiếu: 16:00</p>
-					<p>Ngày 23/11/2022</p>
+					<p>Ngày: 23/11/2022</p>
 				</div>
 			</div>
             <div className="movie-screen">
-                <p>Screen</p>
+                <p>MÀN HÌNH</p>
             </div>
 			
 			<div className="container movie-layout">
@@ -44,11 +50,14 @@ const SeatMatrix = () => {
 			</div>
 
 			<div className="ghiChu">
-				<h1>Ghi chú</h1>
+				
+				<div className="ghe">
+						<p>Ghế đã có người đặt: <button className="book"></button></p>
+						<p>Ghế chưa có người đặt: <button className="default"></button></p>
+						<p>Ghế đang chọn: <button className="select"></button></p>
+				</div>
+				
 				<h1>Giá 1 ghế: 45.000vnđ</h1>
-				<p>Ghế đã có người đặt: <button className="book"></button></p>
-				<p>Ghế chưa có người đặt: <button className="default"></button></p>
-				<p>Ghế đang chọn: <button className="select"></button></p>
 			</div>
             <div className="movie-button">
                 <button>Quay lại</button>
