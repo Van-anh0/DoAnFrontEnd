@@ -36,7 +36,7 @@ const SeatMatrix = () => {
 				<div className="ct">
 					<p>Rạp chiếu: Cinestar Đà Lạt</p>
 					<p>Suất chiếu: 16:00</p>
-					<p>Ngày 23/11/2022</p>
+					<p>Ngày: 23/11/2022</p>
 				</div>
 			</div>
             <div className="movie-screen">
