@@ -3,6 +3,8 @@ import Seat from "./Seat";
 import "./Seat.scss";
 import { Link } from "react-router-dom";
 import { getListSeat } from "../../actions/ApiCall";
+import { useSelector } from "react-redux";
+import { selectCurrentorder } from "../../redux/order/orderSlice";
 
 const GenerateSeats = (seats) => {
   return (
@@ -15,12 +17,10 @@ const GenerateSeats = (seats) => {
 };
 
 const SeatMatrix = () => {
+  const order = useSelector(selectCurrentorder);
+
   const [seats, setSeats] = useState([]);
   useEffect(() => {
-    //   fetch("/data/seats.json")
-    //   .then(res => res.json())
-    //   .then(data => setSeats(data))
-
     let responseSeat = getListSeat();
     responseSeat.then((result) => {
       setSeats(result.data);
@@ -69,12 +69,16 @@ const SeatMatrix = () => {
             <th>Giá (VNĐ)</th>
             <th>Tổng tiền (VNĐ)</th>
           </tr>
-          <tr className="seat__total_body">
-            <th>Vé thường</th>
-            <th>3</th>
-            <th>45000đ</th>
-            <th>270000đ</th>
-          </tr>
+          {order?.total_price ? (
+            <tr className="seat__total_body">
+              <th>Vé thường</th>
+              <th>{order.quantity}</th>
+              <th>{order.price}đ</th>
+              <th>{order.total_price}đ</th>
+            </tr>
+          ) : (
+            <div></div>
+          )}
         </table>
       </div>
 

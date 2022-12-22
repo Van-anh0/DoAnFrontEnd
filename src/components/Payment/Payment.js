@@ -1,53 +1,73 @@
 import React from "react";
-import "./Payment.scss"
+import "./Payment.scss";
 
-function Payment(props){
-    return(
-        <div className="item">
-            <div className="dv">
-            <div className="tt">
-                Cảm ơn quý khách đã đến Cinestar!
-            <br/>
-            Xin quý khách vui lòng kiểm tra lại thông tin đặt vé 
-            </div>
+import { useSelector } from "react-redux";
+import { selectCurrentorder } from "../../redux/order/orderSlice";
+import { createOrder } from "../../actions/ApiCall";
+import { clearCurrentOrder } from "../../redux/order/orderSlice";
+import { useDispatch } from "react-redux";
 
+function Payment() {
+  const order = useSelector(selectCurrentorder);
+  const dispatch = useDispatch();
+
+  const handleCreateOrder = () => {
+    createOrder(order).then((result) => {
+      dispatch(clearCurrentOrder());
+      alert("thanh toan thanh cong");
+    });
+  };
+
+  return (
+    <div className="item">
+      <div className="dv">
+        <div className="tt">
+          Cảm ơn quý khách đã đến Cinestar!
+          <br />
+          Xin quý khách vui lòng kiểm tra lại thông tin đặt vé
+        </div>
+
+        {order?.total_price ? (
+          <>
             <div className="dt">
-                <img src="https://kenh14cdn.com/thumb_w/600/YBmwyUOTNddqMQHuKexRjY2P9DqjI/Image/2015/06/11328956_786517698135088_1034544548_n-34c4f.jpg"></img>
-                <div className="dtt">
-                    <p>QUẢ TIM MÁU</p>
-                    <p>Rạp chiếu: Cinestar Đà Lạt</p>
-                    <p>Ngày chiếu: 23/11/2022</p>
-                    <p>Xuất chiếu: 16:00</p>
-                </div>
+              <img src={order.poster}></img>
+              <div className="dtt">
+                <p>Phim: {order.movie_name}</p>
+                <p>Rạp chiếu: {order.movie_theater_name}</p>
+                <p>Ngày chiếu: {order.day}</p>
+                <p>Xuất chiếu: {order.start_time}</p>
+              </div>
             </div>
-
             <div className="dsghe">
+              {order?.ticket.map((e) => (
                 <div className="ghe">
-                <p>Ghế</p>
-                <p>5</p>
-                <p>45.000 vnđ</p>
+                  <p>Ghế</p>
+                  <p>{e.seat_name}</p>
+                  <p>{e.price}đ</p>
                 </div>
-
-                <div className="ghe">
-                <p>Ghế</p>
-                <p>10</p>
-                <p>45.000 vnđ</p>
-                </div>
+              ))}
             </div>
-            
 
             <div className="tong">
-                <h1>TỔNG TIỀN</h1>
-                <p><span>95000</span> vnđ</p>
+              <h1>TỔNG TIỀN</h1>
+              <p>
+                <span>{order.total_price}</span> vnđ
+              </p>
             </div>
+          </>
+        ) : (
+          <div></div>
+        )}
 
-            <div className="thanhtoan">
-                   Thanh toán
-            </div>
+        <div
+          className={order?.total_price ? "thanhtoan" : "disabled"}
+          onClick={() => handleCreateOrder()}
+        >
+          Thanh toán
         </div>
-        </div>
-        
-    )
+      </div>
+    </div>
+  );
 }
 
 export default Payment;
