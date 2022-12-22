@@ -1,6 +1,7 @@
 import authorizedAxiosInstance from "../../utils/customAxios";
 import { API_ROOT_GOLANG } from "../../utils/constants";
 
+// status
 export const checkHealth = async () => {
   const request = await authorizedAxiosInstance.get(
     `${API_ROOT_GOLANG}/status`
@@ -8,6 +9,7 @@ export const checkHealth = async () => {
   return request.data;
 };
 
+// movie
 export const getListMovie = async () => {
   const request = await authorizedAxiosInstance.get(
     `${API_ROOT_GOLANG}/api/v1/movie/get-list`
@@ -22,6 +24,7 @@ export const getOneMovie = async (id) => {
   return request.data;
 };
 
+// movie-theater
 export const getListMovieTheater = async () => {
   const request = await authorizedAxiosInstance.get(
     `${API_ROOT_GOLANG}/api/v1/movie-theater/get-list`
@@ -29,18 +32,21 @@ export const getListMovieTheater = async () => {
   return request.data;
 };
 
+// showtime
 export const getListShowTime = async (movieId) => {
   const request = await authorizedAxiosInstance.get(
     `${API_ROOT_GOLANG}/api/v1/showtime/get-list-group`,
     {
       params: {
-        movie_id: movieId,
+        filter: `movie_id,${movieId}`,
+        sort: "start_time",
       },
     }
   );
   return request.data;
 };
 
+// order
 export const createOrder = async (data) => {
   const request = await authorizedAxiosInstance.post(
     `${API_ROOT_GOLANG}/api/v1/order/create`,
@@ -49,10 +55,15 @@ export const createOrder = async (data) => {
   return request.data;
 };
 
+// order
 export const getListSeat = async () => {
-const request = await authorizedAxiosInstance.get(`${API_ROOT_GOLANG}/api/v1/seat/get-list`, {params: {
-  sort:'name'
-}})
-  return request.data
-}
-
+  const request = await authorizedAxiosInstance.get(
+    `${API_ROOT_GOLANG}/api/v1/seat/get-list`,
+    {
+      params: {
+        sort: "name",
+      },
+    }
+  );
+  return request.data;
+};

@@ -4,25 +4,28 @@ import icon from "../../assets/images/ytb2.png";
 import { Link } from "react-router-dom";
 import { trimTime } from "../../utils/common";
 
-import { useSelector, useDispatch } from "react-redux";
-import { createOrderAPI } from "../../redux/order/orderSlice";
+import { useDispatch } from "react-redux";
+import { addShowtimeId } from "../../redux/order/orderSlice";
 
 function DetailFilm({ film, types, showtimes }) {
   const dispatch = useDispatch();
-  const order = useSelector(createOrderAPI);
 
   const [listDay, setListDay] = useState([]);
   const [day, setDay] = useState();
+  const [showtimeId, setShowtimeId] = useState();
 
   useEffect(() => {
     setListDay(Object.keys(showtimes));
     setDay(Object.keys(showtimes)[0]);
   }, [showtimes]);
 
-  console.log("order: ", order);
-
   const handleChangeDay = (event) => {
     setDay(event.target.value);
+  };
+
+  const setShowtimeToOrder = (data) => {
+    dispatch(addShowtimeId(data));
+    setShowtimeId(data.showtime_id);
   };
 
   return (
@@ -74,9 +77,19 @@ function DetailFilm({ film, types, showtimes }) {
             </select>
           </div>
 
-          <div className="time">
+          <div className="detailFilm__time">
             {showtimes[`${day}`]?.map((showtime, index) => (
-              <button>
+              <button
+                onClick={() =>
+                  setShowtimeToOrder({
+                    showtime_id: showtime.id,
+                    movie_id: film.id,
+                  })
+                }
+                className={
+                  showtime.id == showtimeId ? "detailFilm__on_button" : ""
+                }
+              >
                 <div key={index}>
                   <div>{trimTime(showtime?.start_time)}</div>
                 </div>
@@ -91,7 +104,7 @@ function DetailFilm({ film, types, showtimes }) {
             <div>TRAILER</div>
           </div>
 
-          <Link to={"/lichchieu"} onClick={() => {}}>
+          <Link to={"/lichchieu"} className={showtimeId ? "" : "disabled"}>
             <div className="b">Mua vé</div>
           </Link>
         </div>
