@@ -10,7 +10,7 @@ import { renameKeys } from "../../utils/common";
 
 function Detail() {
   const [film, setFilm] = useState({});
-  const [types, setTypes] = useState([]);
+  const [listMovieTheater, setListMovieTheater] = useState([]);
   const [showtimes, setShowtimes] = useState([]);
   const pathname = useLocation().pathname;
   let movieId = pathname.replace("/detail/", "");
@@ -20,9 +20,8 @@ function Detail() {
       setFilm(result.data);
     });
 
-    let responseType = getListMovieTheater();
-    responseType.then((result) => {
-      setTypes(result.data);
+    getListMovieTheater().then((result) => {
+      setListMovieTheater(result.data);
     });
 
     let responseShowtime = getListShowTime(movieId);
@@ -34,7 +33,11 @@ function Detail() {
 
   return (
     <div>
-      <DetailFilm film={film} types={types} showtimes={showtimes} />
+      <DetailFilm
+        film={film}
+        listMovieTheater={listMovieTheater}
+        showtimes={showtimes}
+      />
     </div>
   );
 }

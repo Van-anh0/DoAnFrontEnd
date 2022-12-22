@@ -10,9 +10,15 @@ export const checkHealth = async () => {
 };
 
 // movie
-export const getListMovie = async () => {
+export const getListMovie = async (status, search) => {
   const request = await authorizedAxiosInstance.get(
-    `${API_ROOT_GOLANG}/api/v1/movie/get-list`
+    `${API_ROOT_GOLANG}/api/v1/movie/get-list`,
+    {
+      params: {
+        status: status,
+        search: search,
+      },
+    }
   );
   return request.data;
 };
