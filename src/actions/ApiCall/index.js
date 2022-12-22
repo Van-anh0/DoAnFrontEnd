@@ -17,6 +17,20 @@ export const getListMovie = async () => {
   return request.data;
 };
 
+//sort movie status
+export const getListMovieStatus = async (movieStatus) => {
+  const request = await authorizedAxiosInstance.get(
+    `${API_ROOT_GOLANG}/api/v1/movie/get-list`,
+    {
+      params: {
+        filter: `status,${movieStatus}`,
+        
+      },
+    }
+  );
+  return request.data;
+};
+
 export const getOneMovie = async (id) => {
   const request = await authorizedAxiosInstance.get(
     `${API_ROOT_GOLANG}/api/v1/movie/get-one/${id}`
