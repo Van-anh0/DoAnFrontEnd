@@ -8,10 +8,18 @@ const initialState = {
 };
 
 // Các hành động gọi api (bất đồng bộ) và cập nhật dữ liệu vào Redux, dùng createAsyncThunk đi kèm với extraReducers
-export const createOrderAPI = createAsyncThunk("order/create", async (data) => {
-  const request = createOrder(data);
-  return request.data;
-});
+// path order/orderSlice la duong dan toi chinh no
+export const createOrderAPI = createAsyncThunk(
+  "order/orderSlice",
+  async (data) => {
+    const request = createOrder(data);
+    return request.data;
+  }
+);
+
+export const selectCurrentorder = (state) => {
+  return state.order.currentOrder;
+};
 
 // Khởi tạo một slice trong redux
 export const orderSlice = createSlice({
@@ -23,6 +31,16 @@ export const orderSlice = createSlice({
     // https://redux-toolkit.js.org/usage/immer-reducers#mutating-and-returning-state
     clearCurrentOrder: (state) => {
       state.currentOrder = null;
+    },
+    addShowtimeId: (state, action) => {
+      const data = action.payload;
+      console.log(data);
+      state.currentOrder = {
+        movie_id: data.movie_id,
+        ticket: {
+          showtime_id: data.showtime_id,
+        },
+      };
     },
   },
   // Bất đồng bộ
@@ -37,7 +55,7 @@ export const orderSlice = createSlice({
 
 // Actions: dành cho các components bên dưới gọi tới nó để cập nhật lại dữ liệu thông qua reducer (chạy đồng bộ)
 // Để ý ở trên thì không thấy properties actions đâu cả, bởi vì những cái actions này đơn giản là được thằng redux tạo tự động theo tên của reducer nhé.
-export const { clearCurrentOrder } = orderSlice.actions;
+export const { clearCurrentOrder, addShowtimeId } = orderSlice.actions;
 
 // Selectors: mục đích là dành cho các components bên dưới gọi tới nó để lấy dữ liệu từ trong redux store ra sử dụng
 export const selectCurrentUser = (state) => {
