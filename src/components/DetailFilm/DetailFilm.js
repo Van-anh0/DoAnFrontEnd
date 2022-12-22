@@ -5,26 +5,32 @@ import { Link } from "react-router-dom";
 import { trimTime } from "../../utils/common";
 
 import { useDispatch } from "react-redux";
-import { addShowtimeId } from "../../redux/order/orderSlice";
+import { initOrder } from "../../redux/order/orderSlice";
 
-function DetailFilm({ film, types, showtimes }) {
+function DetailFilm({ film, listMovieTheater, showtimes }) {
   const dispatch = useDispatch();
 
   const [listDay, setListDay] = useState([]);
   const [day, setDay] = useState();
   const [showtimeId, setShowtimeId] = useState();
+  const [movieTheater, setMovieTheater] = useState();
 
   useEffect(() => {
     setListDay(Object.keys(showtimes));
     setDay(Object.keys(showtimes)[0]);
+    setMovieTheater(Object.keys(listMovieTheater)[0]);
   }, [showtimes]);
 
   const handleChangeDay = (event) => {
     setDay(event.target.value);
   };
 
+  const handleChangeMovieTheater = (event) => {
+    setMovieTheater(event.tartget.value);
+  };
+
   const setShowtimeToOrder = (data) => {
-    dispatch(addShowtimeId(data));
+    dispatch(initOrder(data));
     setShowtimeId(data.showtime_id);
   };
 
@@ -60,8 +66,8 @@ function DetailFilm({ film, types, showtimes }) {
         </div>
         <div className="dateTime">
           <div className="cinemas">
-            <select>
-              {types?.map((type, index) => (
+            <select onChange={handleChangeMovieTheater}>
+              {listMovieTheater?.map((type, index) => (
                 <option>
                   <div key={index}>
                     <div>{type?.name}</div>
@@ -84,6 +90,12 @@ function DetailFilm({ film, types, showtimes }) {
                   setShowtimeToOrder({
                     showtime_id: showtime.id,
                     movie_id: film.id,
+                    ticket: [],
+                    movie_name: film.name,
+                    movie_theater_name: movieTheater.name,
+                    poster: film.poster,
+                    day: showtime.day,
+                    start_time: showtime.start_time,
                   })
                 }
                 className={
