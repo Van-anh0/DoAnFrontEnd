@@ -7,8 +7,12 @@ import {
 import DetailFilm from "../../components/DetailFilm/DetailFilm";
 import { useLocation } from "react-router-dom";
 import { renameKeys } from "../../utils/common";
+import { useSelector } from "react-redux";
+import { selectCurrentorder } from "../../redux/order/orderSlice";
 
 function Detail() {
+  const order = useSelector(selectCurrentorder);
+
   const [film, setFilm] = useState({});
   const [listMovieTheater, setListMovieTheater] = useState([]);
   const [showtimes, setShowtimes] = useState([]);
@@ -19,8 +23,7 @@ function Detail() {
     response.then((result) => {
       setFilm(result.data);
     });
-
-    getListMovieTheater().then((result) => {
+    getListMovieTheater(movieId, order?.day).then((result) => {
       setListMovieTheater(result.data);
     });
 
@@ -29,7 +32,7 @@ function Detail() {
       let listResponse = renameKeys(result.data);
       setShowtimes(listResponse);
     });
-  }, [movieId]);
+  }, [movieId, order?.day]);
 
   return (
     <div>

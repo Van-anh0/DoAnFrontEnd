@@ -30,7 +30,6 @@ export const getListMovieStatus = async (movieStatus) => {
     {
       params: {
         filter: `status,${movieStatus}`,
-        
       },
     }
   );
@@ -45,9 +44,14 @@ export const getOneMovie = async (id) => {
 };
 
 // movie-theater
-export const getListMovieTheater = async () => {
+export const getListMovieTheater = async (movie_id, day) => {
+  let params = {
+    movie_id: movie_id,
+    day: day,
+  };
   const request = await authorizedAxiosInstance.get(
-    `${API_ROOT_GOLANG}/api/v1/movie-theater/get-list`
+    `${API_ROOT_GOLANG}/api/v1/movie-theater/get-list`,
+    params
   );
   return request.data;
 };
@@ -57,9 +61,9 @@ export const getMovieSearch = async (name) => {
   const request = await authorizedAxiosInstance.get(
     `${API_ROOT_GOLANG}/api/v1/movie-theater/get-list`,
     {
-      params:{
-        filter:`name,${name}`,
-      }
+      params: {
+        filter: `name,${name}`,
+      },
     }
   );
   return request.data;
