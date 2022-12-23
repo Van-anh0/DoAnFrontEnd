@@ -1,5 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import orderReducer from "./order/orderSlice";
+import searchReducer from "./search/searchSlice";
+import userReducer from "./user/userSlice";
 
 // https://www.npmjs.com/package/redux-persist
 // https://edvins.io/how-to-use-redux-persist-with-redux-toolkit
@@ -14,6 +16,8 @@ const persistConfig = {
 
 const reducers = combineReducers({
   order: orderReducer,
+  search: searchReducer,
+  user: userReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);
