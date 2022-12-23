@@ -23,6 +23,20 @@ export const getListMovie = async (status, search) => {
   return request.data;
 };
 
+//sort movie status
+export const getListMovieStatus = async (movieStatus) => {
+  const request = await authorizedAxiosInstance.get(
+    `${API_ROOT_GOLANG}/api/v1/movie/get-list`,
+    {
+      params: {
+        filter: `status,${movieStatus}`,
+        
+      },
+    }
+  );
+  return request.data;
+};
+
 export const getOneMovie = async (id) => {
   const request = await authorizedAxiosInstance.get(
     `${API_ROOT_GOLANG}/api/v1/movie/get-one/${id}`
@@ -34,6 +48,19 @@ export const getOneMovie = async (id) => {
 export const getListMovieTheater = async () => {
   const request = await authorizedAxiosInstance.get(
     `${API_ROOT_GOLANG}/api/v1/movie-theater/get-list`
+  );
+  return request.data;
+};
+
+// search movie
+export const getMovieSearch = async (name) => {
+  const request = await authorizedAxiosInstance.get(
+    `${API_ROOT_GOLANG}/api/v1/movie-theater/get-list`,
+    {
+      params:{
+        filter:`name,${name}`,
+      }
+    }
   );
   return request.data;
 };
