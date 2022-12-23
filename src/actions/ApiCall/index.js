@@ -52,6 +52,19 @@ export const getListMovieTheater = async () => {
   return request.data;
 };
 
+// search movie
+export const getMovieSearch = async (name) => {
+  const request = await authorizedAxiosInstance.get(
+    `${API_ROOT_GOLANG}/api/v1/movie-theater/get-list`,
+    {
+      params:{
+        filter:`name,${name}`,
+      }
+    }
+  );
+  return request.data;
+};
+
 // showtime
 export const getListShowTime = async (movieId) => {
   const request = await authorizedAxiosInstance.get(

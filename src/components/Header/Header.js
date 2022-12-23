@@ -2,20 +2,22 @@ import React  from 'react'
 import Netflixlogo from '../../assets/images/logoHeader.png'
 import {MdSearch} from 'react-icons/md'
 import {AiOutlineUser} from 'react-icons/ai'
-import {useState} from 'react'
 // import styled from 'styled-components'
 import "../Header/Header.scss"
 // import {Link} from 'react-router-dom'
 import ModalSign from '../Modal/ModalSignup'
 import ModalLog from '../Modal/ModalLogin'
-function SearchPage (props){
-
-    
-}
+import { useDispatch, useSelector } from "react-redux";
+import { selectCurrentSearch, updateSearchTextOfRedux } from "../../redux/searchText/searchTextSlice";
 function Header (props) {
-   
-    const [searchText, setSearchText] = useState("");
-    console.log("tu khoa search ne:",searchText);
+    const searchText = useSelector(selectCurrentSearch);
+    console.log(searchText)
+    const dispatch = useDispatch();
+
+    const handleChangeSearchText = (e)=> {
+        dispatch(updateSearchTextOfRedux(e.target.value));
+    }
+
     return(
         
             <div className="navContainer">
@@ -27,7 +29,7 @@ function Header (props) {
                     <MdSearch className="iconSearch"/>
                     <input type="text" placeholder="Nhập từ khoá để tìm kiếm phim..." 
                     
-                    onChange={(e) => setSearchText(e.target.value)}/>
+                    onChange={handleChangeSearchText}/>
                 </div>
               
                <div className="end">
