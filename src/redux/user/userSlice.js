@@ -1,35 +1,34 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import authorizedAxiosInstance from "utilities/customAxios";
-import { API_ROOT } from "utilities/constants";
-import { toast } from "react-toastify";
-import customHistory from "utilities/customHistory";
-import { login } from "../../actions/ApiCall";
+import { API_ROOT_GOLANG } from "../../utils/constants";
+import authorizedAxiosInstance from "../../utils/customAxios";
 
-// khởi tạo giá trị trong redux
 const initialState = {
   currentUser: null,
   isAuthenticated: false,
 };
 
-// Các hành động gọi api (bất đồng bộ) và cập nhật dữ liệu vào Redux, dùng createAsyncThunk đi kèm với extraReducers
-export const loginAPI = createAsyncThunk("user/loginAPI", (data) => {
-  const request = login(data);
-  console.log("hieuhoccode: ", request);
+export const loginAPI = createAsyncThunk("user/loginAPI", async (data) => {
+  const request = await authorizedAxiosInstance.post(
+    `${API_ROOT_GOLANG}/api/v1/auth/login`,
+    data
+  );
   return request.data;
 });
 
 export const registerAPI = createAsyncThunk(
   "user/registerAPI",
   async (showSuccessMsg = true) => {
-    const request = await authorizedAxiosInstance.delete(
-      `${API_ROOT}/v1/auth/register`
-    );
+    // const request = await authorizedAxiosInstance.delete(
+    //   `${API_ROOT}/v1/auth/register`
+    // );
     if (showSuccessMsg) {
-      toast.success("User signed out successfuly.");
+      //   toast.success("User signed out successfuly.");
+      console.log("user signed out successfully");
     }
-    customHistory.replace("/signIn");
+    // customHistory.replace("/signIn");
 
-    return request.data;
+    // return request.data;
+    return true;
   }
 );
 

@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import { Modal, Form, Input } from "antd";
 import "antd/dist/antd.css";
 import "./Modal.scss";
-import { useDispatch } from "redux";
+import { useDispatch } from "react-redux";
 import { loginAPI } from "../../redux/user/userSlice";
 
 const ModalLog = () => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   //popup and form code
   const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
     const [form] = Form.useForm();

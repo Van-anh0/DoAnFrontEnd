@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { register } from "../../actions/ApiCall";
 
 //Adding antd modules and style
 import { Modal, Form, Input } from "antd";
@@ -6,6 +7,8 @@ import "antd/dist/antd.css";
 import "./Modal.scss";
 
 const ModalSign = () => {
+  const [registerRequest, setRegisterRequest] = useState({});
+
   //popup and form code
   const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
     const [form] = Form.useForm();
@@ -19,9 +22,9 @@ const ModalSign = () => {
         onOk={() => {
           form
             .validateFields()
-            .then((values) => {
+            .then((data) => {
               form.resetFields();
-              onCreate(values);
+              onCreate(data);
             })
             .catch((info) => {
               console.log("Validate Failed:", info);
@@ -37,12 +40,12 @@ const ModalSign = () => {
           }}
         >
           <Form.Item
-            name="username"
-            label="Tên"
+            name="email"
+            label="Email"
             rules={[
               {
                 required: true,
-                message: "Nhập tên!",
+                message: "Nhập email!",
               },
             ]}
           >
@@ -62,7 +65,7 @@ const ModalSign = () => {
           </Form.Item>
 
           <Form.Item
-            name="passwordcorrect"
+            name="confirm_password"
             label="Xác nhận mật khẩu"
             rules={[
               {
@@ -81,8 +84,18 @@ const ModalSign = () => {
   const CollectionsPage = () => {
     const [visible, setVisible] = useState(false);
 
-    const onCreate = (values) => {
-      console.log("Received values of form: ", values);
+    const onCreate = (data) => {
+      if (data.password !== data.confirm_password) {
+        console.log("Nhập  lại mật khẩu không chính xác!");
+        return;
+      }
+      register(data)
+        .then((result) => {
+          alert("dang ky thanh cong");
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       setVisible(false);
     };
 

@@ -101,10 +101,18 @@ export const getListSeat = async () => {
   return request.data;
 };
 
-// order
+// auth
 export const login = async (data) => {
   const request = await authorizedAxiosInstance.post(
     `${API_ROOT_GOLANG}/api/v1/auth/login`,
+    data
+  );
+  return request.data;
+};
+
+export const register = async (data) => {
+  const request = await authorizedAxiosInstance.post(
+    `${API_ROOT_GOLANG}/api/v1/auth/register`,
     data
   );
   return request.data;
