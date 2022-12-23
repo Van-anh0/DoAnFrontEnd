@@ -73,3 +73,12 @@ export const getListSeat = async () => {
   );
   return request.data;
 };
+
+// order
+export const login = async (data) => {
+  const request = await authorizedAxiosInstance.post(
+    `${API_ROOT_GOLANG}/api/v1/auth/login`,
+    data
+  );
+  return request.data;
+};
