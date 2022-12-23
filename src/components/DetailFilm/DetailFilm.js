@@ -18,8 +18,15 @@ function DetailFilm({ film, listMovieTheater, showtimes }) {
   useEffect(() => {
     setListDay(Object.keys(showtimes));
     setDay(Object.keys(showtimes)[0]);
-    setMovieTheater(Object.keys(listMovieTheater)[0]);
+    setMovieTheater(listMovieTheater[0]);
   }, [showtimes]);
+
+  function checkGoToCart(movieTheater, showtimeId) {
+    if (movieTheater != null && showtimeId != null) {
+      return true;
+    }
+    return false;
+  }
 
   const handleChangeDay = (event) => {
     setDay(event.target.value);
@@ -92,7 +99,7 @@ function DetailFilm({ film, listMovieTheater, showtimes }) {
                     movie_id: film.id,
                     ticket: [],
                     movie_name: film.name,
-                    movie_theater_name: movieTheater.name,
+                    movie_theater_name: movieTheater?.name,
                     poster: film.poster,
                     day: showtime.day,
                     start_time: showtime.start_time,
@@ -116,7 +123,12 @@ function DetailFilm({ film, listMovieTheater, showtimes }) {
             <div>TRAILER</div>
           </div>
 
-          <Link to={"/lichchieu"} className={showtimeId ? "" : "disabled"}>
+          <Link
+            to={"/lichchieu"}
+            className={
+              checkGoToCart(movieTheater, showtimeId) ? "" : "disabled"
+            }
+          >
             <div className="b">Mua vé</div>
           </Link>
         </div>
