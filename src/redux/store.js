@@ -2,6 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import orderReducer from "./order/orderSlice";
 import searchReducer from "./search/searchSlice";
 import userReducer from "./user/userSlice";
+import movieReducer from "./movie/movieSlice";
+import showtimeReducer from "./showtime/showtimeSlice";
+import movieTheaterReducer from "./movieTheater/movieTheaterSlice";
 
 // https://www.npmjs.com/package/redux-persist
 // https://edvins.io/how-to-use-redux-persist-with-redux-toolkit
@@ -18,6 +21,9 @@ const reducers = combineReducers({
   order: orderReducer,
   search: searchReducer,
   user: userReducer,
+  movie: movieReducer,
+  showtime: showtimeReducer,
+  movieTheater: movieTheaterReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

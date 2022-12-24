@@ -10,16 +10,20 @@ export const checkHealth = async () => {
 };
 
 // movie
-export const getListMovie = async (status, search) => {
+export const getListMovie = async (data) => {
+  let params = {
+    params: {
+      status: data?.status,
+      search: data?.search,
+      day: data?.day,
+      movie_theater_id: data?.movie_theater_id,
+    },
+  };
   const request = await authorizedAxiosInstance.get(
     `${API_ROOT_GOLANG}/api/v1/movie/get-list`,
-    {
-      params: {
-        status: status,
-        search: search,
-      },
-    }
+    params
   );
+
   return request.data;
 };
 
@@ -71,14 +75,15 @@ export const getMovieSearch = async (name) => {
 
 // showtime
 export const getListShowTime = async (movieId) => {
+  let params = {
+    sort: "start_time",
+  };
+  if (movieId) {
+    params.filter = `movie_id,${movieId}`;
+  }
   const request = await authorizedAxiosInstance.get(
     `${API_ROOT_GOLANG}/api/v1/showtime/get-list-group`,
-    {
-      params: {
-        filter: `movie_id,${movieId}`,
-        sort: "start_time",
-      },
-    }
+    params
   );
   return request.data;
 };
