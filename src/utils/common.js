@@ -1,7 +1,7 @@
 import moment from "moment";
 
 export const trimDate = (str) => {
-  return moment(str).subtract(10, "days").calendar();
+  return moment(str).format("MM-DD-YYYY");
 };
 
 export const trimTime = (str) => {

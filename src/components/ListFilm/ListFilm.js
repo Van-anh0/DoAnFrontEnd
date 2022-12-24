@@ -1,89 +1,86 @@
-import React from "react";
-import "./ListFilm.scss"
+import React, { useEffect, useState } from "react";
+import "./ListFilm.scss";
 import { Link } from "react-router-dom";
-const movie = "https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/y/_/y_u_qu_i_to_n_th_-_payoff_poster_-_kt_facebook_-_kc_04112022_1_.jpg";
-function ListFilm(){
-    return(
-        <div  className="showtimes">
-             <div className="category">
-                
-                <div>Chọn rạp chiếu: </div>
-                <select className="a">
-                    <option>cinetar sài gòn</option>
-                    <option>cinetar đà lạt</option>
-                </select>
+import { actionUpdateMovie } from "../../redux/movie/movieSlice";
+import { getListMovie } from "../../actions/ApiCall";
+import moment from "moment";
+import { useDispatch } from "react-redux";
 
-                <div className="space"></div>
-                
-                <div>Chọn ngày chiếu</div>
-                <select className="a">
-                    <option>19/10/2021</option>
-                    <option>20/10/2021t</option>
-                </select>
-             </div>
-                      
-           
-             <div className="listFilm">
+function ListFilm(props) {
+  const dispatch = useDispatch();
+  const { listMovie, listDay, listMovieTheater } = props;
+  const [day, setDay] = useState();
+  const [movieTheater, setMovieTheater] = useState();
 
-             
-                     <div className="film">
-                     <Link to={"/detail/5"} onClick={() => {}}>
+  useEffect(() => {
+    let params = { day: day, movie_theater_id: movieTheater?.id };
+    getListMovie(params).then((result) => {
+      dispatch(actionUpdateMovie(result));
+    });
+  }, [day, movieTheater]);
 
-                         <div className="filmDT">
-                            <div className="pic">
-                                <img src={movie} alt="yêu quái toàn thư"></img>
-                            </div>
-                        
-                            <div className="detail">
-                                <h1>YÊU QUÁI TOÀN THƯ</h1>
-                                <p>
-                                Cuốn sách cấm "The Haunted Book" có thể biến bất kỳ điều ước nào thành hiện thực, nhưng để biến điều ước thành hiện thực thì bạn phải trải qua một thử thách nguy hiểm đến tính mạng. Thử thách là gì ...!?
-                                </p>
-                            </div>
-                        </div>
-                     </Link>
-                     </div>
+  function handleChangeDay(event) {
+    setDay(moment(event.target.value).format("YYYY-MM-DD"));
+  }
 
+  function handleChangeMovieTheater(event) {
+    setMovieTheater(event.target.value);
+  }
+  return (
+    <div className="showtimes">
+      <div className="category">
+        <div>Chọn rạp chiếu: </div>
+        <select className="a" onChange={handleChangeMovieTheater}>
+          {listMovieTheater.data.map((movieTheater) => {
+            return (
+              <>
+                <option value="" selected disabled hidden>
+                  Chọn rạp chiếu
+                </option>
+                <option>{movieTheater.name}</option>
+              </>
+            );
+          })}
+        </select>
 
-                     <div className="film">
-                     <Link to={"/detail/5"} onClick={() => {}}>
+        <div className="space"></div>
+        <div>Chọn ngày chiếu:</div>
+        <select className="a" onChange={handleChangeDay}>
+          {listDay?.map((day) => {
+            return (
+              <>
+                <option value="" selected disabled hidden>
+                  Chọn ngày chiếu
+                </option>
+                <option>{day}</option>
+              </>
+            );
+          })}
+        </select>
+      </div>
 
-                         <div className="filmDT">
-                            <div className="pic">
-                                <img src={movie} alt="yêu quái toàn thư"></img>
-                            </div>
-                        
-                            <div className="detail">
-                                <h1>YÊU QUÁI TOÀN THƯ</h1>
-                                <p>
-                                Cuốn sách cấm "The Haunted Book" có thể biến bất kỳ điều ước nào thành hiện thực, nhưng để biến điều ước thành hiện thực thì bạn phải trải qua một thử thách nguy hiểm đến tính mạng. Thử thách là gì ...!?
-                                </p>
-                            </div>
-                        </div>
-                     </Link>
-                     </div>
+      {listMovie?.data.map((movie) => {
+        return (
+          <div className="listFilm">
+            <div className="film">
+              <Link to={`/detail/${movie.id}`} onClick={() => {}}>
+                <div className="filmDT">
+                  <div className="pic">
+                    <img src={movie.poster} alt={movie.name}></img>
+                  </div>
 
-
-                     <div className="film">
-                     <Link to={"/detail/5"} onClick={() => {}}>
-
-                         <div className="filmDT">
-                            <div className="pic">
-                                <img src={movie} alt="yêu quái toàn thư"></img>
-                            </div>
-                        
-                            <div className="detail">
-                                <h1>YÊU QUÁI TOÀN THƯ</h1>
-                                <p>
-                                Cuốn sách cấm "The Haunted Book" có thể biến bất kỳ điều ước nào thành hiện thực, nhưng để biến điều ước thành hiện thực thì bạn phải trải qua một thử thách nguy hiểm đến tính mạng. Thử thách là gì ...!?
-                                </p>
-                            </div>
-                        </div>
-                     </Link>
-                     </div>
-             </div>
-        </div>
-    )
+                  <div className="detail">
+                    <h1>{movie.name}</h1>
+                    <p>{movie.description}</p>
+                  </div>
+                </div>
+              </Link>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 }
 
 export default ListFilm;

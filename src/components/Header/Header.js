@@ -2,9 +2,7 @@ import React from "react";
 import Netflixlogo from "../../assets/images/logoHeader.png";
 import { MdSearch } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
-// import styled from 'styled-components'
 import "../Header/Header.scss";
-// import {Link} from 'react-router-dom'
 import ModalSign from "../Modal/ModalSignup";
 import ModalLog from "../Modal/ModalLogin";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,8 +10,10 @@ import {
   selectCurrentSearch,
   updateSearch,
 } from "../../redux/search/searchSlice";
+import { selectIsAuthenticated } from "../../redux/user/userSlice";
+
 function Header() {
-  const searchText = useSelector(selectCurrentSearch);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
   const dispatch = useDispatch();
 
   const handleChangeSearchText = (e) => {
@@ -36,14 +36,23 @@ function Header() {
       </div>
 
       <div className="end">
-        <div className="login">
-          <AiOutlineUser className="iconUser" />
-          <ModalSign />
-        </div>
-        <div className="login">
-          <AiOutlineUser className="iconUser" />
-          <ModalLog />
-        </div>
+        {!isAuthenticated ? (
+          <>
+            <div className="login">
+              <AiOutlineUser className="iconUser" />
+              <ModalSign />
+            </div>
+            <div className="login">
+              <AiOutlineUser className="iconUser" />
+              <ModalLog />
+            </div>
+          </>
+        ) : (
+          <>
+            <div>Chỗ này hiển thị avatar</div>
+            <div>Chỗ này là nút đăng xuất</div>
+          </>
+        )}
 
         <div className="language">
           <span className="languageText">VI | EN</span>

@@ -63,8 +63,8 @@ export const selectCurrentUser = (state) => {
   return state.user.currentUser;
 };
 export const selectIsAuthenticated = (state) => {
-  return state.user.isAuthenticated;
-};
+  return state.user.isAuthenticated
+}
 
 // Export default thằng Active Board Reducer
 export default userSlice.reducer;
