@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "./Seat.scss";
+import "./SeatItem.scss";
 import {
   SEAT_DEFAULT,
   SEAT_BOOKED,
   SEAT_CHOOSING,
-} from "../../utils/constants";
+} from "utils/constants";
 import { useDispatch } from "react-redux";
-import { addSeat, removeSeat } from "../../redux/order/orderSlice";
+import { addSeat, removeSeat } from "redux/order/orderSlice";
 
 const Seat = (props) => {
   const { seat } = props;

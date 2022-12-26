@@ -5,7 +5,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
-import { store } from "./redux/store";
+import { store } from "redux/store";
 let persistor = persistStore(store);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -13,7 +13,8 @@ root.render(
   // <HistoryRouter history={customHistory}>
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <React.StrictMode>
+      {/* strict mode se chay 2 lan */}
+      <React.StrictMode> 
         <App />
       </React.StrictMode>
     </PersistGate>

@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { API_ROOT_GOLANG } from "../../utils/constants";
-import authorizedAxiosInstance from "../../utils/customAxios";
+import { API_ROOT_GOLANG } from "utils/constants";
+import authorizedAxiosInstance from "utils/customAxios";
 
 const initialState = {
   currentUser: null,
@@ -63,8 +63,8 @@ export const selectCurrentUser = (state) => {
   return state.user.currentUser;
 };
 export const selectIsAuthenticated = (state) => {
-  return state.user.isAuthenticated
-}
+  return state.user.isAuthenticated;
+};
 
 // Export default thằng Active Board Reducer
 export default userSlice.reducer;

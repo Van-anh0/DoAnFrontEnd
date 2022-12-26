@@ -1,0 +1,182 @@
+.movie-complex {
+    background-color: rgb(250, 250, 250);
+  
+    padding-bottom: 3%;
+
+    .nd{
+        
+        
+        width: 100%;
+        
+        background-image: url("https://cpad.ask.fm/968/241/018/-259996966-1sq327n-8ichtstghd7llbk/original/1d08f882cffa656b20c3bbfcea20d23f.jpg");
+        margin-bottom: 10px;
+        
+        .title{
+            font-size: 30px;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+            
+        }
+
+        .ct{
+            display: flex;
+            flex-direction: row;
+            align-items: flex-end;
+            justify-content: center;
+            p{
+               font-size: 25px;
+               border: 1px solid snow;
+               padding: 2%;
+               font-weight: 500;
+               color: white;
+
+            }
+        }
+    }
+    .movie-screen {
+
+        margin-left: 20%;
+        margin-bottom: 8px;
+        padding: 5px;
+        text-align: center;
+        background-color: #969696;
+        border-radius: 25px;
+        height: 50px;
+        width: 130vh;
+        margin-bottom: 3%;;
+
+        p {
+            font-family: 'Kanit', sans-serif;
+            font-size: 20px;
+            color: white;
+        }
+
+
+    }
+    .ghiChu{
+      
+        display: flex;
+        flex-direction: column;
+        padding: 2%;
+        padding-left: 20%;
+      
+     
+        h1{
+            margin-left: 40px;
+            font-size: 20px;
+            text-align: left;
+            color: red;
+            font-weight: bold;
+        }
+
+        .ghe{
+            display: flex;
+            
+            p{
+                margin-left: 40px;
+            }
+            .book{
+                
+                width: 50px;
+                height: 50px;
+                border-radius: 50% 50% 0 0;
+                background-color: #00843e;
+            }
+            .default{
+                width: 50px;
+                height: 50px;
+                border-radius: 50% 50% 0 0;
+                background-color: #f3751f;
+            }
+            .select{
+                width: 50px;
+                height: 50px;
+                border-radius: 50% 50% 0 0;
+                background-color: #008fbe;
+            }
+        }
+       
+    }
+    .movie-button {
+
+        display: flex;
+        padding: 10px;
+        width: 600px;
+        margin-left: 35%;
+       
+        button {
+            border-radius: 0 25% 0 25%;
+            width: 200px;
+            height: 50px;
+            margin-left: 50px;
+            background-color: #68A225;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    }
+
+}
+
+
+
+
+.row {
+    margin-left: 20%;
+   
+    
+    align-items: flex-start;
+    display: flex;
+    width: 130vh;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .colSeat {
+        padding: 0px 10px;
+        
+      
+        .seat {
+            text-align: center;
+            color: rebeccapurple;
+            width: 60px;
+            height: 60px;
+            border-radius: 50% 50% 0px 0px;
+            margin: 5px;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+        }
+    
+        .seat:hover {
+            transform: scale(1.2);
+            
+    
+        }
+        .seat-default {
+            background-color: #f3751f;
+            color: white;
+        }
+        
+        .seat-booked {
+            background-color: #00843e;
+            color: white;
+            &:hover {
+                cursor: not-allowed;
+            }
+            
+        }
+        
+        
+        .seat-choosing {
+            background-color: #008fbe;
+            color: white;
+        }
+        
+     
+    }
+}
+
+

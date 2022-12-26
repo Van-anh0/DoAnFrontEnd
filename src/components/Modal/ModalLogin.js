@@ -6,7 +6,7 @@ import "antd/dist/antd.css";
 import "./Modal.scss";
 
 import { useDispatch } from "react-redux";
-import { loginAPI } from "../../redux/user/userSlice";
+import { loginAPI } from "redux/user/userSlice";
 
 const ModalLog = () => {
   const dispatch = useDispatch();

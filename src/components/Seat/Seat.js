@@ -1,22 +1,23 @@
 import React, { useEffect, useState } from "react";
-import Seat from "./Seat";
-import "./Seat.scss";
 import { Link } from "react-router-dom";
-import { getListSeat } from "../../actions/ApiCall";
+import { getListSeat } from "actions/ApiCall";
 import { useSelector } from "react-redux";
-import { selectCurrentorder } from "../../redux/order/orderSlice";
+import { selectCurrentorder } from "redux/order/orderSlice";
+
+import SeatItem from "./SeatItem/SeatItem";
+import "./Seat.scss";
 
 const GenerateSeats = (seats) => {
   return (
     <div className="row">
       {seats.map((seat) => {
-        return <Seat seat={seat} />;
+        return <SeatItem seat={seat} key={seat.id} />;
       })}
     </div>
   );
 };
 
-const SeatMatrix = () => {
+const Seat = () => {
   const order = useSelector(selectCurrentorder);
 
   const [seats, setSeats] = useState([]);
@@ -84,7 +85,7 @@ const SeatMatrix = () => {
 
       <div className="movie-button">
         <button>Quay lại</button>
-        <Link to={"/thanhtoan"} onClick={() => {}}>
+        <Link to={"/payment"} onClick={() => {}}>
           <button>Thanh toán</button>
         </Link>
       </div>
@@ -92,4 +93,4 @@ const SeatMatrix = () => {
   );
 };
 
-export default SeatMatrix;
+export default Seat;

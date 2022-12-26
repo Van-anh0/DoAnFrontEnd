@@ -1,5 +1,5 @@
-import authorizedAxiosInstance from "../../utils/customAxios";
-import { API_ROOT_GOLANG } from "../../utils/constants";
+import authorizedAxiosInstance from "utils/customAxios";
+import { API_ROOT_GOLANG } from "utils/constants";
 
 // status
 export const checkHealth = async () => {
@@ -12,33 +12,28 @@ export const checkHealth = async () => {
 // movie
 export const getListMovie = async (data) => {
   let params = {
-    params: {
-      status: data?.status,
-      search: data?.search,
-      day: data?.day,
-      movie_theater_id: data?.movie_theater_id,
-    },
+    params: data,
   };
   const request = await authorizedAxiosInstance.get(
-    `${API_ROOT_GOLANG}/api/v1/movie/get-list`,
+    `${API_ROOT_GOLANG}/api/v1/product/get-list`,
     params
   );
 
   return request.data;
 };
 
-//sort movie status
-export const getListMovieStatus = async (movieStatus) => {
-  const request = await authorizedAxiosInstance.get(
-    `${API_ROOT_GOLANG}/api/v1/movie/get-list`,
-    {
-      params: {
-        filter: `status,${movieStatus}`,
-      },
-    }
-  );
-  return request.data;
-};
+// //sort movie status
+// export const getListMovieStatus = async (movieStatus) => {
+//   const request = await authorizedAxiosInstance.get(
+//     `${API_ROOT_GOLANG}/api/v1/product/get-list`,
+//     {
+//       params: {
+//         filter: `status,${movieStatus}`,
+//       },
+//     }
+//   );
+//   return request.data;
+// };
 
 export const getOneMovie = async (id) => {
   const request = await authorizedAxiosInstance.get(

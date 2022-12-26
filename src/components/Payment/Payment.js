@@ -2,9 +2,9 @@ import React from "react";
 import "./Payment.scss";
 
 import { useSelector } from "react-redux";
-import { selectCurrentorder } from "../../redux/order/orderSlice";
-import { createOrder } from "../../actions/ApiCall";
-import { clearCurrentOrder } from "../../redux/order/orderSlice";
+import { selectCurrentorder } from "redux/order/orderSlice";
+import { createOrder } from "actions/ApiCall";
+import { clearCurrentOrder } from "redux/order/orderSlice";
 import { useDispatch } from "react-redux";
 
 function Payment() {
@@ -39,11 +39,11 @@ function Payment() {
               </div>
             </div>
             <div className="dsghe">
-              {order?.ticket.map((e) => (
-                <div className="ghe">
+              {order?.ticket.map((orderItem, index) => (
+                <div className="ghe" key={index}>
                   <p>Ghế</p>
-                  <p>{e.seat_name}</p>
-                  <p>{e.price}đ</p>
+                  <p>{orderItem.seat_name}</p>
+                  <p>{orderItem.price}đ</p>
                 </div>
               ))}
             </div>

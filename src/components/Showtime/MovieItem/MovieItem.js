@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import "./ListFilm.scss";
+import "./MovieItem.scss";
 import { Link } from "react-router-dom";
-import { actionUpdateMovie } from "../../redux/movie/movieSlice";
-import { getListMovie } from "../../actions/ApiCall";
+import { actionUpdateMovie } from "redux/movie/movieSlice";
+import { getListMovie } from "actions/ApiCall";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 
-function ListFilm(props) {
+function MovieItem(props) {
   const dispatch = useDispatch();
   const { listMovie, listDay, listMovieTheater } = props;
   const [day, setDay] = useState();
@@ -61,7 +61,7 @@ function ListFilm(props) {
 
       {listMovie?.data.map((movie) => {
         return (
-          <div className="listFilm">
+          <div className="listFilm" key={movie.id}>
             <div className="film">
               <Link to={`/detail/${movie.id}`} onClick={() => {}}>
                 <div className="filmDT">
@@ -83,4 +83,4 @@ function ListFilm(props) {
   );
 }
 
-export default ListFilm;
+export default MovieItem;

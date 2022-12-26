@@ -1,5 +1,5 @@
 import React from "react";
-import Netflixlogo from "../../assets/images/logoHeader.png";
+import Netflixlogo from "assets/images/logoHeader.png";
 import { MdSearch } from "react-icons/md";
 import { AiOutlineUser } from "react-icons/ai";
 import "../Header/Header.scss";
@@ -9,8 +9,8 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   selectCurrentSearch,
   updateSearch,
-} from "../../redux/search/searchSlice";
-import { selectIsAuthenticated } from "../../redux/user/userSlice";
+} from "redux/search/searchSlice";
+import { selectIsAuthenticated } from "redux/user/userSlice";
 
 function Header() {
   const isAuthenticated = useSelector(selectIsAuthenticated);
