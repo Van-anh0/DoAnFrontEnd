@@ -1,7 +1,6 @@
 import React from "react";
-import Price from "../components/Price/Price";
-import Footer from "../components/Footer/Footer";
-import Slider from "../components/Slider/Slider";
+import Price from "../Price/Price";
+import Slider from "../Slider/Slider";
 function Cinema(){
     return(
         <div>

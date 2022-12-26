@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register } from "../../actions/ApiCall";
+import { register } from "actions/ApiCall";
 
 //Adding antd modules and style
 import { Modal, Form, Input } from "antd";

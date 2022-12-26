@@ -1,15 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { AiFillStar } from "react-icons/ai";
 import { VscLocation } from "react-icons/vsc";
-import ci1 from "../../assets/images/ci1.png";
-import ci2 from "../../assets/images/ci2.png";
-import ci3 from "../../assets/images/ci3.png";
-import ci4 from "../../assets/images/ci4.png";
-import ci5 from "../../assets/images/ci5.png";
-import ci6 from "../../assets/images/ci6.png";
-import "../Cinemas/cinemas.scss";
+import ci1 from "assets/images/ci1.png";
+import ci2 from "assets/images/ci2.png";
+import ci3 from "assets/images/ci3.png";
+import ci4 from "assets/images/ci4.png";
+import ci5 from "assets/images/ci5.png";
+import ci6 from "assets/images/ci6.png";
+import "./MovieTheater.scss";
 
-function Cinemas() {
+function MovieTheater() {
   return (
     <div className="cinemas">
       <div className="titlee">
@@ -169,4 +169,4 @@ function Cinemas() {
   );
 }
 
-export default Cinemas;
+export default MovieTheater;
