@@ -14,7 +14,7 @@ function Showtime() {
   const listMovieTheater = useSelector(selectCurrentMovieTheater);
   useEffect(() => {
     setListDay(Object.keys(listShowtime));
-  }, []);
+  }, [listShowtime]);
 
   return (
     <div>

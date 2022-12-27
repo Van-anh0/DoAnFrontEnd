@@ -3,14 +3,9 @@ import Slider from "../Slider/Slider";
 
 import MovieTheater from "./MovieTheater/MovieTheater";
 import TabDetail from "../Movie/Movie";
-import {
-  getListMovie,
-  getListMovieTheater,
-  getListShowTime,
-} from "actions/ApiCall";
+import { getListMovieTheater, getListShowTime } from "actions/ApiCall";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { actionUpdateMovie } from "redux/movie/movieSlice";
 import { actionUpdateShowtime } from "redux/showtime/showtimeSlice";
 import { actionUpdateMovieTheater } from "redux/movieTheater/movieTheaterSlice";
 import { renameKeys } from "utils/common";
@@ -30,7 +25,7 @@ function Home() {
     getListMovieTheater().then((result) => {
       dispatch(actionUpdateMovieTheater(result));
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div>

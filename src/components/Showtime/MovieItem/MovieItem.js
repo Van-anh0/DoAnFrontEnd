@@ -17,7 +17,7 @@ function MovieItem(props) {
     getListMovie(params).then((result) => {
       dispatch(actionUpdateMovie(result));
     });
-  }, [day, movieTheater]);
+  }, [day, movieTheater, dispatch]);
 
   function handleChangeDay(event) {
     setDay(moment(event.target.value).format("YYYY-MM-DD"));

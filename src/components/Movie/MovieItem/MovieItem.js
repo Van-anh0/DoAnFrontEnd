@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import Contents from "components/Content/Contents";
+import React, { useEffect } from "react";
+import Contents from "components/Content/Content";
 import { getListMovie } from "actions/ApiCall/index";
 import { MOVIE_STATUS_SHOWING, MOVIE_STATUS_TOSHOW } from "utils/constants";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,7 +28,7 @@ function MovieItem(props) {
         dispatch(actionUpdateMovie(result));
       });
     }
-  }, [status]);
+  }, [status, dispatch]);
 
   return (
     <div>

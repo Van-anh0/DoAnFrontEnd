@@ -18,10 +18,13 @@ function DetailMovie() {
   const pathname = useLocation().pathname;
   let movieId = pathname.replace("/detail/", "");
 
-  useEffect(() => {
-    let filmData = films?.data.filter((f) => {
+  function setFilmData() {
+    films?.data.filter((f) => {
       return f.id === movieId;
     });
+  }
+  useEffect(() => {
+    let filmData = setFilmData();
     setFilm(filmData[0]);
 
     getListMovieTheater(movieId, order?.day).then((result) => {
