@@ -3,7 +3,7 @@ import "App.scss";
 import "App.css";
 import Navbar from "components/Menubar/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "components/Header/Header";
+
 import Home from "components/Home/Home";
 import Detail from "components/Detail/Detail";
 import Showtime from "components/Showtime/Showtime";
@@ -13,7 +13,7 @@ import Footer from "components/Footer/Footer";
 import Introduce from "components/Introduce/Introduce";
 import Seat from "components/Seat/Seat";
 import Payment from "components/Payment/Payment";
-
+import Header from "components/Header/Header";
 function App() {
   return (
     <div className="App">
