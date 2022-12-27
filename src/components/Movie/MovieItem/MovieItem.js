@@ -32,7 +32,7 @@ function MovieItem(props) {
 
   return (
     <div>
-      <Contents films={films.data} />
+      <Contents films={films?.data} />
     </div>
   );
 }

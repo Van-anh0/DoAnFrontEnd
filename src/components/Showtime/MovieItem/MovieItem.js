@@ -33,12 +33,12 @@ function MovieItem(props) {
         <select className="a" onChange={handleChangeMovieTheater}>
           {listMovieTheater.data.map((movieTheater) => {
             return (
-              <>
+              <div key={movieTheater.id}>
                 <option value="" selected disabled hidden>
                   Chọn rạp chiếu
                 </option>
                 <option>{movieTheater.name}</option>
-              </>
+              </div>
             );
           })}
         </select>

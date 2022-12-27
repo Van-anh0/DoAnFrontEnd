@@ -5,7 +5,7 @@ import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { Link } from "react-router-dom";
 
 function Contents(props) {
-  const {films} = props
+  const { films } = props;
   const [x, setX] = useState(0);
 
   const goLeft = () => {
@@ -21,7 +21,7 @@ function Contents(props) {
   return (
     <MoviesRowContainer>
       <MoviesSlider>
-        {films.map((movie) => (
+        {films?.map((movie) => (
           <Link to={"/detail/" + movie.id} onClick={() => {}} key={movie.id}>
             <div
               key={movie.id}

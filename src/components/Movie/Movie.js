@@ -10,7 +10,7 @@ function Movie() {
   function handleClickTab(key) {
     setStatus(key);
   }
-  
+
   const TabPane = Tabs.TabPane;
   return (
     <div>
