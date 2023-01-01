@@ -5,6 +5,7 @@ import userReducer from "./user/userSlice";
 import movieReducer from "./movie/movieSlice";
 import showtimeReducer from "./showtime/showtimeSlice";
 import movieTheaterReducer from "./movieTheater/movieTheaterSlice";
+import productReducer from "./product/productSlice";
 
 // https://www.npmjs.com/package/redux-persist
 // https://edvins.io/how-to-use-redux-persist-with-redux-toolkit
@@ -24,6 +25,7 @@ const reducers = combineReducers({
   movie: movieReducer,
   showtime: showtimeReducer,
   movieTheater: movieTheaterReducer,
+  product: productReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, reducers);

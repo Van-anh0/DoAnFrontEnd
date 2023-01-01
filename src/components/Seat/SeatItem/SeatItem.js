@@ -1,16 +1,12 @@
 import React, { useState } from "react";
 import "./SeatItem.scss";
-import {
-  SEAT_DEFAULT,
-  SEAT_BOOKED,
-  SEAT_CHOOSING,
-} from "utils/constants";
+import { SEAT_DEFAULT, SEAT_BOOKED, SEAT_CHOOSING } from "utils/constants";
 import { useDispatch } from "react-redux";
 import { addSeat, removeSeat } from "redux/order/orderSlice";
 
 const Seat = (props) => {
   const { seat } = props;
-  const seatNumber = seat.name;
+  const seatNumber = seat.row + seat.col;
   const [seatStatus, setSeatStatus] = useState(props.seat.status);
   const dispatch = useDispatch();
 

@@ -28,7 +28,7 @@ function Contents(props) {
               className="movieItem"
               style={{ transform: `translateX(${x}%)` }}
             >
-              <img src={movie.sku[0]?.image} alt={movie.name} />
+              <img src={movie.poster} alt={movie.name} />
               <div className="movieName">{movie.name}</div>
             </div>
           </Link>

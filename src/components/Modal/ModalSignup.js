@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { register } from "actions/ApiCall";
+import { register } from "actions";
 
 //Adding antd modules and style
 import { Modal, Form, Input } from "antd";
@@ -89,13 +89,14 @@ const ModalSign = () => {
         console.log("Nhập  lại mật khẩu không chính xác!");
         return;
       }
-      register(data)
-        .then((result) => {
-          alert("dang ky thanh cong");
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      // hieucn: to do
+      // register(data)
+      //   .then((result) => {
+      //     alert("dang ky thanh cong");
+      //   })
+      //   .catch((error) => {
+      //     console.log(error);
+        // });
       setVisible(false);
     };
 

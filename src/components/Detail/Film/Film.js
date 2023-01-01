@@ -14,15 +14,11 @@ function DetailFilm({ film, listMovieTheater, showtimes }) {
   const [day, setDay] = useState();
   const [showtimeId, setShowtimeId] = useState();
   const [movieTheater, setMovieTheater] = useState();
-  const [attribute, setAttribute] = useState();
 
   useEffect(() => {
     setListDay(Object.keys(showtimes));
     setDay(Object.keys(showtimes)[0]);
     setMovieTheater(listMovieTheater[0]);
-    if (film.sku) {
-      setAttribute(film.sku[0]?.attribute);
-    }
   }, [showtimes]);
 
   function checkGoToCart(movieTheater, showtimeId) {
@@ -50,31 +46,29 @@ function DetailFilm({ film, listMovieTheater, showtimes }) {
       <div className="col-detailFilm">
         <div className="Film">
           <div className="pic">
-            <img src={film.image} alt={film.name}></img>
+            <img src={film.poster} alt={film.name}></img>
           </div>
 
           <div className="text">
             <div className="detail">
               <h1 className="name">Phim: {film.name}</h1>
               <span className="tt">Khởi chiếu: </span>{" "}
-              <span>{attribute?.release_date}</span>
+              <span>{film?.release_date}</span>
               <br />
-              <span className="tt">Thể loại: </span>{" "}
-              <span>{attribute?.type}</span>
+              <span className="tt">Thể loại: </span> <span>{film?.type}</span>
               <br />
               <span className="tt">Đạo diễn: </span>{" "}
-              <span>{attribute?.director}</span>
+              <span>{film?.director}</span>
               <br />
-              <span className="tt">Diễn viên: </span>{" "}
-              <span>{attribute?.cast}</span>
+              <span className="tt">Diễn viên: </span> <span>{film?.cast}</span>
               <br />
               <span className="tt">Quốc gia: </span>{" "}
-              <span>{attribute?.country}</span>
+              <span>{film?.country}</span>
               <br />
             </div>
             <div className="content">
               <h1>Nội dung phim</h1>
-              <span>{attribute?.description}</span>
+              <span>{film?.spoil}</span>
             </div>
           </div>
         </div>
@@ -89,46 +83,40 @@ function DetailFilm({ film, listMovieTheater, showtimes }) {
                 </option>
               ))}
             </select>
-
             <select onChange={handleChangeDay} value={day}>
               {listDay.map((dateTime, index) => (
                 <option key={index}>{dateTime}</option>
               ))}
             </select>
           </div>
-          {film.sku?.map((sku) => (
-            <>
-              <select className="detailFilm_type">
-                <option key={sku.id}>Loại vé: {sku?.type}</option>
-              </select>
-              <div className="detailFilm__time">
-                {sku.showtime?.map((showtime) => (
-                  <button
-                    onClick={() =>
-                      setShowtimeToOrder({
-                        showtime_id: showtime.id,
-                        movie_id: film.id,
-                        ticket: [],
-                        movie_name: film.name,
-                        movie_theater_name: movieTheater?.name,
-                        poster: film.poster,
-                        day: showtime.day,
-                        start_time: showtime.start_time,
-                      })
-                    }
-                    className={
-                      showtime.id == showtimeId ? "detailFilm__on_button" : ""
-                    }
-                    key={showtime.id}
-                  >
-                    <div key={showtime.id}>
-                      <div>{trimTime(showtime?.start_time)}</div>
-                    </div>
-                  </button>
-                ))}
-              </div>
-            </>
-          ))}
+          <div className="detailFilm__time">
+            {showtimes[day]?.map((showtime) => (
+              <button
+                onClick={() =>
+                  setShowtimeToOrder({
+                    movie_id: film.id,
+                    movie_name: film.name,
+                    movie_image: film.poster,
+
+                    show_seat: [],
+                    order_item: [],
+                    cinema_name: movieTheater?.name,
+
+                    showtime_id: showtime.id,
+                    showtime: showtime.showtime,
+                  })
+                }
+                className={
+                  showtime.id == showtimeId ? "detailFilm__on_button" : ""
+                }
+                key={showtime.id}
+              >
+                <div key={showtime.id}>
+                  <div>{trimTime(showtime?.showtime)}</div>
+                </div>
+              </button>
+            ))}
+          </div>
         </div>
 
         <div className="foo">
