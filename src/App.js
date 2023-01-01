@@ -14,15 +14,20 @@ import Introduce from "components/Introduce/Introduce";
 import Seat from "components/Seat/Seat";
 import Payment from "components/Payment/Payment";
 import Header from "components/Header/Header";
+import SearchPage from "components/SearchPage/SearchPage";
+import SearchTest from "./components/SearchPage/SearchText";
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      {/* <SearchTest/> */}
+       <SearchPage/>
+      {/* <BrowserRouter>
         <Header />
         <Navbar />
+       
 
         <Routes>
-          <Route path="/" exact element={<Home />} />
+          <Route path="/" exact element={<Home/>} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/showtime" element={<Showtime />} />
           <Route path="/cinema" element={<Cinema />} />
@@ -33,7 +38,7 @@ function App() {
         </Routes>
 
         <Footer />
-      </BrowserRouter>
+      </BrowserRouter> */}
     </div>
   );
 }
