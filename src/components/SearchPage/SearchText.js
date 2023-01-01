@@ -1,9 +1,7 @@
 import React from "react";
 
-function SearchTest(props){
-    return(
-        <div></div>
-    )
+function SearchTest() {
+  return <div></div>;
 }
 
 export default SearchTest;

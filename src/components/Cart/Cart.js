@@ -1,18 +1,20 @@
 import React from "react";
-import "./Payment.scss";
+import "./Cart.scss";
+import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { selectCurrentorder } from "redux/order/orderSlice";
-import { createOrder } from "actions/ApiCall";
+import { orderApi } from "actions";
 import { clearCurrentOrder } from "redux/order/orderSlice";
 import { useDispatch } from "react-redux";
+import { trimDate, trimTime } from "utils/common";
 
-function Payment() {
+function Cart() {
   const order = useSelector(selectCurrentorder);
   const dispatch = useDispatch();
 
   const handleCreateOrder = () => {
-    createOrder(order).then((result) => {
+    orderApi.createOrder(order).then(() => {
       dispatch(clearCurrentOrder());
       alert("thanh toan thanh cong");
     });
@@ -27,22 +29,32 @@ function Payment() {
           Xin quý khách vui lòng kiểm tra lại thông tin đặt vé
         </div>
 
-        {order?.total_price ? (
+        {order?.total ? (
           <>
             <div className="dt">
-              <img src={order.poster}></img>
+              <img src={order.movie_image}></img>
               <div className="dtt">
                 <p>Phim: {order.movie_name}</p>
-                <p>Rạp chiếu: {order.movie_theater_name}</p>
-                <p>Ngày chiếu: {order.day}</p>
-                <p>Xuất chiếu: {order.start_time}</p>
+                <p>Rạp chiếu: {order.cinema_name}</p>
+                <p>Ngày chiếu: {trimDate(order.showtime)}</p>
+                <p>Xuất chiếu: {trimTime(order.showtime)}</p>
               </div>
             </div>
             <div className="dsghe">
-              {order?.ticket.map((orderItem, index) => (
+              {order.show_seat?.map((orderItem, index) => (
                 <div className="ghe" key={index}>
                   <p>Ghế</p>
                   <p>{orderItem.seat_name}</p>
+                  <p>{orderItem.price}đ</p>
+                </div>
+              ))}
+            </div>
+            <div className="dsghe">
+              {order.order_item?.map((orderItem, index) => (
+                <div className="ghe" key={index}>
+                  <p>Combo</p>
+                  <p>{orderItem.product_name}</p>
+                  <p>{orderItem.quantity}</p>
                   <p>{orderItem.price}đ</p>
                 </div>
               ))}
@@ -51,7 +63,7 @@ function Payment() {
             <div className="tong">
               <h1>TỔNG TIỀN</h1>
               <p>
-                <span>{order.total_price}</span> vnđ
+                <span>{order.total}</span> vnđ
               </p>
             </div>
           </>
@@ -60,14 +72,17 @@ function Payment() {
         )}
 
         <div
-          className={order?.total_price ? "thanhtoan" : "disabled"}
+          className={order?.show_seat.length > 0 ? "thanhtoan" : "disabled"}
           onClick={() => handleCreateOrder()}
         >
           Thanh toán
         </div>
+        <Link to={"/"}>
+          <button>Quay lại trang chủ</button>
+        </Link>
       </div>
     </div>
   );
 }
 
-export default Payment;
+export default Cart;

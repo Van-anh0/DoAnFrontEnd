@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./MovieItem.scss";
 import { Link } from "react-router-dom";
 import { actionUpdateMovie } from "redux/movie/movieSlice";
-import { getListMovie } from "actions/ApiCall";
+import { getListMovie } from "actions";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 
@@ -14,9 +14,9 @@ function MovieItem(props) {
 
   useEffect(() => {
     let params = { day: day, movie_theater_id: movieTheater?.id };
-    getListMovie(params).then((result) => {
-      dispatch(actionUpdateMovie(result));
-    });
+    // getListMovie(params).then((result) => {
+    //   dispatch(actionUpdateMovie(result));
+    // });
   }, [day, movieTheater, dispatch]);
 
   function handleChangeDay(event) {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getListMovieTheater, getListShowTime } from "actions/ApiCall";
+import { cinemaApi, showApi } from "actions";
 import Film from "./Film/Film";
 import { useLocation } from "react-router-dom";
 import { renameKeys } from "utils/common";
@@ -19,20 +19,21 @@ function DetailMovie() {
   let movieId = pathname.replace("/detail/", "");
 
   function setFilmData() {
-    films?.data.filter((f) => {
+    return films?.data.filter((f) => {
       return f.id === movieId;
     });
   }
   useEffect(() => {
     let filmData = setFilmData();
-    setFilm(filmData[0]);
+    if (filmData) {
+      setFilm(filmData[0]);
+    }
 
-    getListMovieTheater(movieId, order?.day).then((result) => {
+    cinemaApi.getListCinema(movieId).then((result) => {
       setListMovieTheater(result.data);
     });
 
-    let responseShowtime = getListShowTime(movieId);
-    responseShowtime.then((result) => {
+    showApi.getListShow(movieId).then((result) => {
       let listResponse = renameKeys(result.data);
       setShowtimes(listResponse);
     });

@@ -116,6 +116,11 @@
             font-weight: bold;
             cursor: pointer;
         }
+
+        .disabled {
+            pointer-events: none;
+            cursor: default;
+        }
     }
 
 }
@@ -155,7 +160,7 @@
             
     
         }
-        .seat-default {
+        .seat-available {
             background-color: #f3751f;
             color: white;
         }
