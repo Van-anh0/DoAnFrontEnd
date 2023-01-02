@@ -4,10 +4,10 @@ import { movieApi } from "actions";
 import { MOVIE_STATUS_SHOWING, MOVIE_STATUS_TOSHOW } from "utils/constants";
 import { useDispatch, useSelector } from "react-redux";
 import { actionUpdateMovie, selectCurrentMovie } from "redux/movie/movieSlice";
+import "./MovieItem.scss";
 
 function MovieItem(props) {
   const dispatch = useDispatch();
-  const films = useSelector(selectCurrentMovie);
   const { status } = props;
 
   useEffect(() => {
@@ -31,8 +31,17 @@ function MovieItem(props) {
   }, [status, dispatch]);
 
   return (
-    <div>
-      <Contents films={films?.data} />
+    <div className="movie_item">
+      <div className="movie_item__picture">
+        <img src="https://cinestar.com.vn/pictures/Cinestar/12-2022/hung-thu-vo-hinh-poster.jpg"></img>
+      </div>
+      <div className="movie_item__text">
+        <p>Hung thủ vô hình</p>
+        <p className="movie_item__text_rated">(C16)</p>
+        <div className="movie_item__text_category">
+          <p>2D</p>
+        </div>
+      </div>
     </div>
   );
 }

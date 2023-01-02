@@ -1,6 +1,7 @@
 import React from "react";
 import "../SearchPage/Search.scss";
-function SearchPage(props) {
+
+function SearchPage() {
   return (
     <div className="searchPage">
       <div className="start">Kết quả tìm kiếm</div>

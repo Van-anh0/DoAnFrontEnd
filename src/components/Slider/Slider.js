@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "../Slider/Slider.css";
 import ImgComp from "./ImgComp";
 import h1 from "../../assets/images/pics/1.jpg";

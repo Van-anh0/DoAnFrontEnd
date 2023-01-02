@@ -48,7 +48,6 @@ function Contents(props) {
 export default Contents;
 
 const MoviesRowContainer = styled.div`
-  background-color: var(--color-violet);
   color: var(--color-white);
   padding: 0 100px 0;
   // border: 1px solid red;

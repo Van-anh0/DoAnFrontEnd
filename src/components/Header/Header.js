@@ -1,16 +1,10 @@
 import React from "react";
-import Netflixlogo from "assets/images/logoHeader.png";
-import { MdSearch } from "react-icons/md";
-import { AiOutlineUser } from "react-icons/ai";
 import "../Header/Header.scss";
-import ModalSign from "../Modal/ModalSignup";
-import ModalLog from "../Modal/ModalLogin";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  selectCurrentSearch,
-  updateSearch,
-} from "redux/search/searchSlice";
-import { selectIsAuthenticated } from "redux/user/userSlice";
+import { updateSearch } from "redux/search/searchSlice";
+import { selectIsAuthenticated, logout } from "redux/user/userSlice";
+import { FaHome } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 function Header() {
   const isAuthenticated = useSelector(selectIsAuthenticated);
@@ -20,42 +14,76 @@ function Header() {
     dispatch(updateSearch(e.target.value));
   };
 
+  function handleLogout() {
+    dispatch(logout());
+    alert("Đăng xuất thành công");
+  }
+
   return (
-    <div className="navContainer">
-      <div className="logo">
-        <img src={Netflixlogo} alt="" />
-      </div>
-
-      <div className="navSearch">
-        <MdSearch className="iconSearch" />
-        <input
-          type="text"
-          placeholder="Nhập từ khoá để tìm kiếm phim..."
-          onChange={handleChangeSearchText}
-        />
-      </div>
-
-      <div className="end">
-        {!isAuthenticated ? (
-          <>
-            <div className="login">
-              <AiOutlineUser className="iconUser" />
-              <ModalSign />
+    <div className="header">
+      <div className="nav">
+        <div className="header_top">
+          <div className="header_top__search">
+            <input placeholder="Tìm kiếm..."></input>
+          </div>
+          {!isAuthenticated ? (
+            <>
+              <div className="header_top__button">
+                <button>Đăng nhập</button>
+              </div>
+              <div className="header_top__button">
+                <button>Đăng ký</button>
+              </div>
+            </>
+          ) : (
+            <div className="header_top__button">
+              <button>Đăng xuất</button>
             </div>
-            <div className="login">
-              <AiOutlineUser className="iconUser" />
-              <ModalLog />
-            </div>
-          </>
-        ) : (
-          <>
-            <div>Chỗ này hiển thị avatar</div>
-            <div>Chỗ này là nút đăng xuất</div>
-          </>
-        )}
+          )}
 
-        <div className="language">
-          <span className="languageText">VI | EN</span>
+          <div className="header_top__language">
+            <a>En</a>
+          </div>
+        </div>
+        <div className="header_bot">
+          <div className="header_bot__logo">
+            <img src="https://cinestar.com.vn/pictures/moi/9Logo/white-2018.png"></img>
+          </div>
+          <div className="header_bot__menu">
+            <div className="header_bot__home">
+              <a>
+                <FaHome />
+              </a>
+            </div>
+            <div className="header_bot__nav">
+              <ul>
+                <Link className="li" to="/">
+                  Phim
+                </Link>
+                <Link className="li" to="/showtime">
+                  Lịch chiếu
+                </Link>
+                <Link className="li" to="/cinema">
+                  Rạp và giá
+                </Link>
+                <Link className="li" to="/promotion">
+                  Khuyến mãi
+                </Link>
+                <Link className="li" to="/question">
+                  Hỏi và đáp
+                </Link>
+                <Link className="li" to="/newfeed">
+                  Tin tức
+                </Link>
+                <Link className="li" to="/introduce">
+                  Giới thiệu
+                </Link>
+                <Link className="li" to="/contact">
+                  Liên hệ
+                </Link>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>

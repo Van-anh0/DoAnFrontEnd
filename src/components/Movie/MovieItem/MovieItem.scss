@@ -1,0 +1,45 @@
+.movie_item {
+  padding: 12px 10px 30px 10px;
+  max-width: 230px;
+  display: block;
+  border: 1px solid;
+  color: #fff;
+  margin-right: 1rem;
+  .movie_item__picture {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 202px;
+    margin: 0 auto;
+    cursor: pointer;
+    img {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  .movie_item__text {
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    p:first-child {
+      padding-top: 15px;
+    }
+    p {
+      margin: 0;
+    }
+    .movie_item__text_rated {
+      line-height: 1rem;
+    }
+    .movie_item__text_category {
+      display: inline-block;
+      margin-top: 0.6rem;
+      p {
+        border: 2px solid;
+        width: fit-content;
+        padding: 2px 5px;
+      }
+    }
+  }
+}
