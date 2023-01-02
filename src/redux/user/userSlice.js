@@ -43,6 +43,10 @@ export const userSlice = createSlice({
     clearCurrentUser: (state) => {
       state.currentUser = null;
     },
+    logout: (state) => {
+      state.currentUser = null;
+      state.isAuthenticated = false;
+    },
   },
   // Bất đồng bộ
   extraReducers: (builder) => {
@@ -56,7 +60,7 @@ export const userSlice = createSlice({
 
 // Actions: dành cho các components bên dưới gọi tới nó để cập nhật lại dữ liệu thông qua reducer (chạy đồng bộ)
 // Để ý ở trên thì không thấy properties actions đâu cả, bởi vì những cái actions này đơn giản là được thằng redux tạo tự động theo tên của reducer nhé.
-export const { clearCurrentUser } = userSlice.actions;
+export const { clearCurrentUser, logout } = userSlice.actions;
 
 // Selectors: mục đích là dành cho các components bên dưới gọi tới nó để lấy dữ liệu từ trong redux store ra sử dụng
 export const selectCurrentUser = (state) => {

@@ -22,14 +22,14 @@ const GenerateSeats = (seats) => {
 const Seat = () => {
   const order = useSelector(selectCurrentorder);
   const [showModalProduct, setShowModalProduct] = useState(false);
-
   const [seats, setSeats] = useState([]);
+
   useEffect(() => {
     // hieucn: to do
     seatApi.getListSeat(order.showtime_id).then((result) => {
       setSeats(result.data);
     });
-  }, []);
+  }, [order.showtime_id]);
 
   const handleChooseProduct = () => {
     setShowModalProduct(true);

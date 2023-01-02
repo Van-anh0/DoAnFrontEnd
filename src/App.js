@@ -1,7 +1,6 @@
 import React from "react";
 import "App.scss";
 import "App.css";
-import Navbar from "components/Menubar/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "components/Home/Home";
@@ -14,16 +13,12 @@ import Introduce from "components/Introduce/Introduce";
 import Seat from "components/Seat/Seat";
 import Cart from "components/Cart/Cart";
 import Header from "components/Header/Header";
-import SearchPage from "components/SearchPage/SearchPage";
-import SearchTest from "./components/SearchPage/SearchText";
+
 function App() {
   return (
     <div className="App">
-      {/* <SearchTest/> */}
-      {/* <SearchPage/> */}
       <BrowserRouter>
         <Header />
-        <Navbar />
 
         <Routes>
           <Route path="/" exact element={<Home />} />

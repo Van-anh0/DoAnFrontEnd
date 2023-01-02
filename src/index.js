@@ -14,7 +14,7 @@ root.render(
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
       {/* strict mode se chay 2 lan */}
-      <React.StrictMode> 
+      <React.StrictMode>
         <App />
       </React.StrictMode>
     </PersistGate>

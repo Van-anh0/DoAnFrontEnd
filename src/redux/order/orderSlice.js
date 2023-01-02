@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { orderApi } from "actions/index";
-import { trimDate, trimTime } from "utils/common";
 
 // khởi tạo giá trị trong redux
 const initialState = {

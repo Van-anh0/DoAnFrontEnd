@@ -1,88 +1,187 @@
-
-
-.showtimes{
-    
-   background-color: rgb(80,4,68);
-   padding: 1%;
-   padding-bottom: 2%;
-
-   .category{
-    width: 800px;
-    margin-left: 10%;
+.showtime {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  .showtime__content {
+    background-color: #f18720;
+    position: relative;
+    z-index: 1;
+    display: table-cell;
+    vertical-align: middle;
+    width: 475px;
+    height: auto;
+    box-shadow: 10px 10px 10px 0 rgb(0 0 0 / 30%),
+      0 0 50px 0 rgb(0 0 0 / 40%) inset;
+    padding: 20px;
+    .showtime__content_img {
+      float: left;
+      width: 50%;
+      height: auto;
+      max-width: 190px;
+      margin: 0 15px 0 -60px;
+      img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+    .showtime__content_text {
+      color: #fff;
+      .showtime__content_text__name {
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 1.5rem;
+      }
+      p {
+        margin: 0;
+        padding: 0;
+      }
+    }
+    .showtime__content_text_category {
+      span {
+        border: 2px solid;
+        width: fit-content;
+        padding: 2px 5px;
+      }
+    }
+  }
+  .showtime__schedule {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
-    color: white;
-    .space{
-        margin-left:100px ;
-    }
-    .a{
-        background-color: #ffcc04;
-        color: black;
-        font-weight: 300;
-        width: 200px;
-        height: 50px;
-        border-radius: 15px;
+    flex-direction: column;
+    justify-content: center;
+    .showtime__schedule_row {
+      background: #35002d;
+      display: flex;
+      position: relative;
+      height: 82px;
+      .showtime__schedule_row__day {
+        float: left;
+        width: 106px;
+        height: 100%;
+        background: #f5c549;
+        color: #000;
+        font-family: "Futurab";
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 81px;
+        transform: skewX(-10deg);
+        -webkit-transform: skewX(-10deg);
         text-align: center;
-        margin: 10px;
-    }
-   }
+        margin-left: -20px;
+        padding-left: 20px;
+        position: absolute;
+        left: -10px;
+        top: 0;
+        font-weight: bold;
+      }
+      .showtime__schedule_row__slot {
+        ul {
+          display: flex;
+          list-style-type: none;
+          margin-left: 100px;
+          align-items: center;
 
-   .listFilm{
-   
-    width: 100%;
-    padding-left: 7%;
-    padding-top:1%;
-    padding-bottom: 3%;
-    align-items: center;
-    display: grid;
-    grid-template-columns: repeat(2,600px);
-
-    .film{
-        padding-top: 5%;
-        padding-left: 7%;
-        display: flex;
-        flex-direction: row;
-
-        .filmDT{
+          li {
+            display: inline-block;
+            width: auto;
+            height: 100%;
+            color: #fff;
+            font-family: "Futurab";
+            font-weight: normal;
+            font-size: 16px;
+            padding: 20px 10px;
+            margin: 0 -1px;
             cursor: pointer;
-            width: 500px;
-            height: 350px;
-            align-items: center;
-            padding: 3%;
-            display: flex;
-            flex-direction: row;
-            border-radius: 10%;
-            background-color: rgb(248,132,36);
-
-            .pic{
-            border: 3px solid wheat;
-            height: 300px;
-            width: 200px;
-
-            img{
-                height: 100%;
-                width: 100%;
-            }
+            transition: all 0.3s ease-in-out;
+            -webkit-transition: all 0.3s ease-in-out;
+            margin: 1px -1px;
+            background: #7c2665;
+            font-weight: bold;
+          }
         }
-
-        .detail{
-            color: white;
-            padding: 2%;
-           
-            h1{
-                font-size: 25px;
-                font-weight: bold;
-            }
-            width: 300px;
-        }
-        }
-        
-
-        
-
-       
+      }
     }
-   }
-    
+  }
 }
+// .showtimes{
+
+//    background-color: rgb(80,4,68);
+//    padding: 1%;
+//    padding-bottom: 2%;
+
+//    .category{
+//     width: 800px;
+//     margin-left: 10%;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-around;
+//     color: white;
+//     .space{
+//         margin-left:100px ;
+//     }
+//     .a{
+//         background-color: #ffcc04;
+//         color: black;
+//         font-weight: 300;
+//         width: 200px;
+//         height: 50px;
+//         border-radius: 15px;
+//         text-align: center;
+//         margin: 10px;
+//     }
+//    }
+
+//    .listFilm{
+
+//     width: 100%;
+//     padding-left: 7%;
+//     padding-top:1%;
+//     padding-bottom: 3%;
+//     align-items: center;
+//     display: grid;
+//     grid-template-columns: repeat(2,600px);
+
+//     .film{
+//         padding-top: 5%;
+//         padding-left: 7%;
+//         display: flex;
+//         flex-direction: row;
+
+//         .filmDT{
+//             cursor: pointer;
+//             width: 500px;
+//             height: 350px;
+//             align-items: center;
+//             padding: 3%;
+//             display: flex;
+//             flex-direction: row;
+//             border-radius: 10%;
+//             background-color: rgb(248,132,36);
+
+//             .pic{
+//             border: 3px solid wheat;
+//             height: 300px;
+//             width: 200px;
+
+//             img{
+//                 height: 100%;
+//                 width: 100%;
+//             }
+//         }
+
+//         .detail{
+//             color: white;
+//             padding: 2%;
+
+//             h1{
+//                 font-size: 25px;
+//                 font-weight: bold;
+//             }
+//             width: 300px;
+//         }
+//         }
+
+//     }
+//    }
+
+// }

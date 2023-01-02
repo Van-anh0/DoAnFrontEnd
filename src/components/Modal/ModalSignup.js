@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { register } from "actions";
+import { authApi } from "actions";
 
 //Adding antd modules and style
 import { Modal, Form, Input } from "antd";
 import "antd/dist/antd.css";
 import "./Modal.scss";
 
-const ModalSign = () => {
-  const [registerRequest, setRegisterRequest] = useState({});
-
+const ModalSignUp = () => {
   //popup and form code
   const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
     const [form] = Form.useForm();
@@ -26,8 +24,8 @@ const ModalSign = () => {
               form.resetFields();
               onCreate(data);
             })
-            .catch((info) => {
-              console.log("Validate Failed:", info);
+            .catch((error) => {
+              console.log("Validate Failed:", error);
             });
         }}
       >
@@ -84,19 +82,14 @@ const ModalSign = () => {
   const CollectionsPage = () => {
     const [visible, setVisible] = useState(false);
 
-    const onCreate = (data) => {
+    const handleRegister = (data) => {
       if (data.password !== data.confirm_password) {
-        console.log("Nhập  lại mật khẩu không chính xác!");
+        alert("Nhập  lại mật khẩu không chính xác!");
         return;
       }
-      // hieucn: to do
-      // register(data)
-      //   .then((result) => {
-      //     alert("dang ky thanh cong");
-      //   })
-      //   .catch((error) => {
-      //     console.log(error);
-        // });
+      authApi.register(data).then(() => {
+        alert("Đăng ký thành công");
+      });
       setVisible(false);
     };
 
@@ -111,7 +104,7 @@ const ModalSign = () => {
         </button>
         <CollectionCreateForm
           visible={visible}
-          onCreate={onCreate}
+          onCreate={handleRegister}
           onCancel={() => {
             setVisible(false);
           }}
@@ -127,4 +120,4 @@ const ModalSign = () => {
     </div>
   );
 };
-export default ModalSign;
+export default ModalSignUp;
