@@ -3,7 +3,7 @@ import Slider from "../Slider/Slider";
 
 import MovieTheater from "./MovieTheater/MovieTheater";
 import TabDetail from "../Movie/Movie";
-import { getListMovieTheater, getListShowTime } from "actions";
+import { cinemaApi } from "actions";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { actionUpdateShowtime } from "redux/showtime/showtimeSlice";
@@ -14,18 +14,15 @@ function Home() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // getListMovie().then((result) => {
-    //   dispatch(actionUpdateMovie(result));
-    // });
+    cinemaApi.getListCinema().then((result) => {
+      dispatch(actionUpdateMovieTheater(result));
+    });
 
     // hieucn: to do
     // getListShowTime().then((result) => {
     //   dispatch(actionUpdateShowtime(renameKeys(result.data)));
     // });
 
-    // getListMovieTheater().then((result) => {
-    //   dispatch(actionUpdateMovieTheater(result));
-    // });
   }, [dispatch]);
 
   return (

@@ -6,6 +6,7 @@ import { selectCurrentMovie } from "redux/movie/movieSlice";
 import { selectCurrentShowtime } from "redux/showtime/showtimeSlice";
 import { selectCurrentMovieTheater } from "redux/movieTheater/movieTheaterSlice";
 import { useEffect, useState } from "react";
+import "./Showtime.scss";
 
 function Showtime() {
   const [listDay, setListDay] = useState([]);
@@ -19,11 +20,13 @@ function Showtime() {
   return (
     <div>
       <Slider />
-      <MovieItem
-        listMovie={listMovie}
-        listDay={listDay}
-        listMovieTheater={listMovieTheater}
-      />
+      <div className="showtime_container">
+        <MovieItem
+          listMovie={listMovie}
+          listDay={listDay}
+          listMovieTheater={listMovieTheater}
+        />
+      </div>
     </div>
   );
 }

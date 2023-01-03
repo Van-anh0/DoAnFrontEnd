@@ -1,187 +1,79 @@
-.movie-complex {
-    background-color: rgb(250, 250, 250);
-  
-    padding-bottom: 3%;
-
-    .nd{
-        
-        
-        width: 100%;
-        
-        background-image: url("https://cpad.ask.fm/968/241/018/-259996966-1sq327n-8ichtstghd7llbk/original/1d08f882cffa656b20c3bbfcea20d23f.jpg");
-        margin-bottom: 10px;
-        
-        .title{
-            font-size: 30px;
-            text-align: center;
-            color: white;
-            font-weight: bold;
-            
-        }
-
-        .ct{
-            display: flex;
-            flex-direction: row;
-            align-items: flex-end;
-            justify-content: center;
-            p{
-               font-size: 25px;
-               border: 1px solid snow;
-               padding: 2%;
-               font-weight: 500;
-               color: white;
-
-            }
-        }
-    }
-    .movie-screen {
-
-        margin-left: 20%;
-        margin-bottom: 8px;
-        padding: 5px;
-        text-align: center;
-        background-color: #969696;
-        border-radius: 25px;
-        height: 50px;
-        width: 130vh;
-        margin-bottom: 3%;;
-
-        p {
-            font-family: 'Kanit', sans-serif;
-            font-size: 20px;
-            color: white;
-        }
-
-
-    }
-    .ghiChu{
-      
-        display: flex;
-        flex-direction: column;
-        padding: 2%;
-        padding-left: 20%;
-      
-     
-        h1{
-            margin-left: 40px;
-            font-size: 20px;
-            text-align: left;
-            color: red;
-            font-weight: bold;
-        }
-
-        .ghe{
-            display: flex;
-            
-            p{
-                margin-left: 40px;
-            }
-            .book{
-                
-                width: 50px;
-                height: 50px;
-                border-radius: 50% 50% 0 0;
-                background-color: #00843e;
-            }
-            .default{
-                width: 50px;
-                height: 50px;
-                border-radius: 50% 50% 0 0;
-                background-color: #f3751f;
-            }
-            .select{
-                width: 50px;
-                height: 50px;
-                border-radius: 50% 50% 0 0;
-                background-color: #008fbe;
-            }
-        }
-       
-    }
-    .movie-button {
-
-        display: flex;
-        padding: 10px;
-        width: 600px;
-        margin-left: 35%;
-       
-        button {
-            border-radius: 0 25% 0 25%;
-            width: 200px;
-            height: 50px;
-            margin-left: 50px;
-            background-color: #68A225;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .disabled {
-            pointer-events: none;
-            cursor: default;
-        }
-    }
-
+.seat_img {
+  height: 55px;
+  width: 55px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  padding: 5px;
+  background: #ededed;
+  margin-right: 5px;
+  img {
+    width: 100%;
+  }
+  p {
+    margin: 0;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    position: absolute;
+    z-index: 1;
+    top: 25%;
+  }
 }
 
-
-
-
-.row {
-    margin-left: 20%;
-   
-    
-    align-items: flex-start;
+.seat_item {
+  height: 36px;
+  width: 40px;
+  margin-right: 50px;
+  overflow: hidden;
+  .seat_item_chair_top {
+    height: 75%;
+    width: 70%;
+    text-align: center;
+    margin: 0 auto;
     display: flex;
-    width: 130vh;
-    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
     justify-content: center;
-
-    .colSeat {
-        padding: 0px 10px;
-        
-      
-        .seat {
-            text-align: center;
-            color: rebeccapurple;
-            width: 60px;
-            height: 60px;
-            border-radius: 50% 50% 0px 0px;
-            margin: 5px;
-            font-size: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            user-select: none;
-        }
-    
-        .seat:hover {
-            transform: scale(1.2);
-            
-    
-        }
-        .seat-available {
-            background-color: #f3751f;
-            color: white;
-        }
-        
-        .seat-booked {
-            background-color: #00843e;
-            color: white;
-            &:hover {
-                cursor: not-allowed;
-            }
-            
-        }
-        
-        
-        .seat-choosing {
-            background-color: #008fbe;
-            color: white;
-        }
-        
-     
+    .seat_item_chair_top_content {
+      border-top: 140px solid #f3751f;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      position: absolute;
+      left: -14%;
+      top: 0;
+      border-radius: 12px 12px 0 0;
+      width: 0;
+      height: 0;
     }
+    p {
+      margin: 0;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+  }
+  .seat_item_chair_bot {
+    height: 25%;
+    background: #f3751f;
+    position: relative;
+    z-index: 1;
+    border-radius: 4px;
+    width: 98%;
+    margin: 0 auto;
+    .seat_item_chair_bot_border {
+      border-left: 18px solid #f3751f;
+      border-right: 18px solid #f3751f;
+      border-top: 2px solid #fff;
+      height: 0;
+      width: 0;
+      margin: 0 auto;
+    }
+  }
 }
-
-

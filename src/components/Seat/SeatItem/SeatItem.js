@@ -21,22 +21,28 @@ const Seat = (props) => {
   };
 
   return (
-    <div className="colSeat">
-      {seatStatus === SEAT_BOOKED ? (
-        <div
-          className={`seat seat-${seatNumber} ${seatStatus} seat-${seatStatus}`}
-        >
-          {seatNumber}
-        </div>
-      ) : (
-        <div
-          className={`seat seat-${seatNumber} ${seatStatus} seat-${seatStatus}`}
-          onClick={() => seatClickHandler()}
-        >
-          {seatNumber}
-        </div>
-      )}
+    <div className="seat">
+      <div className="seat_img">
+        <p>{seatNumber}</p>
+        <img src="https://cinestar.com.vn/catalog/view/theme/default/images/single-chair.png"></img>
+      </div>
     </div>
+    // <div className="colSeat">
+    //   {seatStatus === SEAT_BOOKED ? (
+    //     <div
+    //       className={`seat seat-${seatNumber} ${seatStatus} seat-${seatStatus}`}
+    //     >
+    //       {seatNumber}
+    //     </div>
+    //   ) : (
+    //     <div
+    //       className={`seat seat-${seatNumber} ${seatStatus} seat-${seatStatus}`}
+    //       onClick={() => seatClickHandler()}
+    //     >
+    //       {seatNumber}
+    //     </div>
+    //   )}
+    // </div>
   );
 };
 
