@@ -77,7 +77,7 @@ export const orderSlice = createSlice({
       state.currentOrder = {
         movie_id: data.movie_id,
         movie_name: data.movie_name,
-        movie_image: data.poster,
+        movie_image: data.movie_image,
 
         show_seat: [],
         order_item: [],

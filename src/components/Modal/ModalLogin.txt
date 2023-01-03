@@ -1,31 +1,34 @@
 import React, { useState } from "react";
-import { authApi } from "actions";
 
 //Adding antd modules and style
 import { Modal, Form, Input } from "antd";
 import "antd/dist/antd.css";
 import "./Modal.scss";
 
-const ModalSignUp = () => {
+import { useDispatch } from "react-redux";
+import { loginAPI } from "redux/user/userSlice";
+
+const ModalLog = () => {
+  const dispatch = useDispatch();
   //popup and form code
   const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
     const [form] = Form.useForm();
     return (
       <Modal
         visible={visible}
-        title="Đăng Ký"
-        okText="Đăng Ký"
+        title="Đăng nhập"
+        okText="Đăng nhập"
         cancelText="Thôi"
         onCancel={onCancel}
         onOk={() => {
           form
             .validateFields()
-            .then((data) => {
+            .then((values) => {
               form.resetFields();
-              onCreate(data);
+              onCreate(values);
             })
-            .catch((error) => {
-              console.log("Validate Failed:", error);
+            .catch((info) => {
+              console.log("Validate Failed:", info);
             });
         }}
       >
@@ -43,7 +46,7 @@ const ModalSignUp = () => {
             rules={[
               {
                 required: true,
-                message: "Nhập email!",
+                message: "Hãy nhập email",
               },
             ]}
           >
@@ -55,20 +58,7 @@ const ModalSignUp = () => {
             rules={[
               {
                 required: true,
-                message: "Nhập mật khẩu!",
-              },
-            ]}
-          >
-            <Input type="password" />
-          </Form.Item>
-
-          <Form.Item
-            name="confirm_password"
-            label="Xác nhận mật khẩu"
-            rules={[
-              {
-                required: true,
-                message: "Hãy xác nhận lại mật khẩu!",
+                message: "Hãy nhập password",
               },
             ]}
           >
@@ -82,14 +72,8 @@ const ModalSignUp = () => {
   const CollectionsPage = () => {
     const [visible, setVisible] = useState(false);
 
-    const handleRegister = (data) => {
-      if (data.password !== data.confirm_password) {
-        alert("Nhập  lại mật khẩu không chính xác!");
-        return;
-      }
-      authApi.register(data).then(() => {
-        alert("Đăng ký thành công");
-      });
+    const handleLogin = (values) => {
+      dispatch(loginAPI(values));
       setVisible(false);
     };
 
@@ -100,11 +84,11 @@ const ModalSignUp = () => {
             setVisible(true);
           }}
         >
-          Đăng ký
+          Đăng nhập
         </button>
         <CollectionCreateForm
           visible={visible}
-          onCreate={handleRegister}
+          onCreate={handleLogin}
           onCancel={() => {
             setVisible(false);
           }}
@@ -120,4 +104,4 @@ const ModalSignUp = () => {
     </div>
   );
 };
-export default ModalSignUp;
+export default ModalLog;

@@ -1,170 +1,71 @@
-.movie-complex {
-  background-color: rgb(250, 250, 250);
+.seat {
+  &:hover {
+    cursor: pointer;
 
-  padding-bottom: 3%;
-
-  .nd {
-    width: 100%;
-
-    background-image: url("https://cpad.ask.fm/968/241/018/-259996966-1sq327n-8ichtstghd7llbk/original/1d08f882cffa656b20c3bbfcea20d23f.jpg");
-    margin-bottom: 10px;
-
-    .title {
-      font-size: 30px;
-      text-align: center;
-      color: white;
-      font-weight: bold;
-    }
-
-    .ct {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-end;
-      justify-content: center;
-      margin-top: 140px;
-      p {
-        font-size: 25px;
-        border: 1px solid snow;
-        padding: 2%;
-        font-weight: bold;
-        background: #4e0045;
-        color: white;
-      }
+    img {
+      transform: translateY(-50px);
+      position: absolute;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
+      padding-left: inherit;
+      padding-right: inherit;
+      transition: all 0.5s ease;
     }
   }
-  .movie-screen {
-    margin: 0 auto;
+  .seat_img {
+    height: 55px;
+    width: 55px;
+    overflow: hidden;
+    position: relative;
     padding: 5px;
-    text-align: center;
-    background-color: #969696;
-    border-radius: 25px;
-    height: 50px;
-    width: 130vh;
-    margin-bottom: 3%;
-    box-shadow: 5px 5px 0 rgb(0 0 0 / 10%);
-
+    background: #ededed;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    img {
+      width: 100%;
+    }
     p {
-      font-family: "Kanit", sans-serif;
-      font-size: 25px;
-      color: white;
+      margin: 0;
+      color: #fff;
+      font-size: 14px;
       font-weight: bold;
-    }
-  }
-  .ghiChu {
-    display: flex;
-    flex-direction: column;
-    padding: 2%;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-      margin-left: 40px;
-      font-size: 20px;
-      text-align: left;
-      color: red;
-      font-weight: bold;
-    }
-
-    .ghe {
-      display: flex;
-
-      p {
-        margin-left: 40px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin: 0 20px;
-        font-weight: bold;
-        .book {
-          width: 50px;
-          height: 50px;
-          margin-left: 16px;
-          background-color: #00843e;
-        }
-        .default {
-          width: 50px;
-          height: 50px;
-          margin-left: 16px;
-
-          background-color: #f3751f;
-        }
-        .select {
-          width: 50px;
-          height: 50px;
-          margin-left: 16px;
-          background-color: #008fbe;
-        }
-      }
-    }
-  }
-
-  .seat__total {
-    display: flex;
-    justify-content: center;
-  }
-  .movie-button {
-    display: flex;
-    padding: 10px;
-    margin-left: 35%;
-
-    button {
-      border-radius: 0 25% 0 25%;
-      margin-right: 50px;
-      background-color: #f3751f;
-      color: white;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      padding: 12px 30px;
-      text-transform: uppercase;
+      text-align: center;
+      position: absolute;
+      z-index: 1;
+      top: 25%;
     }
   }
 }
 
-.row {
-  margin-left: 20%;
+.choosing {
+  p {
+    color: #f7e1c1 !important;
+  }
+  img {
+    transform: translateY(-50px);
+    position: absolute;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding-left: inherit;
+    padding-right: inherit;
+  }
+}
 
-  align-items: flex-start;
-  display: flex;
-  width: 130vh;
-  flex-wrap: wrap;
-  justify-content: center;
+.booked {
+  cursor: default !important;
 
-  .colSeat {
-    padding: 0px 10px;
-
-    .seat {
-      text-align: center;
-      color: rebeccapurple;
-      width: 60px;
-      height: 60px;
-      border-radius: 50% 50% 0px 0px;
-      margin: 5px;
-      font-size: 20px;
-      font-weight: bold;
-      cursor: pointer;
-      user-select: none;
-    }
-
-    .seat:hover {
-      transform: scale(1.2);
-    }
-    .seat-available {
-      background-color: #f3751f;
-      color: white;
-    }
-
-    .seat-booked {
-      background-color: #00843e;
-      color: white;
-      &:hover {
-        cursor: not-allowed;
-      }
-    }
-
-    .seat-choosing {
-      background-color: #008fbe;
-      color: white;
-    }
+  img {
+    top: -91px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding-left: inherit;
+    padding-right: inherit;
+    transform: none !important;
   }
 }

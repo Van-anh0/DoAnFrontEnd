@@ -7,22 +7,22 @@ import { trimTime } from "utils/common";
 import { useDispatch } from "react-redux";
 import { initOrder } from "redux/order/orderSlice";
 
-function DetailFilm({ film, listMovieTheater, showtimes }) {
+function DetailFilm({ movie, listCinema, showtimes }) {
   const dispatch = useDispatch();
 
   const [listDay, setListDay] = useState([]);
   const [day, setDay] = useState();
   const [showtimeId, setShowtimeId] = useState();
-  const [movieTheater, setMovieTheater] = useState();
+  const [cinema, setCinema] = useState();
 
   useEffect(() => {
     setListDay(Object.keys(showtimes));
     setDay(Object.keys(showtimes)[0]);
-    setMovieTheater(listMovieTheater[0]);
+    setCinema(listCinema[0]);
   }, [showtimes]);
 
-  function checkGoToCart(movieTheater, showtimeId) {
-    if (movieTheater != null && showtimeId != null) {
+  function checkGoToCart(cinema, showtimeId) {
+    if (cinema != null && showtimeId != null) {
       return true;
     }
     return false;
@@ -33,7 +33,7 @@ function DetailFilm({ film, listMovieTheater, showtimes }) {
   };
 
   const handleChangeMovieTheater = (event) => {
-    setMovieTheater(event.tartget.value);
+    setCinema(event.tartget.value);
   };
 
   const setShowtimeToOrder = (data) => {
@@ -46,39 +46,39 @@ function DetailFilm({ film, listMovieTheater, showtimes }) {
       <div className="col-detailFilm">
         <div className="Film">
           <div className="pic">
-            <img src={film.poster} alt={film.name}></img>
+            <img src={movie.poster} alt={movie.name}></img>
           </div>
 
           <div className="text">
             <div className="detail">
-              <h1 className="name">Phim: {film.name}</h1>
+              <h1 className="name">Phim: {movie.name}</h1>
               <span className="tt">Khởi chiếu: </span>{" "}
-              <span>{film?.release_date}</span>
+              <span>{movie?.release_date}</span>
               <br />
-              <span className="tt">Thể loại: </span> <span>{film?.type}</span>
+              <span className="tt">Thể loại: </span> <span>{movie?.type}</span>
               <br />
               <span className="tt">Đạo diễn: </span>{" "}
-              <span>{film?.director}</span>
+              <span>{movie?.director}</span>
               <br />
-              <span className="tt">Diễn viên: </span> <span>{film?.cast}</span>
+              <span className="tt">Diễn viên: </span> <span>{movie?.cast}</span>
               <br />
               <span className="tt">Quốc gia: </span>{" "}
-              <span>{film?.country}</span>
+              <span>{movie?.country}</span>
               <br />
             </div>
             <div className="content">
               <h1>Nội dung phim</h1>
-              <span>{film?.spoil}</span>
+              <span>{movie?.spoil}</span>
             </div>
           </div>
         </div>
         <div className="dateTime">
           <div className="cinemas">
             <select onChange={handleChangeMovieTheater}>
-              {listMovieTheater?.map((movieTheater) => (
-                <option key={movieTheater.id}>
+              {listCinema?.map((cinema) => (
+                <option key={cinema.id}>
                   <div>
-                    <div>{movieTheater?.name}</div>
+                    <div>{cinema?.name}</div>
                   </div>
                 </option>
               ))}
@@ -94,13 +94,13 @@ function DetailFilm({ film, listMovieTheater, showtimes }) {
               <button
                 onClick={() =>
                   setShowtimeToOrder({
-                    movie_id: film.id,
-                    movie_name: film.name,
-                    movie_image: film.poster,
+                    movie_id: movie.id,
+                    movie_name: movie.name,
+                    movie_image: movie.poster,
 
                     show_seat: [],
                     order_item: [],
-                    cinema_name: movieTheater?.name,
+                    cinema_name: cinema?.name,
 
                     showtime_id: showtime.id,
                     showtime: showtime.showtime,
@@ -128,7 +128,7 @@ function DetailFilm({ film, listMovieTheater, showtimes }) {
           <Link
             to={"/seat"}
             className={
-              checkGoToCart(movieTheater, showtimeId) ? "" : "disabled"
+              checkGoToCart(cinema, showtimeId) ? "" : "disabled"
             }
           >
             <div className="b">Mua vé</div>
