@@ -8,7 +8,6 @@ const seatApi = {
       `${API_ROOT_GOLANG}/api/v1/seat/get-list`,
       {
         params: {
-          sort: "name",
           showtime_id: showtimeId,
         },
       }

@@ -28,9 +28,8 @@ function Movie() {
         <div className="movie_content__braces">
           <FiChevronLeft />
         </div>
-        {/* <MovieItem status={status} /> */}
         {films.data?.map((el) => (
-          <MovieItem status={status} key={el.id} />
+          <MovieItem status={status} key={el.id} movie={el}/>
         ))}
         <div className="movie_content__braces">
           <FiChevronRight />

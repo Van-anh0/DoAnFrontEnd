@@ -6,26 +6,47 @@ import { selectCurrentMovie } from "redux/movie/movieSlice";
 import { selectCurrentShowtime } from "redux/showtime/showtimeSlice";
 import { selectCurrentMovieTheater } from "redux/movieTheater/movieTheaterSlice";
 import { useEffect, useState } from "react";
+import { movieApi } from "actions";
+import { useDispatch } from "react-redux";
+import { actionUpdateMovie } from "redux/movie/movieSlice";
+
 import "./Showtime.scss";
 
 function Showtime() {
-  const [listDay, setListDay] = useState([]);
   const listMovie = useSelector(selectCurrentMovie);
   const listShowtime = useSelector(selectCurrentShowtime);
-  const listMovieTheater = useSelector(selectCurrentMovieTheater);
+  const listCinema = useSelector(selectCurrentMovieTheater);
+
+  const dispatch = useDispatch();
+
+  const [listDay, setListDay] = useState([]);
+  const [day, setDay] = useState();
+  const [cinema, setCinema] = useState();
+
   useEffect(() => {
     setListDay(Object.keys(listShowtime));
-  }, [listShowtime]);
+    let params = { showtime: day, cinema_id: cinema?.id };
+    movieApi.getListMovie(params).then((result) => {
+      dispatch(actionUpdateMovie(result));
+    });
+    setCinema(listCinema[0]);
+  }, [day, listShowtime, cinema]);
 
   return (
     <div>
       <Slider />
       <div className="showtime_container">
-        <MovieItem
-          listMovie={listMovie}
-          listDay={listDay}
-          listMovieTheater={listMovieTheater}
-        />
+        {listMovie?.data.map((movie) => {
+          return (
+            <MovieItem
+              key={movie.id}
+              movie={movie}
+              listShowtime={listShowtime}
+              listDay={listDay}
+              cinema={cinema}
+            />
+          );
+        })}
       </div>
     </div>
   );

@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import Contents from "components/Content/Content";
 import { movieApi } from "actions";
 import { MOVIE_STATUS_SHOWING, MOVIE_STATUS_TOSHOW } from "utils/constants";
-import { useDispatch, useSelector } from "react-redux";
-import { actionUpdateMovie, selectCurrentMovie } from "redux/movie/movieSlice";
+import { useDispatch } from "react-redux";
+import { actionUpdateMovie } from "redux/movie/movieSlice";
 import "./MovieItem.scss";
+import { Link } from "react-router-dom";
 
 function MovieItem(props) {
   const dispatch = useDispatch();
-  const { status } = props;
+  const { status, movie } = props;
 
   useEffect(() => {
     //todo: cho nay dang chay 2 lan vi co strict mode
@@ -30,19 +30,21 @@ function MovieItem(props) {
     }
   }, [status, dispatch]);
 
+  function handleClickMovie() {}
+
   return (
-    <div className="movie_item">
+    <Link className="movie_item" to={"/detail/" + movie.id}>
       <div className="movie_item__picture">
-        <img src="https://cinestar.com.vn/pictures/Cinestar/12-2022/hung-thu-vo-hinh-poster.jpg"></img>
+        <img src={movie.poster}></img>
       </div>
       <div className="movie_item__text">
-        <p>Hung thủ vô hình</p>
-        <p className="movie_item__text_rated">(C16)</p>
+        <p>{movie.name}</p>
+        <p className="movie_item__text_rated">({movie.rated})</p>
         <div className="movie_item__text_category">
-          <p>2D</p>
+          <p>{movie.ticket}</p>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 

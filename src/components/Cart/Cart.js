@@ -77,9 +77,11 @@ function Cart() {
         >
           Thanh toán
         </div>
-        <Link to={"/"}>
-          <button>Quay lại trang chủ</button>
-        </Link>
+        <div className="button_back_to_home">
+          <Link to={"/"}>
+            <button>Quay lại trang chủ</button>
+          </Link>
+        </div>
       </div>
     </div>
   );

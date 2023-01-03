@@ -35,24 +35,24 @@
     border: 5px solid #71336a;
     background: #ffffff;
     border-radius: 10% 0 10% 0;
-    margin: 0 50px 30px;
+    margin: 0 30px 30px;
+    flex: 1 1 0;
 
     .cinema {
       display: flex;
       padding: 10px 20px;
       background-color: #401139;
+      height: 100%;
 
       img {
-        height: 200px;
-        width: 200px;
+        height: 150px;
+        width: 150px;
         border: 2px solid #fff;
         border-radius: 50%;
       }
 
       .detail {
-        padding-left: 30px;
-        width: 300px;
-        line-height: 1.5;
+        padding-left: 20px;
         h1 {
           font-family: "Kanit", sans-serif;
           font-size: 30px;
