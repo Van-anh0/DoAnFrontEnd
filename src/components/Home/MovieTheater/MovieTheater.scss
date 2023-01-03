@@ -1,77 +1,73 @@
-
-
-.cinemas{
-    background-color: var(--color-violet);
+.cinemas {
+  background-color: var(--color-violet);
+  color: white;
+}
+.titlee {
+  user-select: none;
+  line-height: 2;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+  h1 {
+    font-size: 30px;
+    font-weight: bold;
     color: white;
-}
-.titlee{
-    user-select: none;
-    text-align: center;
-   
-    line-height: 2;
-    h1{
-        font-size: 30px;
-        font-weight: bold;
-        color: white;
-    }
-    .line{
-        margin-left: 35%;
-        width: 440px;
-        height: 2px;
-        
-        background-color: white;
-    }
+  }
+  .line {
+    width: 50%;
+    height: 2px;
+    margin-top: 1rem;
+    background-color: white;
+  }
 }
 
+.gridCinema {
+  display: flex;
+  padding: 60px 60px;
+  justify-content: center;
+  flex-wrap: wrap;
 
-.girdCinema{
-    padding-top: 5%;
-    padding-bottom: 5%;
-    display: grid;
-    padding-left: 15%;
-    grid-template-columns: repeat(2,500px);
-   
-    gap:20px;
-    user-select: none;
-   
-   
-    .cinema{
-        align-items: center;
-        cursor: pointer;
-        // border: 1px solid rebeccapurple;
-        display: grid;
-        width: 500px;
-        grid-template-columns: repeat(2,200px);
-    
-       
-        img{
-            height: 200px;
-            width: 200px;
-        }
-            
-        
-        .detail{
-           
-            padding-left: 30px;
-            width: 300px;
-            line-height: 1.5;
-            h1{
-                font-family: 'Kanit', sans-serif;
-                font-size: 30px;
-                color: white;
-            }
+  .gridCinema__container {
+    padding: 15px 20px;
+    border: 5px solid #71336a;
+    background: #ffffff;
+    border-radius: 10% 0 10% 0;
+    margin: 0 50px 30px;
 
-            .star{
-                color: rgb(241, 241, 4);
-            }
-            .location{
-               
-                .inLine{
-                    display: inline;
-                }
-            }
+    .cinema {
+      display: flex;
+      padding: 10px 20px;
+      background-color: #401139;
+
+      img {
+        height: 200px;
+        width: 200px;
+        border: 2px solid #fff;
+        border-radius: 50%;
+      }
+
+      .detail {
+        padding-left: 30px;
+        width: 300px;
+        line-height: 1.5;
+        h1 {
+          font-family: "Kanit", sans-serif;
+          font-size: 30px;
+          color: white;
         }
 
-
+        .star {
+          color: rgb(241, 241, 4);
+        }
+        .location {
+          .inLine {
+            display: inline;
+          }
+        }
+      }
     }
+  }
 }

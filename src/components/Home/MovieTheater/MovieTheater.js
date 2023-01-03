@@ -1,7 +1,7 @@
 import React from "react";
 import { AiFillStar } from "react-icons/ai";
 import { VscLocation } from "react-icons/vsc";
-import ci1 from "assets/images/ci1.png";
+import imageDefault from "assets/images/ci1.png";
 import "./MovieTheater.scss";
 import { selectCurrentMovieTheater } from "redux/movieTheater/movieTheaterSlice";
 import { useSelector } from "react-redux";
@@ -17,12 +17,12 @@ function MovieTheater() {
         <div className="line"></div>
       </div>
 
-      <div className="girdCinema">
-        <div className="cinema">
-          {cinema.data?.map((el) => (
-            <>
-              <img src={el.image}></img>
-              <div className="detail" key={el.id}>
+      <div className="gridCinema">
+        {cinema.data?.map((el) => (
+          <div className="gridCinema__container" key={el.id}>
+            <div className="cinema">
+              <img src={el.image ? el.image : imageDefault}></img>
+              <div className="detail">
                 <h1>{el.name}</h1>
                 <p>{el.address}</p>
                 <div className="star">
@@ -41,9 +41,9 @@ function MovieTheater() {
                   <p className="inLine">{el.phone}</p>
                 </div>
               </div>
-            </>
-          ))}
-        </div>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );
