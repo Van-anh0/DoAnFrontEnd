@@ -21,8 +21,9 @@ function App() {
         <Header />
 
         <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/login" exact element={<Login />} />
+          {/* <Route path="/" exact element={<Home />} /> */}
+          {/* <Route path="/" exact element={<Login />} /> */}
+          <Route path="/" element={<Showtime />} />
           <Route path="/showtime" element={<Showtime />} />
           <Route path="/cinema" element={<Cinema />} />
           <Route path="/introduce" element={<Introduce />} />
