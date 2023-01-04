@@ -42,7 +42,7 @@ function ModalProduct() {
 
   return (
     <div className="product">
-      {listProduct.data?.map((product) => (
+      {listProduct?.data?.map((product) => (
         <div key={product.id} className="product_item">
           <div>ten: {product.name}</div>
           <div>

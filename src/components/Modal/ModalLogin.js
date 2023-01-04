@@ -1,107 +1,59 @@
 import React, { useState } from "react";
-
-//Adding antd modules and style
-import { Modal, Form, Input } from "antd";
-import "antd/dist/antd.css";
-import "./Modal.scss";
-
+import "./ModalLogin.scss";
 import { useDispatch } from "react-redux";
 import { loginAPI } from "redux/user/userSlice";
 
-const ModalLog = () => {
+const ModalLogin = ({ handleClickLogin }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const dispatch = useDispatch();
-  //popup and form code
-  const CollectionCreateForm = ({ visible, onCreate, onCancel }) => {
-    const [form] = Form.useForm();
-    return (
-      <Modal
-        visible={visible}
-        title="Đăng nhập"
-        okText="Đăng nhập"
-        cancelText="Thôi"
-        onCancel={onCancel}
-        onOk={() => {
-          form
-            .validateFields()
-            .then((values) => {
-              form.resetFields();
-              onCreate(values);
-            })
-            .catch((info) => {
-              console.log("Validate Failed:", info);
-            });
-        }}
-      >
-        <Form
-          form={form}
-          layout="vertical"
-          name="form_in_modal"
-          initialValues={{
-            modifier: "public",
-          }}
-        >
-          <Form.Item
-            name="email"
-            label="Email"
-            rules={[
-              {
-                required: true,
-                message: "Hãy nhập email",
-              },
-            ]}
-          >
-            <Input />
-          </Form.Item>
-          <Form.Item
-            name="password"
-            label="Mật khẩu"
-            rules={[
-              {
-                required: true,
-                message: "Hãy nhập password",
-              },
-            ]}
-          >
-            <Input type="password" />
-          </Form.Item>
-        </Form>
-      </Modal>
-    );
+
+  const handleCloseModal = () => {
+    handleClickLogin();
   };
 
-  const CollectionsPage = () => {
-    const [visible, setVisible] = useState(false);
+  const handleEmail = (e) => {
+    setEmail(e.target.value);
+  };
 
-    const handleLogin = (values) => {
-      dispatch(loginAPI(values));
-      setVisible(false);
+  const handlePassword = (e) => {
+    setPassword(e.target.value);
+  };
+
+  const handleLogin = () => {
+    let data = {
+      email: email,
+      password: password,
     };
-
-    return (
-      <div>
-        <button
-          onClick={() => {
-            setVisible(true);
-          }}
-        >
-          Đăng nhập
-        </button>
-        <CollectionCreateForm
-          visible={visible}
-          onCreate={handleLogin}
-          onCancel={() => {
-            setVisible(false);
-          }}
-        />
-      </div>
-    );
+    dispatch(loginAPI(data));
+    handleCloseModal();
   };
   return (
-    <div className="MainDiv">
-      <div className="container">
-        <CollectionsPage />
+    <div className="login">
+      <div className="login_container">
+        <div className="login__close" onClick={() => handleCloseModal()}>
+          X
+        </div>
+        <h1>Modal Login</h1>
+        <div className="login__form">
+          <div className="login__form__group">
+            <input
+              type="email"
+              className="login__form__input"
+              placeholder="Email"
+              onChange={(e) => handleEmail(e)}
+            />
+            <input
+              type="password"
+              className="login__form__input"
+              placeholder="Password"
+              onChange={(e) => handlePassword(e)}
+            />
+            <button onClick={() => handleLogin()}>Đăng nhập</button>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
-export default ModalLog;
+export default ModalLogin;

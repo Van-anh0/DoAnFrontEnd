@@ -73,4 +73,17 @@
       cursor: pointer;
     }
   }
+  .button_back_to_home {
+    margin: 0 auto;
+    width: fit-content;
+    button {
+      cursor: pointer;
+      padding: 10px 30px;
+      border-radius: 5px;
+      color: #fff;
+      background: #4e0045;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  }
 }

@@ -1,48 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./SeatItem.scss";
-import { SEAT_DEFAULT, SEAT_BOOKED, SEAT_CHOOSING } from "utils/constants";
+import { SEAT_AVAILABLE, SEAT_BOOKED, SEAT_CHOOSING } from "utils/constants";
 import { useDispatch } from "react-redux";
 import { addSeat, removeSeat } from "redux/order/orderSlice";
 
 const Seat = (props) => {
   const { seat } = props;
   const seatNumber = seat.row + seat.col;
-  const [seatStatus, setSeatStatus] = useState(props.seat.status);
+  const [seatStatus, setSeatStatus] = useState(SEAT_AVAILABLE);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    setSeatStatus(props.seat.status);
+  }, [props.seat.status]);
+
   const seatClickHandler = () => {
-    if (seatStatus === SEAT_DEFAULT) {
+    if (seatStatus === SEAT_AVAILABLE) {
       setSeatStatus(SEAT_CHOOSING);
       dispatch(addSeat(seat));
     } else {
-      setSeatStatus(SEAT_DEFAULT);
+      setSeatStatus(SEAT_AVAILABLE);
       dispatch(removeSeat(seat));
     }
   };
 
+  const seatClassStatus = "seat " + seatStatus;
   return (
-    <div className="seat">
+    <div className={seatClassStatus} onClick={() => seatClickHandler()}>
       <div className="seat_img">
         <p>{seatNumber}</p>
         <img src="https://cinestar.com.vn/catalog/view/theme/default/images/single-chair.png"></img>
       </div>
     </div>
-    // <div className="colSeat">
-    //   {seatStatus === SEAT_BOOKED ? (
-    //     <div
-    //       className={`seat seat-${seatNumber} ${seatStatus} seat-${seatStatus}`}
-    //     >
-    //       {seatNumber}
-    //     </div>
-    //   ) : (
-    //     <div
-    //       className={`seat seat-${seatNumber} ${seatStatus} seat-${seatStatus}`}
-    //       onClick={() => seatClickHandler()}
-    //     >
-    //       {seatNumber}
-    //     </div>
-    //   )}
-    // </div>
   );
 };
 

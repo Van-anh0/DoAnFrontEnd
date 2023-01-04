@@ -9,25 +9,15 @@ import "./Seat.scss";
 
 import ModalProduct from "components/Modal/ModalProduct";
 
-const GenerateSeats = (seats) => {
-  return (
-    <div className="row">
-      {seats.map((seat) => {
-        return <SeatItem seat={seat} key={seat.id} />;
-      })}
-    </div>
-  );
-};
-
 const Seat = () => {
   const order = useSelector(selectCurrentorder);
   const [showModalProduct, setShowModalProduct] = useState(false);
-  const [seats, setSeats] = useState([]);
+  const [listSeat, setListSeat] = useState([]);
 
   useEffect(() => {
     // hieucn: to do
     seatApi.getListSeat(order.showtime_id).then((result) => {
-      setSeats(result.data);
+      setListSeat(result.data);
     });
   }, [order.showtime_id]);
 
@@ -51,7 +41,11 @@ const Seat = () => {
       </div>
 
       <div className="container movie-layout">
-        <div>{GenerateSeats(seats)}</div>
+        <div className="row">
+          {listSeat.map((seat) => {
+            return <SeatItem seat={seat} key={seat.id} />;
+          })}
+        </div>
       </div>
 
       <div className="ghiChu">
@@ -97,7 +91,7 @@ const Seat = () => {
             </tr>
           ))}
           <tr className="seat__total_header">
-            <th>tổng tiền</th>
+            <th>Tổng tiền</th>
             <th>{order.total}</th>
           </tr>
         </table>
