@@ -16,12 +16,11 @@ function Showtime() {
   const listCinema = useSelector(selectCurrentMovieTheater);
   const dispatch = useDispatch();
 
-  const [day, setDay] = useState();
   const [cinema, setCinema] = useState();
   const [listShowtime, setListShowtime] = useState({});
 
   useEffect(() => {
-    let params = { showtime: day, cinema_id: cinema?.id };
+    let params = {cinema_id: cinema?.id };
     movieApi.getListMovie(params).then((result) => {
       dispatch(actionUpdateMovie(result));
     });
@@ -30,7 +29,7 @@ function Showtime() {
     showtimeApi.getListGroupByMovie().then((res) => {
       setListShowtime(res.data);
     });
-  }, [day, listShowtime, cinema]);
+  }, []);
 
   return (
     <div>
