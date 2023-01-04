@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 import { movieApi, showtimeApi } from "actions";
 import { useDispatch } from "react-redux";
 import { actionUpdateMovie } from "redux/movie/movieSlice";
-
+import BreadcrumbsShowTime from "components/Breadcrumb/BreadcrumbsShowTime";
 import "./Showtime.scss";
 
 function Showtime() {
@@ -20,7 +20,7 @@ function Showtime() {
   const [listShowtime, setListShowtime] = useState({});
 
   useEffect(() => {
-    let params = {cinema_id: cinema?.id };
+    let params = { cinema_id: cinema?.id };
     movieApi.getListMovie(params).then((result) => {
       dispatch(actionUpdateMovie(result));
     });
@@ -46,6 +46,7 @@ function Showtime() {
           );
         })}
       </div>
+      <BreadcrumbsShowTime />
     </div>
   );
 }

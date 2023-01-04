@@ -11,7 +11,7 @@ import { actionUpdateMovieTheater } from "redux/movieTheater/movieTheaterSlice";
 
 import { renameKeys } from "utils/common";
 import { cinemaApi, showtimeApi } from "actions";
-
+import Breadcrumbs from "components/Breadcrumb/BreadcrumbsShowTime";
 function Home() {
   const dispatch = useDispatch();
 
@@ -30,6 +30,7 @@ function Home() {
       <Slider />
       <TabDetail />
       <MovieTheater />
+      <Breadcrumbs />
     </div>
   );
 }
