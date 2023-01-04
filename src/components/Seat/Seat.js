@@ -47,9 +47,11 @@ const Seat = () => {
 
         <div className="container movie-layout">
           <div className="row">
-            {listSeat.map((seat) => {
-              return <SeatItem seat={seat} key={seat.id} />;
-            })}
+            {listSeat.length > 0 ? (
+              listSeat.map((seat) => <SeatItem seat={seat} key={seat.id} />)
+            ) : (
+              <div>Không có ghế trong phòng {order.room_name} này!</div>
+            )}
           </div>
         </div>
 
