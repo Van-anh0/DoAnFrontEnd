@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import "./ModalLogin.scss";
-import { useDispatch } from "react-redux";
-import { loginAPI } from "redux/user/userSlice";
+import "./ModalRegister.scss";
+import "../Modal.scss";
+import { authApi } from "actions";
 
-const ModalLogin = ({ handleClickLogin }) => {
+const ModalRegister = ({ handleClickRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleCloseModal = () => {
-    handleClickLogin();
+    handleClickRegister();
   };
 
   const handleEmail = (e) => {
@@ -20,21 +20,32 @@ const ModalLogin = ({ handleClickLogin }) => {
     setPassword(e.target.value);
   };
 
+  const handleConfirmPassword = (e) => {
+    setConfirmPassword(e.target.value);
+  };
+
   const handleLogin = () => {
+    if (password !== confirmPassword) {
+      alert("Mật khẩu không khớp");
+      return;
+    }
     let data = {
       email: email,
       password: password,
     };
-    dispatch(loginAPI(data));
+    authApi.register(data).then(() => {
+      alert("Đăng ký thành công");
+    });
     handleCloseModal();
   };
+
   return (
-    <div className="login">
-      <div className="login_container">
-        <div className="login__close" onClick={() => handleCloseModal()}>
+    <div className="modal">
+      <div className="modal_container">
+        <div className="modal_close" onClick={() => handleCloseModal()}>
           X
         </div>
-        <h1>Modal Login</h1>
+        <h1>Đăng ký</h1>
         <div className="login__form">
           <div className="login__form__group">
             <input
@@ -49,11 +60,17 @@ const ModalLogin = ({ handleClickLogin }) => {
               placeholder="Password"
               onChange={(e) => handlePassword(e)}
             />
-            <button onClick={() => handleLogin()}>Đăng nhập</button>
+            <input
+              type="password"
+              className="login__form__input"
+              placeholder="confirm_password"
+              onChange={(e) => handleConfirmPassword(e)}
+            />
+            <button onClick={() => handleLogin()}>Đăng ký</button>
           </div>
         </div>
       </div>
     </div>
   );
 };
-export default ModalLogin;
+export default ModalRegister;

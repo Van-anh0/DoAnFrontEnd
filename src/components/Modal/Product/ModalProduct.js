@@ -10,8 +10,9 @@ import {
   selectCurrentorder,
   removeProduct,
 } from "redux/order/orderSlice";
+import "../Modal.scss";
 
-function ModalProduct() {
+function ModalProduct({ handleShowModalProduct }) {
   const listProduct = useSelector(selectCurrentProduct);
   const dispatch = useDispatch();
 
@@ -41,30 +42,37 @@ function ModalProduct() {
   }
 
   return (
-    <div className="product">
-      {listProduct?.data?.map((product) => (
-        <div key={product.id} className="product_item">
-          <div>ten: {product.name}</div>
-          <div>
-            {product.price} / {product.uom}
-          </div>
-          <button
-            onClick={() => {
-              handleRemoveProduct(product);
-            }}
-          >
-            -
-          </button>
-          <input value={orderItem[product.id]?.quantity || 0}></input>
-          <button
-            onClick={() => {
-              handleAddProduct(product);
-            }}
-          >
-            +
-          </button>
+    <div className="modal">
+      <div className="modal_container">
+        <div className="modal_close" onClick={() => handleShowModalProduct()}>
+          X
         </div>
-      ))}
+        <h1>Combo</h1>
+        {listProduct?.data?.map((product) => (
+          <div key={product.id} className="product_item">
+            <div>ten: {product.name}</div>
+            <div>
+              {product.price} / {product.uom}
+            </div>
+            <button
+              onClick={() => {
+                handleRemoveProduct(product);
+              }}
+            >
+              -
+            </button>
+            <input value={orderItem[product.id]?.quantity || 0}></input>
+            <button
+              onClick={() => {
+                handleAddProduct(product);
+              }}
+            >
+              +
+            </button>
+          </div>
+        ))}
+        <button onClick={() => handleShowModalProduct()}>Đóng</button>
+      </div>
     </div>
   );
 }

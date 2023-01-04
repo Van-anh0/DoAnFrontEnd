@@ -83,14 +83,15 @@ export const orderSlice = createSlice({
         order_item: [],
 
         cinema_name: data.cinema_name,
-        room_name: data.room_name,
+        room_name: data.room_name, // todo
+        room_id: data.room_id,
 
         showtime_id: data.showtime_id,
         showtime: data.showtime,
 
-        user_id: "b5ea8f1a-8eb1-461d-a1ff-ed0d2a796cb9",
-        payment_method: "momo",
-        status: "chwa dung cai nay",
+        user_id: data.user_id,
+        payment_method: "CASH",
+        status: "booked", // đã đặt, chưa nhận vé
       };
     },
     addSeat: (state, action) => {
@@ -154,10 +155,6 @@ export const {
   removeProduct,
 } = orderSlice.actions;
 
-// Selectors: mục đích là dành cho các components bên dưới gọi tới nó để lấy dữ liệu từ trong redux store ra sử dụng
-export const selectCurrentUser = (state) => {
-  return state.order.currentOrder;
-};
 // export const selectIsAuthenticated = (state) => {
 //   return state.order.isAuthenticated;
 // };

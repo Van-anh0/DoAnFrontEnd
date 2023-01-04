@@ -14,7 +14,7 @@ function DetailMovie() {
   const listMovie = useSelector(selectCurrentMovie);
 
   const [movie, setMovie] = useState({});
-  const [listMovieTheater, setListMovieTheater] = useState([]);
+  const [listCinema, setListCinema] = useState([]);
   const [showtimes, setShowtimes] = useState([]);
 
   const pathname = useLocation().pathname;
@@ -32,7 +32,7 @@ function DetailMovie() {
     }
 
     cinemaApi.getListCinema(movieId).then((result) => {
-      setListMovieTheater(result.data);
+      setListCinema(result.data);
     });
 
     showtimeApi.getListShowtime(movieId).then((result) => {
@@ -43,7 +43,7 @@ function DetailMovie() {
 
   return (
     <div>
-      <Film movie={movie} listCinema={listMovieTheater} showtimes={showtimes} />
+      <Film movie={movie} listCinema={listCinema} showtimes={showtimes} />
     </div>
   );
 }

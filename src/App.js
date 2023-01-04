@@ -12,7 +12,7 @@ import Introduce from "components/Introduce/Introduce";
 import Seat from "components/Seat/Seat";
 import Cart from "components/Cart/Cart";
 import Header from "components/Header/Header";
-import SearchPage from "components/SearchPage/SearchPage";
+import SearchPage from "components/Search/Search";
 
 function App() {
   return (

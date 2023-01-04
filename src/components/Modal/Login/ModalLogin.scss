@@ -1,0 +1,15 @@
+h1 {
+  text-align: center;
+}
+.login__form {
+  .login__form__group {
+    .login__form__input {
+      border: 1px solid;
+      display: block;
+    }
+    button {
+      display: block;
+      margin: 0 auto;
+    }
+  }
+}

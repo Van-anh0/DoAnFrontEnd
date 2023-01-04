@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "antd/dist/antd.css";
 import MovieItem from "./MovieItem/MovieItem";
 import "./Movie.scss";
@@ -6,32 +6,92 @@ import { MOVIE_STATUS_SHOWING, MOVIE_STATUS_TOSHOW } from "utils/constants";
 import { selectCurrentMovie } from "redux/movie/movieSlice";
 import { useSelector } from "react-redux";
 import { FiChevronLeft, FiChevronRight } from "react-icons/fi";
+import { actionUpdateMovie } from "redux/movie/movieSlice";
+import { useDispatch } from "react-redux";
+import { movieApi } from "actions";
+import { TRANSLATEX, SLIDE_QUANTITY_SHOW, CLICK_BACK } from "utils/constants";
 
 function Movie() {
-  const [status, setStatus] = useState(MOVIE_STATUS_SHOWING);
+  const dispatch = useDispatch();
   const films = useSelector(selectCurrentMovie);
 
-  function handleClickTab(key) {
-    setStatus(key);
+  const [status, setStatus] = useState(MOVIE_STATUS_SHOWING);
+  const [translateX, setTranslateX] = useState(0);
+
+  function handleClickTab(event) {
+    setStatus(event);
   }
+
+  function handleClickBraces(event) {
+    if (event === CLICK_BACK) {
+      if (translateX < 0) {
+        setTranslateX(translateX + TRANSLATEX);
+      }
+    } else {
+      if (
+        translateX >
+        -TRANSLATEX * (films.data.length - SLIDE_QUANTITY_SHOW)
+      ) {
+        setTranslateX(translateX - TRANSLATEX);
+      }
+    }
+  }
+
+  const styles = {
+    transform: `translateX(${translateX}vw)`,
+    transition: "all 0.5s",
+  };
+
+  useEffect(() => {
+    let params = {
+      filter: "status," + status,
+    };
+    movieApi.getListMovie(params).then((res) => {
+      dispatch(actionUpdateMovie(res));
+    });
+  }, [status]);
 
   return (
     <div className="movie">
       <div className="movie_tab">
         <div className="movie_tab__content">
-          <div className="movie_tab__item">Phim đang chiếu</div>
-          <div className="movie_tab__item">Phim sắp chiếu</div>
+          <div
+            className="movie_tab__item"
+            onClick={() => handleClickTab(MOVIE_STATUS_SHOWING)}
+          >
+            Phim đang chiếu
+          </div>
+          <div
+            className="movie_tab__item"
+            onClick={() => handleClickTab(MOVIE_STATUS_TOSHOW)}
+          >
+            Phim sắp chiếu
+          </div>
           <div className="movie_tab__item">Suất chiếu đặc biệt</div>
         </div>
       </div>
       <div className="movie_content">
-        <div className="movie_content__braces">
+        <div
+          className="movie_content__braces"
+          onClick={() => handleClickBraces("back")}
+        >
           <FiChevronLeft />
         </div>
-        {films.data?.map((el) => (
-          <MovieItem status={status} key={el.id} movie={el}/>
-        ))}
-        <div className="movie_content__braces">
+        <div className="movie_content_item">
+          <div className="movie_content_item__list" style={styles}>
+            {films.data.length > 0 ? (
+              films.data?.map((el) => (
+                <MovieItem status={status} key={el.id} movie={el} />
+              ))
+            ) : (
+              <div className="loading">Chưa có phim mới ròi...</div>
+            )}
+          </div>
+        </div>
+        <div
+          className="movie_content__braces"
+          onClick={() => handleClickBraces("move")}
+        >
           <FiChevronRight />
         </div>
       </div>

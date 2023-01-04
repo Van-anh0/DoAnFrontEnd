@@ -52,7 +52,7 @@ export const userSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(loginAPI.fulfilled, (state, action) => {
       const user = action.payload;
-      state.currentUser = user;
+      state.currentUser = user.data;
       state.isAuthenticated = true;
     });
   },

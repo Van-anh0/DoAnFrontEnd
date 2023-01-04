@@ -4,11 +4,13 @@ import icon from "assets/images/ytb2.png";
 import { Link } from "react-router-dom";
 import { trimTime } from "utils/common";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { initOrder } from "redux/order/orderSlice";
+import { selectCurrentUser } from "redux/user/userSlice";
 
 function DetailFilm({ movie, listCinema, showtimes }) {
   const dispatch = useDispatch();
+  const user = useSelector(selectCurrentUser);
 
   const [listDay, setListDay] = useState([]);
   const [day, setDay] = useState();
@@ -21,8 +23,8 @@ function DetailFilm({ movie, listCinema, showtimes }) {
     setCinema(listCinema[0]);
   }, [showtimes]);
 
-  function checkGoToCart(cinema, showtimeId) {
-    if (cinema != null && showtimeId != null) {
+  function checkGoToCart(showtimeId) {
+    if (showtimeId != null) {
       return true;
     }
     return false;
@@ -32,7 +34,7 @@ function DetailFilm({ movie, listCinema, showtimes }) {
     setDay(event.target.value);
   };
 
-  const handleChangeMovieTheater = (event) => {
+  const handleChangeCinema = (event) => {
     setCinema(event.tartget.value);
   };
 
@@ -74,19 +76,31 @@ function DetailFilm({ movie, listCinema, showtimes }) {
         </div>
         <div className="dateTime">
           <div className="cinemas">
-            <select onChange={handleChangeMovieTheater}>
-              {listCinema?.map((cinema) => (
-                <option key={cinema.id}>
+            <select onChange={handleChangeCinema}>
+              {listCinema.length > 0 ? (
+                listCinema?.map((cinema) => (
+                  <option key={cinema.id}>
+                    <div>
+                      <div>{cinema?.name}</div>
+                    </div>
+                  </option>
+                ))
+              ) : (
+                <option>
                   <div>
-                    <div>{cinema?.name}</div>
+                    <div>Không tìm thấy rạp</div>
                   </div>
                 </option>
-              ))}
+              )}
             </select>
             <select onChange={handleChangeDay} value={day}>
-              {listDay.map((dateTime, index) => (
-                <option key={index}>{dateTime}</option>
-              ))}
+              {listDay.length > 0 ? (
+                listDay.map((dateTime, index) => (
+                  <option key={index}>{dateTime}</option>
+                ))
+              ) : (
+                <option>Không có ngày chiếu</option>
+              )}
             </select>
           </div>
           <div className="detailFilm__time">
@@ -104,6 +118,11 @@ function DetailFilm({ movie, listCinema, showtimes }) {
 
                     showtime_id: showtime.id,
                     showtime: showtime.showtime,
+
+                    room_id: showtime.room_id,
+                    room_name: showtime.room_name,
+
+                    user_id: user.id,
                   })
                 }
                 className={
@@ -127,9 +146,7 @@ function DetailFilm({ movie, listCinema, showtimes }) {
 
           <Link
             to={"/seat"}
-            className={
-              checkGoToCart(cinema, showtimeId) ? "" : "disabled"
-            }
+            className={checkGoToCart(showtimeId) ? "" : "disabled"}
           >
             <div className="b">Mua vé</div>
           </Link>

@@ -5,8 +5,8 @@ import { updateSearch } from "redux/search/searchSlice";
 import { selectIsAuthenticated, logout } from "redux/user/userSlice";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import ModalLogin from "components/Modal/ModalLogin";
-import ModalRegister from "components/Modal/ModalRegister";
+import ModalLogin from "components/Modal/Login/ModalLogin";
+import ModalRegister from "components/Modal/Register/ModalRegister";
 
 function Header() {
   const [showModalLogin, setShowModalLogin] = useState(false);
@@ -34,8 +34,16 @@ function Header() {
 
   return (
     <div className="header">
-      {showModalLogin ? <ModalLogin handleClickLogin={handleClickLogin}/> : <></>}
-      {showModalRegister ? <ModalRegister /> : <></>}
+      {showModalLogin ? (
+        <ModalLogin handleClickLogin={handleClickLogin} />
+      ) : (
+        <></>
+      )}
+      {showModalRegister ? (
+        <ModalRegister handleClickRegister={handleClickRegister} />
+      ) : (
+        <></>
+      )}
       <div className="nav">
         <div className="header_top">
           <div className="header_top__search">
