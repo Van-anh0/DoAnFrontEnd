@@ -17,5 +17,17 @@ const showtimeApi = {
     );
     return request.data;
   },
+  getListGroupByMovie: async () => {
+    let param = {
+      sort: "showtime",
+    };
+    const request = await authorizedAxiosInstance.get(
+      `${API_ROOT_GOLANG}/api/v1/show/get-list-group-movie`,
+      {
+        params: param,
+      }
+    );
+    return request.data;
+  },
 };
 export default showtimeApi;

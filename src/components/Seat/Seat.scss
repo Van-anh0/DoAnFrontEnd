@@ -1,6 +1,6 @@
 .movie-complex {
   background-color: rgb(250, 250, 250);
-
+  margin-top: 140px;
   padding-bottom: 3%;
 
   .nd {
@@ -21,7 +21,6 @@
       flex-direction: row;
       align-items: flex-end;
       justify-content: center;
-      margin-top: 140px;
       p {
         font-size: 25px;
         border: 1px solid snow;
@@ -117,14 +116,20 @@
     justify-content: center;
     button {
       border-radius: 0 25% 0 25%;
-      margin-right: 50px;
+      margin-right: 45px;
       background-color: #f3751f;
       color: white;
       font-size: 20px;
       font-weight: bold;
+      min-width: 200px;
+      min-height: 50px;
       cursor: pointer;
       padding: 12px 30px;
       text-transform: uppercase;
+    }
+    .disabled {
+      cursor: not-allowed;
+      background-color: #00000073;
     }
   }
 }

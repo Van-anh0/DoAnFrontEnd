@@ -41,7 +41,7 @@ function MovieItem(props) {
         <p>{movie.name}</p>
         <p className="movie_item__text_rated">({movie.rated})</p>
         <div className="movie_item__text_category">
-          <p>{movie.ticket}</p>
+          <p>{movie.ticket ? movie.ticket : "2D"}</p>
         </div>
       </div>
     </Link>

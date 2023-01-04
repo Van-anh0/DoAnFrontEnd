@@ -1,16 +1,29 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { trimTime } from "utils/common";
 import { Link } from "react-router-dom";
 import "./MovieItem.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { initOrder } from "redux/order/orderSlice";
+import { selectCurrentUser } from "redux/user/userSlice";
 
-function MovieItem(props) {
+function MovieItem({ movie, listShowtime, listCinema }) {
   const dispatch = useDispatch();
-  const { movie, listShowtime, listDay, cinema } = props;
+  const user = useSelector(selectCurrentUser);
+
+  const [listDay, setListDay] = useState([]);
   const setShowtimeToOrder = (data) => {
     dispatch(initOrder(data));
   };
+
+  useEffect(() => {
+    if (listShowtime) {
+      setListDay(Object.keys(listShowtime));
+    }
+  }, [listShowtime]);
+
+  function findCinema(id) {
+    return listCinema?.data.find((item) => item.id === id);
+  }
 
   return (
     <div className="showtime">
@@ -24,7 +37,7 @@ function MovieItem(props) {
           </p>
           <p>{movie.spoil}</p>
           <div className="showtime__content_text_category">
-            <span>{movie.ticket}</span>
+            <span>{movie.ticket ? movie.ticket : "2D"}</span>
           </div>
         </div>
       </Link>
@@ -48,10 +61,15 @@ function MovieItem(props) {
 
                             show_seat: [],
                             order_item: [],
-                            cinema_name: cinema?.name,
+                            cinema_name: findCinema(showtime.cinema_id)?.name,
 
                             showtime_id: showtime.id,
                             showtime: showtime.showtime,
+
+                            room_id: showtime.room_id,
+                            room_name: showtime.room_name,
+
+                            user_id: user.id,
                           })
                         }
                       >
