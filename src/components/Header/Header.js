@@ -21,6 +21,12 @@ function Header() {
   const dispatch = useDispatch();
   const [search, setSearch] = useState([]);
 
+  const [isItem, setIsItem] = useState("home");
+
+  function handleOnClick(item) {
+    setIsItem(item);
+  }
+
   useEffect(() => {
     // get 5 item search
     if (currentSearch?.data) {
@@ -57,7 +63,6 @@ function Header() {
   function handleClickUser() {
     alert("Bạn đã đăng nhập");
     // redirect to user page
-    
   }
 
   return (
@@ -130,13 +135,21 @@ function Header() {
           </div>
           <div className="header_bot__menu">
             <div className="header_bot__home">
-              <Link to="/">
+              <Link
+                to="/"
+                onClick={() => handleOnClick("home")}
+                className={isItem === "home" ? "active_light" : ""}
+              >
                 <FaHome />
               </Link>
             </div>
             <div className="header_bot__nav">
               <ul>
-                <Link className="li" to="/">
+                <Link
+                  to="/"
+                  onClick={() => handleOnClick("phim")}
+                  className={isItem === "phim" ? "li active_light" : "li"}
+                >
                   Phim
                 </Link>
                 <Link className="li" to="/showtime">
