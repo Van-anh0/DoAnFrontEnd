@@ -5,6 +5,7 @@ import authorizedAxiosInstance from "utils/customAxios";
 const initialState = {
   currentUser: null,
   isAuthenticated: false,
+  isLoginModalOpen: false,
 };
 
 export const loginAPI = createAsyncThunk("user/loginAPI", async (data) => {
