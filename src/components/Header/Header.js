@@ -21,7 +21,7 @@ function Header() {
   const dispatch = useDispatch();
   const [search, setSearch] = useState([]);
 
-  const [isItem, setIsItem] = useState("home");
+  const [isItem, setIsItem] = useState("phim");
 
   function handleOnClick(item) {
     setIsItem(item);
@@ -131,15 +131,13 @@ function Header() {
         </div>
         <div className="header_bot">
           <div className="header_bot__logo">
-            <img src="https://cinestar.com.vn/pictures/moi/9Logo/white-2018.png"></img>
+            <Link to="/">
+              <img src="https://cinestar.com.vn/pictures/moi/9Logo/white-2018.png"></img>
+            </Link>
           </div>
           <div className="header_bot__menu">
             <div className="header_bot__home">
-              <Link
-                to="/"
-                onClick={() => handleOnClick("home")}
-                className={isItem === "home" ? "active_light" : ""}
-              >
+              <Link to="/">
                 <FaHome />
               </Link>
             </div>
@@ -148,75 +146,68 @@ function Header() {
                 <Link
                   to="/"
                   onClick={() => handleOnClick("phim")}
-                  className={isItem === "phim" ? "li active_light" : "li"}
+                  className={isItem === "phim" ? "li-active" : "li-not-active"}
                 >
                   Phim
                 </Link>
                 <Link
                   to="/showtime"
+                  onClick={() => handleOnClick("lichchieu")}
                   className={
-                    location.pathname.startsWith("/showtime")
-                      ? "li-active"
-                      : "li-not-active"
+                    isItem === "lichchieu" ? "li-active" : "li-not-active"
                   }
                 >
                   Lịch chiếu
                 </Link>
                 <Link
-                  className={
-                    location.pathname === "/cinema"
-                      ? "li-active"
-                      : "li-not-active"
-                  }
                   to="/cinema"
+                  onClick={() => handleOnClick("rapvagia")}
+                  className={
+                    isItem === "rapvagia" ? "li-active" : "li-not-active"
+                  }
                 >
                   Rạp và giá
                 </Link>
                 <Link
+                  onClick={() => handleOnClick("khuyenmai")}
                   className={
-                    location.pathname === "/promotion"
-                      ? "li-active"
-                      : "li-not-active"
+                    isItem === "khuyenmai" ? "li-active" : "li-not-active"
                   }
                   to="/promotion"
                 >
                   Khuyến mãi
                 </Link>
                 <Link
+                  onClick={() => handleOnClick("hoivadap")}
                   className={
-                    location.pathname === "/question"
-                      ? "li-active"
-                      : "li-not-active"
+                    isItem === "hoivadap" ? "li-active" : "li-not-active"
                   }
                   to="/question"
                 >
                   Hỏi và đáp
                 </Link>
                 <Link
+                  onClick={() => handleOnClick("tintuc")}
                   className={
-                    location.pathname === "/newfeed"
-                      ? "li-active"
-                      : "li-not-active"
+                    isItem === "tintuc" ? "li-active" : "li-not-active"
                   }
                   to="/newfeed"
                 >
                   Tin tức
                 </Link>
                 <Link
+                  onClick={() => handleOnClick("gioithieu")}
                   className={
-                    location.pathname === "/introduce"
-                      ? "li-active"
-                      : "li-not-active"
+                    isItem === "gioithieu" ? "li-active" : "li-not-active"
                   }
                   to="/introduce"
                 >
                   Giới thiệu
                 </Link>
                 <Link
+                  onClick={() => handleOnClick("lienhe")}
                   className={
-                    location.pathname === "/contact"
-                      ? "li-active"
-                      : "li-not-active"
+                    isItem === "lienhe" ? "li-active" : "li-not-active"
                   }
                   to="/contact"
                 >

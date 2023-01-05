@@ -18,8 +18,18 @@ function Movie() {
   const [status, setStatus] = useState(MOVIE_STATUS_SHOWING);
   const [translateX, setTranslateX] = useState(0);
 
+  const [isItem, setIsItem] = useState("dangchieu");
+
+  function handleOnClickMoveTab(item) {
+    setIsItem(item);
+  }
   function handleClickTab(event) {
     setStatus(event);
+  }
+
+  function handleAll(item, event) {
+    handleOnClickMoveTab(item);
+    handleClickTab(event);
   }
 
   function handleClickBraces(event) {
@@ -56,18 +66,26 @@ function Movie() {
       <div className="movie_tab">
         <div className="movie_tab__content">
           <div
-            className="movie_tab__item"
-            onClick={() => handleClickTab(MOVIE_STATUS_SHOWING)}
+            onClick={() => handleAll("dangchieu", MOVIE_STATUS_SHOWING)}
+            className={
+              isItem === "dangchieu"
+                ? "movie_tab__item_active"
+                : "movie_tab__item_not_active"
+            }
           >
             Phim đang chiếu
           </div>
           <div
-            className="movie_tab__item"
-            onClick={() => handleClickTab(MOVIE_STATUS_TOSHOW)}
+            onClick={() => handleAll("sapchieu", MOVIE_STATUS_TOSHOW)}
+            className={
+              isItem === "sapchieu"
+                ? "movie_tab__item_active"
+                : "movie_tab__item_not_active"
+            }
           >
             Phim sắp chiếu
           </div>
-          <div className="movie_tab__item">Suất chiếu đặc biệt</div>
+          <div className="movie_tab__item_not_active">Suất chiếu đặc biệt</div>
         </div>
       </div>
       <div className="movie_content">

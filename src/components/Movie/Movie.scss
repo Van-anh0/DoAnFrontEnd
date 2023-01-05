@@ -9,7 +9,26 @@
       margin: auto;
       max-width: fit-content;
       border-radius: 30px;
-      .movie_tab__item {
+      .movie_tab__item_active{
+        text-align: center;
+        font-size: 30px;
+        text-transform: uppercase;
+        font-weight: bold;
+        border-right: 8px solid #d8791d;
+        background: #fecf06;
+        padding: 10px 30px;
+        border-radius: 0 30px 30px 0;
+        
+        cursor: pointer;
+        &:first-child {
+          border-radius: 20px 30px 30px 0;
+        }
+        &:last-child {
+          border-radius: 0 20px 0 0;
+          border: none;
+        }
+      }
+      .movie_tab__item_not_active{
         text-align: center;
         font-size: 30px;
         text-transform: uppercase;

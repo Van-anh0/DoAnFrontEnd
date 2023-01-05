@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { seatApi } from "actions";
 import { useSelector } from "react-redux";
 import { selectCurrentorder } from "redux/order/orderSlice";
-
 import SeatItem from "./SeatItem/SeatItem";
-import "./Seat.scss";
 
+import "./Seat.scss";
 import ModalProduct from "components/Modal/Product/ModalProduct";
 import { trimDate, trimTime } from "utils/common";
 
@@ -14,6 +13,8 @@ const Seat = () => {
   const order = useSelector(selectCurrentorder);
   const [showModalProduct, setShowModalProduct] = useState(false);
   const [listSeat, setListSeat] = useState([]);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     seatApi.getListSeat(order.showtime_id, order.room_id).then((result) => {
@@ -45,7 +46,7 @@ const Seat = () => {
           <p>MÀN HÌNH</p>
         </div>
 
-        <div className="container movie-layout">
+        <div className="container-movie-layout">
           <div className="row">
             {listSeat.length > 0 ? (
               listSeat.map((seat) => <SeatItem seat={seat} key={seat.id} />)
@@ -72,40 +73,43 @@ const Seat = () => {
         </div>
 
         <div className="seat__total">
-          <table>
-            <tr className="seat__total_header">
-              <th>Loại ghế</th>
-              <th>Số ghế</th>
-              <th>Giá (VNĐ)</th>
-            </tr>
-            {order.show_seat?.map((showSeat) => (
-              <tr className="seat__total_body" key={showSeat.seat_id}>
-                <th>{showSeat.seat_name}</th>
-                <th>{showSeat.row + showSeat.col}</th>
-                <th>{showSeat.price}đ</th>
+          <div className="seat_table">
+            <table>
+              <tr className="seat__total_header">
+                <th>Loại ghế</th>
+                <th>Số ghế</th>
+                <th>Giá (VNĐ)</th>
               </tr>
-            ))}
-            <tr className="seat__total_header">
-              <th>Combo</th>
-              <th>Số lượng</th>
-              <th>Giá (VNĐ)</th>
-            </tr>
-            {order.order_item?.map((orderItem) => (
-              <tr className="seat__total_body" key={orderItem.product_id}>
-                <th>{orderItem.product_name}</th>
-                <th>{orderItem.quantity}</th>
-                <th>{orderItem.price}đ</th>
+              {order.show_seat?.map((showSeat) => (
+                <tr className="seat__total_body" key={showSeat.seat_id}>
+                  <th>{showSeat.seat_name}</th>
+                  <th>{showSeat.row + showSeat.col}</th>
+                  <th>{showSeat.price}đ</th>
+                </tr>
+              ))}
+              <tr className="seat__total_header">
+                <th>Combo</th>
+                <th>Số lượng</th>
+                <th>Giá (VNĐ)</th>
               </tr>
-            ))}
-            <tr className="seat__total_header">
-              <th>Tổng tiền</th>
-              <th>{order.total}</th>
-            </tr>
-          </table>
+              {order.order_item?.map((orderItem) => (
+                <tr className="seat__total_body" key={orderItem.product_id}>
+                  <th>{orderItem.product_name}</th>
+                  <th>{orderItem.quantity}</th>
+                  <th>{orderItem.price}đ</th>
+                </tr>
+              ))}
+              <tr className="seat__total_header">
+                <th>Tổng tiền</th>
+                <th></th>
+                <th>{order.total}đ</th>
+              </tr>
+            </table>
+          </div>
         </div>
 
         <div className="movie-button">
-          <button>Quay lại</button>
+          <button onClick={() => navigate(-1)}>Quay lại</button>
           <button onClick={handleShowModalProduct}>Chọn đồ ăn</button>
           <Link to={order?.show_seat.length > 0 ? "/cart" : ""}>
             <button className={order?.show_seat.length > 0 ? "" : "disabled"}>

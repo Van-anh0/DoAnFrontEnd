@@ -83,6 +83,7 @@ export const orderSlice = createSlice({
         order_item: [],
 
         cinema_name: data.cinema_name,
+
         room_name: data.room_name, // todo
         room_id: data.room_id,
 

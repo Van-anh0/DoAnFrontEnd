@@ -10,7 +10,7 @@ import {
   selectCurrentorder,
   removeProduct,
 } from "redux/order/orderSlice";
-import "../Modal.scss";
+import "./ModalProduct.scss";
 
 function ModalProduct({ handleShowModalProduct }) {
   const listProduct = useSelector(selectCurrentProduct);
@@ -47,31 +47,36 @@ function ModalProduct({ handleShowModalProduct }) {
         <div className="modal_close" onClick={() => handleShowModalProduct()}>
           X
         </div>
-        <h1>Combo</h1>
-        {listProduct?.data?.map((product) => (
-          <div key={product.id} className="product_item">
-            <div>ten: {product.name}</div>
-            <div>
-              {product.price} / {product.uom}
+
+        <div className="combo">
+          <h1>Combo</h1>
+          {listProduct?.data?.map((product) => (
+            <div key={product.id} className="product_item">
+              <div>Tên sản phẩm: {product.name}</div>
+              <div>
+                Giá: {product.price}đ / {product.uom}
+              </div>
+              <button
+                onClick={() => {
+                  handleRemoveProduct(product);
+                }}
+              >
+                -
+              </button>
+              <input value={orderItem[product.id]?.quantity || 0}></input>
+              <button
+                onClick={() => {
+                  handleAddProduct(product);
+                }}
+              >
+                +
+              </button>
             </div>
-            <button
-              onClick={() => {
-                handleRemoveProduct(product);
-              }}
-            >
-              -
-            </button>
-            <input value={orderItem[product.id]?.quantity || 0}></input>
-            <button
-              onClick={() => {
-                handleAddProduct(product);
-              }}
-            >
-              +
-            </button>
-          </div>
-        ))}
-        <button onClick={() => handleShowModalProduct()}>Đóng</button>
+          ))}
+          <button className="bt_close" onClick={() => handleShowModalProduct()}>
+            Đóng
+          </button>
+        </div>
       </div>
     </div>
   );

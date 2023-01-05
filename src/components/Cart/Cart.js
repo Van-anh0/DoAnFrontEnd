@@ -1,6 +1,6 @@
 import React from "react";
 import "./Cart.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { selectCurrentorder } from "redux/order/orderSlice";
@@ -12,6 +12,8 @@ import { trimDate, trimTime } from "utils/common";
 function Cart() {
   const order = useSelector(selectCurrentorder);
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const handleCreateOrder = () => {
     orderApi.createOrder(order).then(() => {
@@ -26,7 +28,6 @@ function Cart() {
         <div className="tt">
           Cảm ơn quý khách đã đến Cinestar!
           <br />
-          Xin quý khách vui lòng kiểm tra lại thông tin đặt vé
         </div>
 
         {order?.total ? (
@@ -41,11 +42,12 @@ function Cart() {
               </div>
             </div>
             <div className="dsghe">
-              {order.show_seat?.map((orderItem, index) => (
+              {order.show_seat?.map((item, index) => (
                 <div className="ghe" key={index}>
                   <p>Ghế</p>
-                  <p>{orderItem.seat_name}</p>
-                  <p>{orderItem.price}đ</p>
+                  <p>{item.seat_name}</p>
+                  <p>{item.row + item.col}</p>
+                  <p>{item.price}đ</p>
                 </div>
               ))}
             </div>
@@ -76,12 +78,21 @@ function Cart() {
             Quay lại trang chủ
           </Link>
 
-          <div
-            className={order?.show_seat.length > 0 ? "thanhtoan" : "disabled"}
-            onClick={() => handleCreateOrder()}
-          >
-            Thanh toán
-          </div>
+          {order ? (
+            <div className="gr_tt">
+              <div className="thanhtoan" onClick={() => navigate(-1)}>
+                Quay lại
+              </div>
+              <div
+                className={order?.show_seat.length > 0 ? "thanhtoan" : ""}
+                onClick={() => handleCreateOrder()}
+              >
+                Thanh toán
+              </div>
+            </div>
+          ) : (
+            <div></div>
+          )}
         </div>
       </div>
     </div>
