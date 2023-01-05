@@ -1,22 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../Header/Header.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { updateSearch } from "redux/search/searchSlice";
+import { getListMovie } from "redux/search/searchSlice";
 import { selectIsAuthenticated, logout } from "redux/user/userSlice";
 import { FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ModalLogin from "components/Modal/Login/ModalLogin";
 import ModalRegister from "components/Modal/Register/ModalRegister";
+import {
+  selectCurrentSearch,
+  clearCurrentSearch,
+} from "redux/search/searchSlice";
 
 function Header() {
   const [showModalLogin, setShowModalLogin] = useState(false);
   const [showModalRegister, setShowModalRegister] = useState(false);
 
   const isAuthenticated = useSelector(selectIsAuthenticated);
+  const currentSearch = useSelector(selectCurrentSearch);
   const dispatch = useDispatch();
+  const [search, setSearch] = useState([]);
 
-  const handleChangeSearchText = (e) => {
-    dispatch(updateSearch(e.target.value));
+  useEffect(() => {
+    // get 5 item search
+    if (currentSearch?.data) {
+      setSearch(currentSearch?.data.slice(0, 5));
+    } else {
+      setSearch([]);
+    }
+  }, [currentSearch]);
+
+  const handleChangeSearch = (e) => {
+    dispatch(getListMovie(e.target.value));
   };
 
   function handleLogout() {
@@ -30,6 +45,19 @@ function Header() {
 
   function handleClickRegister() {
     setShowModalRegister(!showModalRegister);
+  }
+
+  function handleBlurSearch(e) {
+    setTimeout(() => {
+      dispatch(clearCurrentSearch());
+      e.target.value = "";
+    }, 100);
+  }
+
+  function handleClickUser() {
+    alert("Bạn đã đăng nhập");
+    // redirect to user page
+    
   }
 
   return (
@@ -47,7 +75,28 @@ function Header() {
       <div className="nav">
         <div className="header_top">
           <div className="header_top__search">
-            <input placeholder="Tìm kiếm..."></input>
+            <input
+              placeholder="Tìm kiếm..."
+              onChange={handleChangeSearch}
+              onBlur={handleBlurSearch}
+            ></input>
+            <div className="header_top__search__result">
+              {search.length > 0 ? (
+                search.map((item) => (
+                  <div
+                    className="header_top__search__result__item"
+                    key={item.id}
+                  >
+                    <Link to={`detail/${item.id}`}>
+                      <img src={item.poster}></img>
+                      <span>{item.name}</span>
+                    </Link>
+                  </div>
+                ))
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
           {!isAuthenticated ? (
             <>
@@ -61,8 +110,8 @@ function Header() {
           ) : (
             <>
               <div className="header_top__button">
-                <span>
-                  <img src="https://khoinguonsangtao.vn/wp-content/uploads/2022/06/avatar-facebook-nu-tao-ky-hieu-tay-1.png"></img>
+                <span className="avatar" onClick={handleClickUser}>
+                  <img src="https://scontent.fsgn4-1.fna.fbcdn.net/v/t39.30808-6/321111373_1769554636747797_6242647642096016605_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kaNjEqRp9hAAX9edQCI&tn=ut3sBwZ13JhnDsNk&_nc_ht=scontent.fsgn4-1.fna&oh=00_AfDY2fG6cKe_VWzGdXLC2GOBYs9IZKnPVwXAM4LpwfWg2Q&oe=63B8900F"></img>
                 </span>
               </div>
               <div className="header_top__button">
