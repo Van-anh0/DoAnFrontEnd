@@ -42,6 +42,8 @@ const ModalRegister = ({ handleClickRegister }) => {
   return (
     <div className="modal">
       <div className="modal_container">
+        <div className="modal_bg">
+
         <div className="modal_close" onClick={() => handleCloseModal()}>
           X
         </div>
@@ -68,6 +70,7 @@ const ModalRegister = ({ handleClickRegister }) => {
             />
             <button onClick={() => handleLogin()}>Đăng ký</button>
           </div>
+        </div>
         </div>
       </div>
     </div>

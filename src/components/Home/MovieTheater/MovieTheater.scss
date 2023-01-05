@@ -16,37 +16,32 @@
     font-weight: bold;
     color: white;
   }
-  .line {
-    width: 50%;
-    height: 2px;
-    margin-top: 1rem;
-    background-color: white;
-  }
+
 }
 
 .gridCinema {
   display: flex;
-  padding: 60px 60px;
+  padding: 80px 80px;
   justify-content: center;
   flex-wrap: wrap;
+  background: var(--color-violet);
 
   .gridCinema__container {
-    padding: 15px 20px;
-    border: 5px solid #71336a;
-    background: #ffffff;
-    border-radius: 10% 0 10% 0;
+   
     margin: 0 30px 30px;
-    flex: 1 1 0;
+    flex: 1;
 
     .cinema {
+      
       display: flex;
       padding: 10px 20px;
-      background-color: #401139;
+      background-color: var(--color-violet);
       height: 100%;
+      align-items: center;
 
       img {
-        height: 150px;
-        width: 150px;
+        height: 200px;
+        width: 200px;
         border: 2px solid #fff;
         border-radius: 50%;
       }

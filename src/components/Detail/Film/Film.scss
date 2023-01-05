@@ -87,6 +87,7 @@
       .cinemas {
         padding-bottom: 2%;
         background-color: #f88424;
+        
         select {
           cursor: pointer;
           font-size: 20px;
@@ -162,7 +163,8 @@
         align-items: center;
         padding-left: 5%;
         margin: 10px;
-        a {
+        p {
+          padding-top: 10%;
           color: rgba(255, 255, 255, 0.9);
         }
 
