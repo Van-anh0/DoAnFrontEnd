@@ -5,9 +5,10 @@ import BreadcrumbCinema from "components/Breadcrumb/BreadcrumbCinema";
 function Cinema() {
   return (
     <div>
+      <BreadcrumbCinema/>
       <Slider />
       <Price />
-      <BreadcrumbCinema/>
+      
     </div>
   );
 }

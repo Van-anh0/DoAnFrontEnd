@@ -33,6 +33,7 @@ function Showtime() {
 
   return (
     <div>
+       <BreadcrumbsShowTime />
       <Slider />
       <div className="showtime_container">
         {listMovie?.data.map((movie) => {
@@ -46,7 +47,7 @@ function Showtime() {
           );
         })}
       </div>
-      <BreadcrumbsShowTime />
+     
     </div>
   );
 }
