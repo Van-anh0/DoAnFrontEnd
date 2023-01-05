@@ -1,0 +1,20 @@
+.bg_bc{
+  margin-top: 140px;
+  background-color: var(--color-violet);
+  padding-left: 20px;
+
+  .breadcrumb-not-active {
+   
+    color: #cccccc;
+  }
+      
+  .breadcrumb-active {
+    color: white;
+  }
+      
+  .breadcrumb-arrow {
+    color: #cccccc;
+      margin-left: 10px;
+     margin-right: 10px;
+  }
+}

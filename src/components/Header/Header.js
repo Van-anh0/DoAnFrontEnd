@@ -62,7 +62,7 @@ function Header() {
             <>
               <div className="header_top__button">
                 <span>
-                  <img src="https://scontent.fsgn4-1.fna.fbcdn.net/v/t39.30808-6/321111373_1769554636747797_6242647642096016605_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kaNjEqRp9hAAX9edQCI&tn=ut3sBwZ13JhnDsNk&_nc_ht=scontent.fsgn4-1.fna&oh=00_AfDY2fG6cKe_VWzGdXLC2GOBYs9IZKnPVwXAM4LpwfWg2Q&oe=63B8900F"></img>
+                  <img src="https://khoinguonsangtao.vn/wp-content/uploads/2022/06/avatar-facebook-nu-tao-ky-hieu-tay-1.png"></img>
                 </span>
               </div>
               <div className="header_top__button">

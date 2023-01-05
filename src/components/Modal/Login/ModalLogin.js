@@ -32,25 +32,27 @@ const ModalLogin = ({ handleClickLogin }) => {
   return (
     <div className="modal">
       <div className="modal_container">
-        <div className="modal_close" onClick={() => handleCloseModal()}>
-          X
-        </div>
-        <h1>Đăng nhập</h1>
-        <div className="login__form">
-          <div className="login__form__group">
-            <input
-              type="email"
-              className="login__form__input"
-              placeholder="Email"
-              onChange={(e) => handleEmail(e)}
-            />
-            <input
-              type="password"
-              className="login__form__input"
-              placeholder="Password"
-              onChange={(e) => handlePassword(e)}
-            />
-            <button onClick={() => handleLogin()}>Đăng nhập</button>
+        <div className="modal_bg">
+          <div className="modal_close" onClick={() => handleCloseModal()}>
+            X
+          </div>
+          <h1>Đăng nhập</h1>
+          <div className="login__form">
+            <div className="login__form__group">
+              <input
+                type="email"
+                className="login__form__input"
+                placeholder="Email"
+                onChange={(e) => handleEmail(e)}
+              />
+              <input
+                type="password"
+                className="login__form__input"
+                placeholder="Password"
+                onChange={(e) => handlePassword(e)}
+              />
+              <button onClick={() => handleLogin()}>Đăng nhập</button>
+            </div>
           </div>
         </div>
       </div>
