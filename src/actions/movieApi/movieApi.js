@@ -10,7 +10,6 @@ const movieApi = {
       `${API_ROOT_GOLANG}/api/v1/movie/get-list`,
       params
     );
-
     return request.data;
   },
 
