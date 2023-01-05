@@ -58,33 +58,24 @@
       }
     }
 
-    .thanhtoan {
-      margin-left: 35%;
-      width: 200px;
-      height: 50px;
-      background-color: var(--color-violet);
-      color: white;
-      font-size: 25px;
-      font-weight: bold;
-      text-align: center;
-      padding-top: 5px;
-      border-radius: 25% 0 25% 0;
-      cursor: pointer;
+    .button_tt{
+      display: flex;
+      .thanhtoan {
+        
+        width: 220px;
+        height: 50px;
+        background-color: var(--color-violet);
+        color: white;
+        font-size: 20px;
+        font-weight: bold;
+        text-align: center;
+        padding-top: 7px;
+        border-radius: 25% 0 25% 0;
+        cursor: pointer;
+        margin: 20px;
+      }
     }
+    
   }
-  .button_back_to_home {
-    margin: 0 auto;
-    width: fit-content;
-    button {
-      cursor: pointer;
-      padding: 10px 30px;
-      border-radius: 5px;
-      color: #fff;
-      background: #4e0045;
-      text-transform: uppercase;
-      font-weight: bold;
-      min-width: 300px;
-      min-height: 45px;
-    }
-  }
+  
 }

@@ -71,16 +71,17 @@ function Cart() {
           <div></div>
         )}
 
-        <div
-          className={order?.show_seat.length > 0 ? "thanhtoan" : "disabled"}
-          onClick={() => handleCreateOrder()}
-        >
-          Thanh toán
-        </div>
-        <div className="button_back_to_home">
-          <Link to={"/"}>
-            <button>Quay lại trang chủ</button>
+        <div className="button_tt">
+          <Link to={"/"} className="thanhtoan">
+            Quay lại trang chủ
           </Link>
+
+          <div
+            className={order?.show_seat.length > 0 ? "thanhtoan" : "disabled"}
+            onClick={() => handleCreateOrder()}
+          >
+            Thanh toán
+          </div>
         </div>
       </div>
     </div>

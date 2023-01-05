@@ -13,6 +13,8 @@ import Seat from "components/Seat/Seat";
 import Cart from "components/Cart/Cart";
 import Header from "components/Header/Header";
 import SearchPage from "components/Search/Search";
+import PromotionPage from "components/Promotion/promotion";
+import UpdatePage from "components/UpdatePage/UpdatePage";
 
 function App() {
   return (
@@ -29,6 +31,10 @@ function App() {
           <Route path="/seat" element={<Seat />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/search" element={<SearchPage />} />
+          <Route path="/promotion" element={<PromotionPage />} />
+          <Route path="/question" element={<UpdatePage />} />
+          <Route path="/newfeed" element={<UpdatePage />} />
+          <Route path="/contact" element={<UpdatePage />} />
         </Routes>
 
         <Footer />

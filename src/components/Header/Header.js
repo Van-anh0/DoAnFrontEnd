@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListMovie } from "redux/search/searchSlice";
 import { selectIsAuthenticated, logout } from "redux/user/userSlice";
 import { FaHome } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import ModalLogin from "components/Modal/Login/ModalLogin";
 import ModalRegister from "components/Modal/Register/ModalRegister";
 import {
@@ -57,7 +57,6 @@ function Header() {
   function handleClickUser() {
     alert("Bạn đã đăng nhập");
     // redirect to user page
-    
   }
 
   return (
@@ -136,28 +135,77 @@ function Header() {
             </div>
             <div className="header_bot__nav">
               <ul>
-                <Link className="li" to="/">
+                <Link className={"li-not-active"} to="/">
                   Phim
                 </Link>
-                <Link className="li" to="/showtime">
+                <Link
+                  to="/showtime"
+                  className={
+                    location.pathname.startsWith("/showtime")
+                      ? "li-active"
+                      : "li-not-active"
+                  }
+                >
                   Lịch chiếu
                 </Link>
-                <Link className="li" to="/cinema">
+                <Link
+                  className={
+                    location.pathname === "/cinema"
+                      ? "li-active"
+                      : "li-not-active"
+                  }
+                  to="/cinema"
+                >
                   Rạp và giá
                 </Link>
-                <Link className="li" to="/promotion">
+                <Link
+                  className={
+                    location.pathname === "/promotion"
+                      ? "li-active"
+                      : "li-not-active"
+                  }
+                  to="/promotion"
+                >
                   Khuyến mãi
                 </Link>
-                <Link className="li" to="/question">
+                <Link
+                  className={
+                    location.pathname === "/question"
+                      ? "li-active"
+                      : "li-not-active"
+                  }
+                  to="/question"
+                >
                   Hỏi và đáp
                 </Link>
-                <Link className="li" to="/newfeed">
+                <Link
+                  className={
+                    location.pathname === "/newfeed"
+                      ? "li-active"
+                      : "li-not-active"
+                  }
+                  to="/newfeed"
+                >
                   Tin tức
                 </Link>
-                <Link className="li" to="/introduce">
+                <Link
+                  className={
+                    location.pathname === "/introduce"
+                      ? "li-active"
+                      : "li-not-active"
+                  }
+                  to="/introduce"
+                >
                   Giới thiệu
                 </Link>
-                <Link className="li" to="/contact">
+                <Link
+                  className={
+                    location.pathname === "/contact"
+                      ? "li-active"
+                      : "li-not-active"
+                  }
+                  to="/contact"
+                >
                   Liên hệ
                 </Link>
               </ul>

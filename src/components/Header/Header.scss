@@ -170,11 +170,28 @@
             align-items: center;
             height: 42px;
             margin: 0;
-            .li {
+            .li-not-active{
               padding: 0px 15px;
               color: #fff;
               line-height: 42px;
               cursor: pointer;
+              
+              &:hover{
+                background-color: #f18720;
+                border-radius: 25px;
+              }
+            }
+            .li-active{
+              padding: 0px 15px;
+              background-color: #f18720;
+              color: black;
+              line-height: 42px;
+              cursor: pointer;
+              
+              &:hover{
+                background-color: #f18720;
+                border-radius: 25px;
+              }
             }
           }
         }
