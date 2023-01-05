@@ -134,6 +134,9 @@
           height: 52px;
           width: 52px;
           margin-right: 22px;
+          .active_light {
+            background-color: #000;
+          }
           a {
             color: #fff;
             background-color: #e00d7a;
@@ -159,6 +162,9 @@
           display: inline-block;
           vertical-align: middle;
           height: 50px;
+          .active_light {
+            background-color: #000;
+          }
           ul {
             display: flex;
             list-style-type: none;
