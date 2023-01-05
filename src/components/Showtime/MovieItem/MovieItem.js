@@ -69,7 +69,7 @@ function MovieItem({ movie, listShowtime, listCinema }) {
                             room_id: showtime.room_id,
                             room_name: showtime.room_name,
 
-                            user_id: user.id,
+                            user_id: user?.id,
                           })
                         }
                       >
