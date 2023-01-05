@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Cart.scss";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -8,14 +8,23 @@ import { orderApi } from "actions";
 import { clearCurrentOrder } from "redux/order/orderSlice";
 import { useDispatch } from "react-redux";
 import { trimDate, trimTime } from "utils/common";
+import { selectCurrentUser, selectIsAuthenticated } from "redux/user/userSlice";
 
 function Cart() {
   const order = useSelector(selectCurrentorder);
+  const isAuthenticated = useSelector(selectIsAuthenticated);
+  const user = useSelector(selectCurrentUser);
+
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
-
   const handleCreateOrder = () => {
+    if (!isAuthenticated) {
+      // update isLoginModalOpen in userSlice
+      alert("Vui lòng đăng nhập để thanh toán");
+      return;
+    }
+
+    order.user_id = user.id;
     orderApi.createOrder(order).then(() => {
       dispatch(clearCurrentOrder());
       alert("thanh toan thanh cong");

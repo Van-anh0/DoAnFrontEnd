@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListMovie } from "redux/search/searchSlice";
 import { selectIsAuthenticated, logout } from "redux/user/userSlice";
 import { FaHome } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ModalLogin from "components/Modal/Login/ModalLogin";
 import ModalRegister from "components/Modal/Register/ModalRegister";
 import {
