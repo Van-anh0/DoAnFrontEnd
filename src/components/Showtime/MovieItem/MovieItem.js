@@ -37,7 +37,7 @@ function MovieItem({ movie, listShowtime, listCinema }) {
           </p>
           <p>{movie.spoil}</p>
           <div className="showtime__content_text_category">
-            <span>{movie.ticket ? movie.ticket : "2D"}</span>
+            <span>{movie.format_movie ? movie.format_movie : "2D"}</span>
           </div>
         </div>
       </Link>
