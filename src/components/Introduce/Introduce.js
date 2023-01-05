@@ -5,9 +5,10 @@ import BreadcrumbIntroduce from "components/Breadcrumb/BreadcrumbIntroduce";
 function Introduce() {
   return (
     <div>
+      <BreadcrumbIntroduce />
       <Slider />
       <MovieTheater />
-      <BreadcrumbIntroduce />
+      
     </div>
   );
 }

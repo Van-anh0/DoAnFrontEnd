@@ -5,7 +5,7 @@ function BreadcrumbCinema() {
   const location = useLocation();
 
   return (
-    <div>
+    <div className="bg_bc">
       <Link
         to="/"
         className={

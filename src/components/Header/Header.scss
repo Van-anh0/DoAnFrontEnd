@@ -24,6 +24,7 @@
         height: 100%;
         margin-right: 10px;
         width: 226px;
+        position: relative;
         input {
           height: 100%;
           width: 100%;
@@ -31,6 +32,39 @@
           background: #000;
           color: #8e8e8e;
           padding: 0 10px;
+        }
+
+        .header_top__search__result {
+          background: #fff;
+          width: 100%;
+          position: absolute;
+          z-index: 3;
+          .header_top__search__result__item {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid;
+            &:hover {
+              background: #e00d7a;
+              color: #fff;
+            }
+            a {
+              display: flex;
+              align-items: center;
+              img {
+                width: 40px;
+                height: 40px;
+                object-fit: cover;
+              }
+              span {
+                flex: 1;
+                text-align: center;
+                align-items: center;
+                display: flex;
+                justify-content: center;
+                color: #000;
+              }
+            }
+          }
         }
       }
 
@@ -121,7 +155,7 @@
           position: relative;
           padding: 3px;
           border: 1px solid #e00d7a;
-          -webkit-border-radius: 30px;
+          border-radius: 30px;
           display: inline-block;
           vertical-align: middle;
           height: 50px;

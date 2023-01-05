@@ -139,10 +139,10 @@ function DetailFilm({ movie, listCinema, showtimes }) {
         </div>
 
         <div className="foo">
-          <div className="a">
+          <a className="a" href={movie.trailer}>
             <img src={icon}></img>
-            <div>TRAILER</div>
-          </div>
+            <p>TRAILER</p>
+          </a>
 
           <Link
             to={"/seat"}
