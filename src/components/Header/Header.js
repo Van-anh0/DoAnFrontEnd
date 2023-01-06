@@ -125,7 +125,7 @@ function Header() {
             <>
               <div className="header_top__button">
                 <span className="avatar" onClick={handleClickUser}>
-                  <img src="https://scontent.fsgn4-1.fna.fbcdn.net/v/t39.30808-6/321111373_1769554636747797_6242647642096016605_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=kaNjEqRp9hAAX9edQCI&tn=ut3sBwZ13JhnDsNk&_nc_ht=scontent.fsgn4-1.fna&oh=00_AfDY2fG6cKe_VWzGdXLC2GOBYs9IZKnPVwXAM4LpwfWg2Q&oe=63B8900F"></img>
+                  <img src="https://i.pinimg.com/originals/5e/97/dd/5e97dd8e1924f715fb6f59d27e43194d.png"></img>
                 </span>
               </div>
               <div className="header_top__button">
