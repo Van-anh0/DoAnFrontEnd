@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectCurrentorder } from "redux/order/orderSlice";
 import { orderApi } from "actions";
-import { clearCurrentOrder } from "redux/order/orderSlice";
+import { clearCurrentOrder, initOrder } from "redux/order/orderSlice";
 import { useDispatch } from "react-redux";
 import { trimDate, trimTime } from "utils/common";
 import { selectCurrentUser, selectIsAuthenticated } from "redux/user/userSlice";
@@ -23,8 +23,8 @@ function Cart() {
       alert("Vui lòng đăng nhập để thanh toán");
       return;
     }
-
-    order.user_id = user.id;
+    let updateOrderDi = { ...order, user_id: user.id };
+    dispatch(initOrder(updateOrderDi));
     orderApi.createOrder(order).then(() => {
       dispatch(clearCurrentOrder());
       alert("thanh toan thanh cong");

@@ -15,6 +15,7 @@ import {
 function Header() {
   const [showModalLogin, setShowModalLogin] = useState(false);
   const [showModalRegister, setShowModalRegister] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
 
   const isAuthenticated = useSelector(selectIsAuthenticated);
   const currentSearch = useSelector(selectCurrentSearch);
@@ -38,6 +39,7 @@ function Header() {
 
   const handleChangeSearch = (e) => {
     dispatch(getListMovie(e.target.value));
+    setShowSearch(true);
   };
 
   function handleLogout() {
@@ -56,6 +58,7 @@ function Header() {
   function handleBlurSearch(e) {
     setTimeout(() => {
       dispatch(clearCurrentSearch());
+      setShowSearch(false);
       e.target.value = "";
     }, 100);
   }
@@ -85,23 +88,29 @@ function Header() {
               onChange={handleChangeSearch}
               onBlur={handleBlurSearch}
             ></input>
-            <div className="header_top__search__result">
-              {search.length > 0 ? (
-                search.map((item) => (
-                  <div
-                    className="header_top__search__result__item"
-                    key={item.id}
-                  >
-                    <Link to={`detail/${item.id}`}>
-                      <img src={item.poster}></img>
-                      <span>{item.name}</span>
-                    </Link>
+            {showSearch ? (
+              <div className="header_top__search__result">
+                {search.length > 0 ? (
+                  search.map((item) => (
+                    <div
+                      className="header_top__search__result__item"
+                      key={item.id}
+                    >
+                      <Link to={`detail/${item.id}`}>
+                        <img src={item.poster}></img>
+                        <span>{item.name}</span>
+                      </Link>
+                    </div>
+                  ))
+                ) : (
+                  <div className="header_top__search__result__item">
+                    <span>Không tìm thấy phim</span>
                   </div>
-                ))
-              ) : (
-                <></>
-              )}
-            </div>
+                )}
+              </div>
+            ) : (
+              <div></div>
+            )}
           </div>
           {!isAuthenticated ? (
             <>

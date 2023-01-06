@@ -42,7 +42,6 @@ export const searchSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(getListMovie.fulfilled, (state, action) => {
       const data = action.payload;
-      console.log(data);
       state.currentSearch = data;
     });
   },
