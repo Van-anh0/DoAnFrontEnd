@@ -18,7 +18,7 @@ function MovieTheater() {
       </div>
       
       <div className="gridCinema">
-        {cinema.data?.map((el) => (
+        {cinema?.data?.map((el) => (
           <div className="gridCinema__container" key={el.id}>
             <div className="cinema">
               <img src={el.image ? el.image : imageDefault}></img>

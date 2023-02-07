@@ -31,11 +31,13 @@ function DetailFilm({ movie, listCinema, showtimes }) {
   }
 
   const handleChangeDay = (event) => {
+    console.log("ngay", event.target.value);
     setDay(event.target.value);
   };
 
   const handleChangeCinema = (event) => {
-    setCinema(event.tartget.value);
+    console.log("rap", event.target.value);
+    setCinema(event.target.value);
   };
 
   const setShowtimeToOrder = (data) => {

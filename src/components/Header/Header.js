@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getListMovie } from "redux/search/searchSlice";
 import { selectIsAuthenticated, logout } from "redux/user/userSlice";
 import { FaHome } from "react-icons/fa";
+import { BsCart2 } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import ModalLogin from "components/Modal/Login/ModalLogin";
 import ModalRegister from "components/Modal/Register/ModalRegister";
@@ -136,6 +137,11 @@ function Header() {
 
           <div className="header_top__language">
             <a>En</a>
+          </div>
+          <div className="header_top_cart">
+            <Link to="/cart">
+              <BsCart2 />
+            </Link>
           </div>
         </div>
         <div className="header_bot">

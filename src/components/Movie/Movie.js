@@ -97,7 +97,7 @@ function Movie() {
         </div>
         <div className="movie_content_item">
           <div className="movie_content_item__list" style={styles}>
-            {films.data.length > 0 ? (
+            {films?.data.length > 0 ? (
               films.data?.map((el) => (
                 <MovieItem status={status} key={el.id} movie={el} />
               ))

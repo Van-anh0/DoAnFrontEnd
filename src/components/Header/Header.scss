@@ -112,6 +112,17 @@
           font-weight: bold;
         }
       }
+
+      .header_top_cart{
+        margin-left: 20px;
+        
+       
+        svg{
+          width: 25px;
+          height: 25px;
+          color: white;
+        }
+      }
     }
     .header_bot {
       display: flex;
